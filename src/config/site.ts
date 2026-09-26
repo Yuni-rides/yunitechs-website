@@ -13,8 +13,8 @@ export const siteConfig = {
     "digital solutions",
   ],
   links: {
-    email: "hello@yunisolution.com",
-    supportEmail: "support@yunisolution.com",
+    email: "hello@yunitech.com",
+    supportEmail: "support@yunitech.com",
     linkedin: "https://linkedin.com/company/yuni-solution",
     instagram: "https://instagram.com/yunisolution",
     facebook: "https://facebook.com/yunisolution",

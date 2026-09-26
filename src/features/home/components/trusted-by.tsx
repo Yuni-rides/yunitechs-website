@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { MotionInView } from "@/components/shared";
 import { Container } from "@/components/ui";
-import { trustedBrands, type TrustedBrand } from "@/features/home/data/trusted-brands";
+import {
+  trustedBrands,
+  type TrustedBrand,
+} from "@/features/home/data/trusted-brands";
 import { cn } from "@/lib/utils";
 
 export function TrustedBy() {
@@ -11,13 +14,13 @@ export function TrustedBy() {
   return (
     <section
       aria-labelledby="trusted-by-heading"
-      className="overflow-hidden bg-brand-primary py-16 lg:py-24"
+      className="bg-brand-primary overflow-hidden py-16 lg:py-24"
     >
       <Container>
         <MotionInView className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
           <h2
             id="trusted-by-heading"
-            className="font-heading text-4xl font-semibold uppercase leading-[1.05] tracking-tight text-brand-secondary sm:text-5xl lg:text-6xl"
+            className="font-heading text-brand-secondary text-4xl leading-[1.05] font-semibold tracking-tight uppercase sm:text-5xl lg:text-6xl"
           >
             Trusted by
             <br />
@@ -44,7 +47,6 @@ type MarqueeRowProps = {
 };
 
 function MarqueeRow({ brands, reverse = false }: MarqueeRowProps) {
-  // Two copies of the row so the -50% translate loops seamlessly.
   const items = [...brands, ...brands];
 
   return (
@@ -52,16 +54,16 @@ function MarqueeRow({ brands, reverse = false }: MarqueeRowProps) {
       <ul
         aria-label="Trusted partner logos"
         className={cn(
-          "flex w-max gap-4 will-change-transform group-hover:[animation-play-state:paused] motion-reduce:animate-none lg:gap-5",
+          "flex w-max will-change-transform group-hover:[animation-play-state:paused] motion-reduce:animate-none",
           reverse ? "animate-marquee-reverse" : "animate-marquee",
         )}
-        style={{ "--marquee-duration": "35s" } as React.CSSProperties}
+        style={{ "--marquee-duration": "25s" } as React.CSSProperties}
       >
         {items.map((brand, i) => (
           <li
             key={`${brand.src}-${i}`}
             aria-hidden={i >= brands.length || undefined}
-            className="grid size-28 shrink-0 place-items-center rounded-full bg-brand-secondary sm:size-32 lg:size-36"
+            className="bg-brand-secondary grid size-28 shrink-0 place-items-center rounded-full sm:size-32 lg:size-46"
           >
             <Image
               src={brand.src}
