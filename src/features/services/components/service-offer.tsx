@@ -100,13 +100,17 @@ export function ServiceOffer({ offer }: { offer: ServiceOfferContent }) {
           <ul className="bg-brand-primary/15 mt-[11.9%] grid gap-px overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
             {offer.items.map((item) => {
               const Icon = iconMap[item.icon] ?? Sparkles;
+              // The whole cell is the hover target — `group` sits on the <li>,
+              // not on the card — so the fill reaches the rules instead of
+              // leaving a dead border where hovering does nothing. The card
+              // itself stays inset by the design's 8.9% of the cell width.
               return (
                 <motion.li
                   variants={fadeInUp}
                   key={item.title}
-                  className="bg-brand-secondary p-[4%]"
+                  className="bg-brand-secondary group p-[8.9%]"
                 >
-                  <div className="group hover:bg-brand-primary flex h-full flex-col items-center rounded-2xl px-[8%] py-[12%] text-center transition-colors duration-300">
+                  <div className="group-hover:bg-brand-primary flex h-full flex-col items-center rounded-2xl px-[8%] py-[12%] text-center transition-colors duration-300">
                     <Icon
                       className="group-hover:text-brand-secondary size-[clamp(2rem,3.4vw,3.25rem)] transition-colors duration-300"
                       strokeWidth={1.5}

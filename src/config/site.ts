@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Yuni",
   description:
     "Yuni Tech builds modern digital products — web, mobile, and cloud solutions engineered for growth.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://yunisolutions.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://yunitechs.com",
   locale: "en_US",
   keywords: [
     "Yuni Tech",

@@ -14,11 +14,20 @@ export type ServiceBanner = {
 };
 
 /** "Overview" block on a service detail page. */
+export type ServiceOverviewStat = {
+  icon: string;
+  value: string;
+  label: string;
+  body: string;
+};
+
 export type ServiceOverviewContent = {
   eyebrow: string;
   heading: string;
   body: string;
   image: { src: string; alt: string };
+  /** Figure cards laid over the artwork. */
+  stats: ServiceOverviewStat[];
 };
 
 /** One cell of the "what we offer" grid. `icon` names a lucide icon. */
@@ -35,6 +44,34 @@ export type ServiceOfferContent = {
   items: ServiceOfferItem[];
 };
 
+/** One card in the "how we build" grid. */
+export type ServiceProcessStep = {
+  title: string;
+  body: string;
+  image: string;
+};
+
+export type ServiceProcessContent = {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  steps: ServiceProcessStep[];
+  cta: { heading: string; label: string; href: string };
+};
+
+/** One logo tile in the tech-stack row. */
+export type ServiceStackItem = {
+  name: string;
+  image: string;
+};
+
+export type ServiceStackContent = {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  items: ServiceStackItem[];
+};
+
 export type Service = {
   slug: string;
   title: string;
@@ -44,6 +81,8 @@ export type Service = {
   banner: ServiceBanner;
   overview: ServiceOverviewContent;
   offer: ServiceOfferContent;
+  process: ServiceProcessContent;
+  stack: ServiceStackContent;
   href: string;
 };
 

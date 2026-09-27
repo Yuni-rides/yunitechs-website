@@ -4,6 +4,8 @@ import {
   ServiceDetailBanner,
   ServiceOffer,
   ServiceOverview,
+  ServiceProcess,
+  ServiceStack,
 } from "@/features/services";
 import { getServiceBySlug, services } from "@/features/services/data/services";
 import { buildMetadata } from "@/lib/seo";
@@ -44,6 +46,8 @@ export default async function ServicePage({ params }: PageProps) {
       <TrustedBy />
       <ServiceOverview overview={service.overview} />
       <ServiceOffer offer={service.offer} />
+      <ServiceProcess process={service.process} />
+      <ServiceStack stack={service.stack} />
     </>
   );
 }

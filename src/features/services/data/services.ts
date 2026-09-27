@@ -4,6 +4,11 @@ import type {
   ServiceOfferContent,
   ServiceOfferItem,
   ServiceOverviewContent,
+  ServiceOverviewStat,
+  ServiceProcessContent,
+  ServiceProcessStep,
+  ServiceStackContent,
+  ServiceStackItem,
 } from "@/types";
 
 const serviceImage = (fileName: string, alt: string) => ({
@@ -31,9 +36,11 @@ const banner = (
 });
 
 // TODO: swap overviewBanner for each service's own artwork as it arrives.
+// TODO: confirm each service's figures with marketing before launch.
 const overview = (
   heading: string,
   body: string,
+  stats: ServiceOverviewStat[],
   fileName = "overviewBanner",
 ): ServiceOverviewContent => ({
   eyebrow: "Overview",
@@ -43,6 +50,7 @@ const overview = (
     src: `/images/${fileName}.png`,
     alt: "Highlights from Yuni Tech projects",
   },
+  stats,
 });
 
 const offer = (
@@ -55,6 +63,75 @@ const offer = (
   body,
   items,
 });
+
+/**
+ * The five stages are the same methodology whatever the service, so they are
+ * shared; buildProcess() takes the per-service heading, intro and CTA around
+ * them, and a service can pass its own steps when the wording needs to differ.
+ */
+const defaultProcessSteps = (): ServiceProcessStep[] => [
+  {
+    title: "Discovery & Planning",
+    body: "We understand your goals, requirements, and target users to create a clear roadmap.",
+    image: "/images/process1.png",
+  },
+  {
+    title: "UI/UX Design",
+    body: "We design the screens and flows around how people will actually use the product.",
+    image: "/images/process2.png",
+  },
+  {
+    title: "Development",
+    body: "We build in short, reviewable increments so progress is visible from week one.",
+    image: "/images/process3.png",
+  },
+  {
+    title: "Testing & QA",
+    body: "Every release is tested across devices and edge cases before it reaches your users.",
+    image: "/images/process4.png",
+  },
+  {
+    title: "Launch & Support",
+    body: "We ship it, watch it in production, and keep improving it after go-live.",
+    image: "/images/process5.png",
+  },
+];
+
+const buildProcess = (
+  heading: string,
+  body: string,
+  ctaHeading: string,
+  steps: ServiceProcessStep[] = defaultProcessSteps(),
+): ServiceProcessContent => ({
+  eyebrow: "Our process",
+  heading,
+  body,
+  steps,
+  cta: { heading: ctaHeading, label: "Let's talk", href: "/contact" },
+});
+
+/**
+ * Logo tiles. Every service names its own technologies; the artwork is still
+ * the shared appIcon set, cycled in order, until the designer delivers a set
+ * per service — at which point only the image paths below change.
+ */
+const buildStack = (
+  heading: string,
+  body: string,
+  items: ServiceStackItem[] = [],
+): ServiceStackContent => ({
+  eyebrow: "Tech stack",
+  heading,
+  body,
+  items,
+});
+
+// TODO: swap the shared appIcon artwork for per-service logos once they land.
+const stackItems = (names: string[]): ServiceStackItem[] =>
+  names.map((name, i) => ({
+    name,
+    image: `/images/appIcon${(i % 7) + 1}.png`,
+  }));
 
 export const services: Service[] = [
   {
@@ -80,6 +157,26 @@ export const services: Service[] = [
     overview: overview(
       "From first sketch to a site that sells",
       "We design and build fast, accessible websites that hold up under real traffic. From information architecture and design through build, testing, and launch, we handle the whole process so you can focus on growing your business.",
+      [
+        {
+          icon: "Globe",
+          value: "200+",
+          label: "Websites Launched",
+          body: "Built for speed and search.",
+        },
+        {
+          icon: "BarChart3",
+          value: "12+",
+          label: "Industries Served",
+          body: "Experience across many sectors.",
+        },
+        {
+          icon: "Users",
+          value: "40+",
+          label: "Specialists",
+          body: "Designers, engineers and strategists.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -117,6 +214,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your website",
+      "A clear, proven process to turn your idea into a fast, search-ready site.",
+      "Let's Turn your Ideas into a Website That Converts!",
+    ),
+    stack: buildStack(
+      "The technology behind your website",
+      "We use modern, reliable, and scalable technologies to build fast, accessible sites tailored to your business needs.",
+      stackItems([
+        "React",
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Tailwind",
+        "TypeScript",
+        "Vercel",
+      ]),
+    ),
     href: "/services/website-development",
   },
   {
@@ -142,6 +257,26 @@ export const services: Service[] = [
     overview: overview(
       "A brand people recognise at a glance",
       "We build visual identities that stay consistent everywhere your brand appears. From logo and type through a full design system, we give your team the assets and rules to apply it confidently.",
+      [
+        {
+          icon: "Palette",
+          value: "120+",
+          label: "Brands Shaped",
+          body: "Identities built to last.",
+        },
+        {
+          icon: "Package",
+          value: "500+",
+          label: "Assets Delivered",
+          body: "Logos, systems and collateral.",
+        },
+        {
+          icon: "BarChart3",
+          value: "15+",
+          label: "Industries Served",
+          body: "A visual language for any market.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -179,6 +314,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your brand",
+      "A clear, proven process to turn your positioning into a brand people recognise.",
+      "Let's Turn your Ideas into a Brand People Remember!",
+    ),
+    stack: buildStack(
+      "The tools behind your brand",
+      "We use industry-standard design tools to build identities and systems your team can apply anywhere.",
+      stackItems([
+        "Figma",
+        "Illustrator",
+        "Photoshop",
+        "After Effects",
+        "InDesign",
+        "Framer",
+        "Blender",
+      ]),
+    ),
     href: "/services/branding-design",
   },
   {
@@ -201,6 +354,26 @@ export const services: Service[] = [
     overview: overview(
       "A CRM that matches how your team sells",
       "We build and integrate CRM platforms that bring your pipeline, customers, and reporting into one reliable place, then connect them to the tools your team already uses every day.",
+      [
+        {
+          icon: "Database",
+          value: "60+",
+          label: "CRM Builds",
+          body: "Pipelines matched to real processes.",
+        },
+        {
+          icon: "Plug",
+          value: "30+",
+          label: "Integrations",
+          body: "Connected to the tools teams use.",
+        },
+        {
+          icon: "TrendingUp",
+          value: "45%",
+          label: "Less Manual Work",
+          body: "Measured after rollout.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -238,6 +411,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your CRM",
+      "A clear, proven process to turn your sales workflow into a system that fits it.",
+      "Let's Turn your Ideas into a CRM Your Team Will Use!",
+    ),
+    stack: buildStack(
+      "The technology behind your CRM",
+      "We use proven, scalable platforms to build CRM systems that stay reliable as your pipeline grows.",
+      stackItems([
+        "Salesforce",
+        "HubSpot",
+        "Node.js",
+        "PostgreSQL",
+        "Redis",
+        "Zapier",
+        "REST APIs",
+      ]),
+    ),
     href: "/services/crm-system",
   },
   {
@@ -263,6 +454,26 @@ export const services: Service[] = [
     overview: overview(
       "Storefronts built to sell at scale",
       "We build commerce experiences that stay fast as the catalogue grows. Product pages, checkout, payments, and fulfilment are designed together so the path to purchase never breaks.",
+      [
+        {
+          icon: "ShoppingCart",
+          value: "80+",
+          label: "Stores Launched",
+          body: "Built to trade at scale.",
+        },
+        {
+          icon: "Package",
+          value: "1M+",
+          label: "Orders Processed",
+          body: "Across client storefronts.",
+        },
+        {
+          icon: "Plug",
+          value: "25+",
+          label: "Payment Gateways",
+          body: "Integrated and battle-tested.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -300,6 +511,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your store",
+      "A clear, proven process to turn your catalogue into a storefront that sells.",
+      "Let's Turn your Ideas into a Store Built to Scale!",
+    ),
+    stack: buildStack(
+      "The technology behind your store",
+      "We use modern, secure commerce technology built to stay fast through launches and peak traffic.",
+      stackItems([
+        "Shopify",
+        "WooCommerce",
+        "Stripe",
+        "Next.js",
+        "PostgreSQL",
+        "Algolia",
+        "Klaviyo",
+      ]),
+    ),
     href: "/services/e-commerce",
   },
   {
@@ -325,6 +554,26 @@ export const services: Service[] = [
     overview: overview(
       "Pages built around a single decision",
       "We design campaign pages with one job: getting the click. Message, layout, and proof are tested and tuned together until the numbers move in the right direction.",
+      [
+        {
+          icon: "Rocket",
+          value: "300+",
+          label: "Pages Shipped",
+          body: "Built around one clear action.",
+        },
+        {
+          icon: "TrendingUp",
+          value: "2X",
+          label: "Average Lift",
+          body: "Measured against previous pages.",
+        },
+        {
+          icon: "Clock",
+          value: "48h",
+          label: "Typical Turnaround",
+          body: "From brief to live page.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -362,6 +611,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your landing page",
+      "A clear, proven process to turn your campaign into a page that converts.",
+      "Let's Turn your Ideas into Pages That Convert!",
+    ),
+    stack: buildStack(
+      "The technology behind your pages",
+      "We use lightweight, fast-loading technology so campaign traffic never waits on a page to render.",
+      stackItems([
+        "Next.js",
+        "Tailwind",
+        "Webflow",
+        "TypeScript",
+        "GA4",
+        "Hotjar",
+        "Vercel",
+      ]),
+    ),
     href: "/services/landing-page",
   },
   {
@@ -387,6 +654,26 @@ export const services: Service[] = [
     overview: overview(
       "Automation that gives your team its time back",
       "We wire AI and automation into the tools you already run, so the repetitive work happens on its own, accurately and on schedule, while your team stays on the decisions that matter.",
+      [
+        {
+          icon: "Zap",
+          value: "90+",
+          label: "Automations Live",
+          body: "Running quietly every day.",
+        },
+        {
+          icon: "TrendingUp",
+          value: "70%",
+          label: "Manual Work Removed",
+          body: "Measured across engagements.",
+        },
+        {
+          icon: "Plug",
+          value: "20+",
+          label: "Tools Connected",
+          body: "Wired into existing stacks.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -424,6 +711,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your automation",
+      "A clear, proven process to turn your manual work into something that runs itself.",
+      "Let's Turn your Ideas into Automation That Works!",
+    ),
+    stack: buildStack(
+      "The technology behind your automation",
+      "We use dependable AI and integration platforms so your automations run accurately, every day.",
+      stackItems([
+        "OpenAI",
+        "LangChain",
+        "Python",
+        "n8n",
+        "Zapier",
+        "PostgreSQL",
+        "Redis",
+      ]),
+    ),
     href: "/services/ai-automation",
   },
   {
@@ -446,6 +751,26 @@ export const services: Service[] = [
     overview: overview(
       "From idea to app store we handle every step",
       "We turn your ideas into powerful, user-friendly mobile apps. From strategy and design to development, testing, and launch, our team handles the entire process so you can focus on growing your business.",
+      [
+        {
+          icon: "Smartphone",
+          value: "150+",
+          label: "Apps Delivered",
+          body: "Turning ideas into successful products.",
+        },
+        {
+          icon: "BarChart3",
+          value: "10+",
+          label: "Industries Served",
+          body: "Diverse experience across multiple domains.",
+        },
+        {
+          icon: "Users",
+          value: "50+",
+          label: "Expert Developers",
+          body: "A skilled team that builds, scales and supports.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -483,6 +808,24 @@ export const services: Service[] = [
       },
       ],
     ),
+    process: buildProcess(
+      "How we build your app",
+      "A clear, proven process to turn your idea into a successful, high-quality mobile app.",
+      "Let's Turn your Ideas into a Robust Mobile App Together!",
+    ),
+    stack: buildStack(
+      "The technology behind your app",
+      "We use modern, reliable, and scalable technologies to build high-performing mobile apps tailored to your business needs.",
+      stackItems([
+        "iOS",
+        "MySQL",
+        "Firebase",
+        "Flutter",
+        "Python",
+        "React Native",
+        "Android",
+      ]),
+    ),
     href: "/services/application-development",
   },
   {
@@ -508,6 +851,26 @@ export const services: Service[] = [
     overview: overview(
       "Search visibility that keeps compounding",
       "We combine technical fixes, content, and authority work to lift you into the results your buyers already search for, then keep measuring so the gains hold rather than fade.",
+      [
+        {
+          icon: "Search",
+          value: "250+",
+          label: "Campaigns Run",
+          body: "Search work that compounds.",
+        },
+        {
+          icon: "TrendingUp",
+          value: "3X",
+          label: "Organic Growth",
+          body: "Typical lift within a year.",
+        },
+        {
+          icon: "BarChart3",
+          value: "10+",
+          label: "Industries Served",
+          body: "Ranking in competitive markets.",
+        },
+      ],
     ),
     offer: offer(
       "Services we offer",
@@ -544,6 +907,24 @@ export const services: Service[] = [
         body: "Earned links and mentions from sources worth having.",
       },
       ],
+    ),
+    process: buildProcess(
+      "How we build your search presence",
+      "A clear, proven process to turn your site into one search engines rank.",
+      "Let's Turn your Ideas into Search Visibility That Lasts!",
+    ),
+    stack: buildStack(
+      "The technology behind your search presence",
+      "We use established SEO and analytics tooling to find, prioritise, and measure the work that moves rankings.",
+      stackItems([
+        "Search Console",
+        "GA4",
+        "Ahrefs",
+        "Screaming Frog",
+        "Schema.org",
+        "PageSpeed",
+        "Looker Studio",
+      ]),
     ),
     href: "/services/search-engine-optimisation",
   },

@@ -2,16 +2,56 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import {
+  BarChart3,
+  Clock,
+  Database,
+  Globe,
+  Layers,
+  Package,
+  Palette,
+  Plug,
+  Rocket,
+  Search,
+  ShieldCheck,
+  ShoppingCart,
+  Smartphone,
+  Sparkles,
+  TrendingUp,
+  Users,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
 import { Container } from "@/components/ui";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import type { ServiceOverviewContent } from "@/types";
 
-/**
- * Shares of the container width, read off the design: columns 46.9% / 2.8%
- * gap / 50.4%, heading 4.81% on a 5.01% line step, eyebrow 1.25%, body 1.16%.
- * The dashed frame carries the artwork at its own aspect, which is why the
- * frame in the design measures 1.110 against the file's 1.111.
- */
+const iconMap: Record<string, LucideIcon> = {
+  BarChart3,
+  Clock,
+  Database,
+  Globe,
+  Layers,
+  Package,
+  Palette,
+  Plug,
+  Rocket,
+  Search,
+  ShieldCheck,
+  ShoppingCart,
+  Smartphone,
+  Sparkles,
+  TrendingUp,
+  Users,
+  Zap,
+};
+
+const CARD_PLACEMENT = [
+  { left: "44.0%", top: "26.1%", rotate: "-8deg" },
+  { left: "74.7%", top: "66.1%", rotate: "-8deg" },
+  { left: "24.3%", top: "73.3%", rotate: "8deg" },
+];
+
 export function ServiceOverview({
   overview,
 }: {
@@ -57,9 +97,9 @@ export function ServiceOverview({
 
           <motion.div
             variants={fadeInUp}
-            className="border-brand-primary/30 relative rounded-2xl border border-dashed p-[3%]"
+            className="relative lg:aspect-[1185/1121]"
           >
-            <div className="relative aspect-[1322/1190]">
+            <div className="relative aspect-[1322/1190] lg:absolute lg:top-[-2.49%] lg:left-[-3.71%] lg:aspect-auto lg:h-[106.07%] lg:w-[111.48%]">
               <Image
                 src={overview.image.src}
                 alt={overview.image.alt}
@@ -69,6 +109,50 @@ export function ServiceOverview({
                 className="object-contain"
               />
             </div>
+
+            <ul className="mt-6 grid gap-4 sm:grid-cols-3 lg:mt-0 lg:contents">
+              {overview.stats.map((stat, index) => {
+                const Icon = iconMap[stat.icon] ?? Sparkles;
+                const place = CARD_PLACEMENT[index] ?? CARD_PLACEMENT[0];
+                return (
+                  <li
+                    key={stat.label}
+                    style={
+                      {
+                        "--left": place.left,
+                        "--top": place.top,
+                        "--rotate": place.rotate,
+                      } as React.CSSProperties
+                    }
+                    className="@container flex flex-col justify-center rounded-2xl bg-white p-5 shadow-[0_18px_40px_-12px_rgb(9_29_64_/_0.45)] lg:absolute lg:[top:var(--top)] lg:[left:var(--left)] lg:aspect-square lg:w-[42%] lg:[transform:translate(-50%,-50%)_rotate(var(--rotate))] lg:p-[8%]"
+                  >
+                    <span className="bg-brand-secondary/12 text-brand-secondary grid aspect-square w-10 place-items-center rounded-lg lg:w-[24%]">
+                      <Icon
+                        className="size-1/2 lg:size-[60%]"
+                        strokeWidth={2}
+                        aria-hidden
+                      />
+                    </span>
+
+                    <p className="text-brand-secondary mt-3 text-[clamp(1.5rem,17cqw,2.5rem)] leading-none font-bold tracking-tight lg:mt-[8%]">
+                      {stat.value}
+                    </p>
+                    <p className="mt-1 text-[clamp(0.875rem,7.6cqw,1.125rem)] leading-tight font-semibold lg:mt-[3%]">
+                      {stat.label}
+                    </p>
+
+                    <span
+                      aria-hidden
+                      className="bg-brand-primary/10 mt-3 h-px w-full lg:mt-[7%]"
+                    />
+
+                    <p className="text-brand-primary/65 mt-3 text-[clamp(0.75rem,5.7cqw,0.8125rem)] leading-[1.35] lg:mt-[6%]">
+                      {stat.body}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
           </motion.div>
         </motion.div>
       </Container>
