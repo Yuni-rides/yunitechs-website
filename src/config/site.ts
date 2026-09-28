@@ -1,30 +1,29 @@
 export const siteConfig = {
-  name: "Yuni Tech",
+  name: "Yuni Tech Inc.",
   shortName: "Yuni",
   description:
-    "Yuni Tech builds modern digital products — web, mobile, and cloud solutions engineered for growth.",
+    "Yuni Tech Inc. builds modern digital products — web, mobile, and cloud solutions engineered for growth.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://yunitechs.com",
   locale: "en_US",
   keywords: [
-    "Yuni Tech",
+    "Yuni Tech Inc.",
     "software development",
     "web development",
     "mobile app development",
     "digital solutions",
   ],
   links: {
-    email: "hello@yunitech.com",
-    supportEmail: "support@yunitech.com",
-    linkedin: "https://linkedin.com/company/yuni-solution",
+    email: "infoo@yunitechs.com",
+    supportEmail: "infoo@yunitechs.com",
+    linkedin: "https://www.linkedin.com/company/yuni-techs/home/?viewAsMember=true",
     instagram: "https://instagram.com/yunisolution",
-    facebook: "https://facebook.com/yunisolution",
-    youtube: "https://youtube.com/@yunisolution",
+    facebook: "https://www.facebook.com/people/Yuni-Tech-Inc/61594965892484/",
+    youtube: "https://www.youtube.com/channel/UCuKQPjDa7--OGy8cbMyLDVw/editing",
     phone: "+1 (416) 000-000",
   },
   offices: [
     {
       city: "San Francisco",
-      /** One entry per line, as the footer prints them. */
       address: ["2261 Market St, Suite 2015", "San Francisco, CA 94114"],
     },
   ],

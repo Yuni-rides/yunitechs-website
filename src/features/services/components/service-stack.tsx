@@ -1,20 +1,52 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import type { ServiceStackContent } from "@/types";
 
 /**
- * Measured off the design, as shares of the section width: tiles are square at
- * 13.46%, separated by a 0.7% gap, and grow to 20.14% on hover — a 1.5x step.
+ * Measured off the design at a 1440 width: tiles are 195px square (13.54%) on
+ * a 7.8px gap (0.54%), and the hovered tile grows to 291px — a 1.493x step.
  *
- * The tiles keep their tops aligned, so a hovered tile grows downward and
- * carries its label with it rather than nudging the whole row, and the row is
- * allowed to run past both edges exactly as the design shows.
+ * Two details the design is specific about, and which a single transform on
+ * the whole tile cannot produce:
+ *
+ *  - The tiles after the hovered one move right by exactly the width it
+ *    gained, so nothing overlaps. That is a real layout change, not a scale.
+ *  - The label grows by 1.75x, more than the artwork's 1.493x, and stays the
+ *    same distance below it rather than being pushed down proportionally.
  */
+const TILE = 13.54; // vw
+const TILE_HOVER = 20.21; // vw — 1.493x
+const LABEL_GAP = 2.57; // vw, constant whether or not the tile is hovered
+
 export function ServiceStack({ stack }: { stack: ServiceStackContent }) {
+  const track = useRef<HTMLUListElement>(null);
+
+  // The loop distance is half the track's resting width, in pixels. Measuring
+  // it once means hovering — which widens the track — cannot shift the row.
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+
+    const measure = () => {
+      const shift = el.scrollWidth / 2;
+      if (shift > 0) el.style.setProperty("--marquee-shift", `${shift}px`);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    // Fonts and lazy images settle after first paint and change the width.
+    const timers = [60, 300, 1200].map((ms) => window.setTimeout(measure, ms));
+    return () => {
+      window.removeEventListener("resize", measure);
+      timers.forEach(clearTimeout);
+    };
+  }, [stack.items.length]);
+
   if (stack.items.length === 0) return null;
 
   return (
@@ -55,42 +87,54 @@ export function ServiceStack({ stack }: { stack: ServiceStackContent }) {
         </motion.div>
       </Container>
 
-      {/* Scrollable on small screens, where seven tiles will never fit. */}
+      {/* A hovered tile grows downward as well as sideways. The box is tall
+          enough for the grown tile and its label, so the section's height —
+          and everything below it on the page — never moves. */}
       <motion.div
         variants={staggerContainer(0.06)}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="mt-8 overflow-hidden lg:mt-[4%]"
+        className="mt-8 overflow-hidden pb-6 lg:mt-[4%] lg:h-[26.5vw] lg:pb-0"
       >
-        {/* The row runs continuously and pauses under the cursor, so a tile is
-            never a moving target. Growth is a scale rather than a width change:
-            widening a tile would change the track's width, and the loop's
-            -50% translate would jump the moment anything resized. */}
         <ul
+          ref={track}
           style={{ "--marquee-duration": "45s" } as React.CSSProperties}
-          className="animate-marquee flex w-max items-start gap-[0.7vw] hover:[animation-play-state:paused] motion-reduce:animate-none"
+          className="animate-marquee-fixed flex w-max items-start gap-[0.54vw] hover:[animation-play-state:paused] motion-reduce:animate-none"
         >
-          {/* Two identical copies — translating by -50% loops seamlessly. */}
+          {/* Two identical copies — the loop shift is half the track. */}
           {[0, 1].map((copy) =>
             stack.items.map((item) => (
               <li
                 key={`${copy}-${item.name}`}
-                className="relative flex shrink-0 origin-top flex-col items-center transition-transform duration-300 ease-out hover:z-10 lg:hover:scale-[1.496]"
+                className="group relative flex shrink-0 flex-col items-center hover:z-10"
               >
-                <div className="relative aspect-square w-24 overflow-hidden rounded-2xl bg-white/10 sm:w-32 lg:w-[13.46vw]">
+                <div
+                  style={
+                    {
+                      "--w": `${TILE}vw`,
+                      "--wh": `${TILE_HOVER}vw`,
+                    } as React.CSSProperties
+                  }
+                  className="relative aspect-square w-24 transition-[width] duration-300 ease-out sm:w-32 lg:w-[var(--w)] lg:group-hover:w-[var(--wh)]"
+                >
                   <Image
                     src={item.image}
                     alt=""
                     aria-hidden
                     fill
-                    sizes="(min-width: 1024px) 14vw, 8rem"
+                    sizes="(min-width: 1024px) 21vw, 8rem"
                     loading="lazy"
-                    className="object-contain p-[12%]"
+                    className="object-contain"
                   />
                 </div>
 
-                <p className="mt-[19%] text-center text-[clamp(0.75rem,1.3vw,1.125rem)] leading-tight">
+                {/* Scaled rather than resized: a transform keeps the label out
+                    of layout, so growing it cannot push the row taller. */}
+                <p
+                  className="mt-[19%] text-center text-[clamp(0.75rem,1.45vw,1.3rem)] leading-tight transition-transform duration-300 ease-out lg:mt-[var(--gap)] lg:group-hover:scale-[1.75]"
+                  style={{ "--gap": `${LABEL_GAP}vw` } as React.CSSProperties}
+                >
                   {item.name}
                 </p>
               </li>

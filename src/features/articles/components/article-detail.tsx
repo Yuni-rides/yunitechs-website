@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpLeft } from "lucide-react";
 import { Container } from "@/components/ui";
+import { CtaBand } from "@/components/shared";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -128,7 +129,7 @@ export function ArticleDetail({
             {article.sections.map((section, index) => (
               <section key={section.heading} className="mt-12 first:mt-0">
                 <h2 className="text-2xl leading-snug tracking-tight text-white uppercase sm:text-[2rem]">
-                  {index + 1}. {section.heading}
+                  {section.heading}
                 </h2>
 
                 {section.body.map((paragraph, i) => (
@@ -164,10 +165,12 @@ export function ArticleDetail({
         </div>
       </Container>
 
+      <CtaBand cta={article.cta} />
+
       {related.length > 0 && (
         <section
           aria-labelledby="related-articles-heading"
-          className="pb-16 lg:pb-24"
+          className="py-16"
         >
           <Container>
             <h2

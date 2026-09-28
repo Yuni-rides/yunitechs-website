@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { CtaBand } from "@/components/shared";
 import { TrustedBy } from "@/features/home";
 import {
   ServiceDetailBanner,
@@ -48,6 +49,7 @@ export default async function ServicePage({ params }: PageProps) {
       <ServiceOffer offer={service.offer} />
       <ServiceProcess process={service.process} />
       <ServiceStack stack={service.stack} />
+      <CtaBand cta={service.cta} />
     </>
   );
 }

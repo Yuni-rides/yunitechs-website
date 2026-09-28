@@ -1,3 +1,4 @@
+export * from "./cta-band";
 export * from "./faq";
 export * from "./logo";
 export * from "./motion-in-view";

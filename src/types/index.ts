@@ -83,6 +83,7 @@ export type Service = {
   offer: ServiceOfferContent;
   process: ServiceProcessContent;
   stack: ServiceStackContent;
+  cta: CtaBandContent;
   href: string;
 };
 
@@ -93,4 +94,17 @@ export type Testimonial = {
   company: string;
   quote: string;
   avatar?: string;
+};
+
+/**
+ * The closing call-to-action band, shared by article and service detail pages.
+ * `heading` is one entry per line: the design sets it over two short lines and
+ * lets the author choose the break rather than leaving it to the wrap.
+ */
+export type CtaBandContent = {
+  heading: string[];
+  body: string;
+  label: string;
+  /** Defaults to the contact form. */
+  href?: string;
 };

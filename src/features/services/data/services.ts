@@ -111,9 +111,7 @@ const buildProcess = (
 });
 
 /**
- * Logo tiles. Every service names its own technologies; the artwork is still
- * the shared appIcon set, cycled in order, until the designer delivers a set
- * per service — at which point only the image paths below change.
+ * Logo tiles.
  */
 const buildStack = (
   heading: string,
@@ -126,12 +124,41 @@ const buildStack = (
   items,
 });
 
-// TODO: swap the shared appIcon artwork for per-service logos once they land.
-const stackItems = (names: string[]): ServiceStackItem[] =>
-  names.map((name, i) => ({
-    name,
-    image: `/images/appIcon${(i % 7) + 1}.png`,
-  }));
+/**
+ * The seven tiles the designer has delivered, each paired with the technology
+ * its artwork actually depicts. Labels are read off the icons rather than
+ * chosen per service: a tile that reads "Next.js" under the React logo is
+ * wrong, and the hover enlarges the artwork, so the pairing has to hold.
+ *
+ * TODO: when per-service logos land, this becomes one map per service and the
+ * service entries below can name their own technologies again.
+ */
+const TECH_ICONS = {
+  iOS: "/images/appIcon1.png",
+  MySQL: "/images/appIcon7.png",
+  Firebase: "/images/appIcon6.png",
+  Flutter: "/images/appIcon5.png",
+  Python: "/images/appIcon4.png",
+  "React Native": "/images/appIcon3.png",
+  Android: "/images/appIcon2.png",
+} as const;
+
+/** The order the design prints them in, left to right. */
+const SHARED_STACK = [
+  "iOS",
+  "MySQL",
+  "Firebase",
+  "Flutter",
+  "Python",
+  "React Native",
+  "Android",
+] as const satisfies readonly (keyof typeof TECH_ICONS)[];
+
+/** Every service draws from the same pool, so every label matches its icon. */
+const stackItems = (
+  names: readonly (keyof typeof TECH_ICONS)[] = SHARED_STACK,
+): ServiceStackItem[] =>
+  names.map((name) => ({ name, image: TECH_ICONS[name] }));
 
 export const services: Service[] = [
   {
@@ -182,36 +209,36 @@ export const services: Service[] = [
       "Services we offer",
       "End-to-end website development services that turn your ideas into fast, accessible, and conversion-ready experiences.",
       [
-      {
-        icon: "Code2",
-        title: "Custom Web Development",
-        body: "Hand-built front ends tuned for speed, accessibility, and search.",
-      },
-      {
-        icon: "Layers",
-        title: "CMS & Headless Builds",
-        body: "Editable sites your team can update without waiting on a developer.",
-      },
-      {
-        icon: "Gauge",
-        title: "Performance Engineering",
-        body: "Core Web Vitals work that makes pages load and respond fast.",
-      },
-      {
-        icon: "PenTool",
-        title: "UI/UX Design",
-        body: "Interfaces designed around how your visitors actually browse and buy.",
-      },
-      {
-        icon: "Plug",
-        title: "Integrations",
-        body: "Payments, CRM, analytics, and third-party services wired in cleanly.",
-      },
-      {
-        icon: "Wrench",
-        title: "Maintenance & Support",
-        body: "Ongoing updates, monitoring, and fixes so the site keeps performing.",
-      },
+        {
+          icon: "Code2",
+          title: "Custom Web Development",
+          body: "Hand-built front ends tuned for speed, accessibility, and search.",
+        },
+        {
+          icon: "Layers",
+          title: "CMS & Headless Builds",
+          body: "Editable sites your team can update without waiting on a developer.",
+        },
+        {
+          icon: "Gauge",
+          title: "Performance Engineering",
+          body: "Core Web Vitals work that makes pages load and respond fast.",
+        },
+        {
+          icon: "PenTool",
+          title: "UI/UX Design",
+          body: "Interfaces designed around how your visitors actually browse and buy.",
+        },
+        {
+          icon: "Plug",
+          title: "Integrations",
+          body: "Payments, CRM, analytics, and third-party services wired in cleanly.",
+        },
+        {
+          icon: "Wrench",
+          title: "Maintenance & Support",
+          body: "Ongoing updates, monitoring, and fixes so the site keeps performing.",
+        },
       ],
     ),
     process: buildProcess(
@@ -222,16 +249,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your website",
       "We use modern, reliable, and scalable technologies to build fast, accessible sites tailored to your business needs.",
-      stackItems([
-        "React",
-        "Next.js",
-        "Node.js",
-        "PostgreSQL",
-        "Tailwind",
-        "TypeScript",
-        "Vercel",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Have a site in mind?", "Let's build it."],
+      body: "Share your idea with our team and get a free consultation. We'll help you turn it into a fast, search-ready website that converts.",
+      label: "Start Your Project",
+    },
     href: "/services/website-development",
   },
   {
@@ -282,36 +306,36 @@ export const services: Service[] = [
       "Services we offer",
       "Identity and design services that give your brand one coherent voice across every surface.",
       [
-      {
-        icon: "Sparkles",
-        title: "Logo & Identity",
-        body: "A distinctive mark and the type, colour, and tone around it.",
-      },
-      {
-        icon: "Layers",
-        title: "Design Systems",
-        body: "Reusable components and rules that keep every screen on-brand.",
-      },
-      {
-        icon: "PenTool",
-        title: "UI/UX Design",
-        body: "Product interfaces designed for clarity and real user tasks.",
-      },
-      {
-        icon: "Brush",
-        title: "Marketing Collateral",
-        body: "Decks, one-pagers, and print assets built from the same system.",
-      },
-      {
-        icon: "MonitorSmartphone",
-        title: "Social & Campaign Creative",
-        body: "Templates and assets sized for every channel you publish to.",
-      },
-      {
-        icon: "ShieldCheck",
-        title: "Brand Guidelines",
-        body: "Documentation so anyone can apply the brand without guesswork.",
-      },
+        {
+          icon: "Sparkles",
+          title: "Logo & Identity",
+          body: "A distinctive mark and the type, colour, and tone around it.",
+        },
+        {
+          icon: "Layers",
+          title: "Design Systems",
+          body: "Reusable components and rules that keep every screen on-brand.",
+        },
+        {
+          icon: "PenTool",
+          title: "UI/UX Design",
+          body: "Product interfaces designed for clarity and real user tasks.",
+        },
+        {
+          icon: "Brush",
+          title: "Marketing Collateral",
+          body: "Decks, one-pagers, and print assets built from the same system.",
+        },
+        {
+          icon: "MonitorSmartphone",
+          title: "Social & Campaign Creative",
+          body: "Templates and assets sized for every channel you publish to.",
+        },
+        {
+          icon: "ShieldCheck",
+          title: "Brand Guidelines",
+          body: "Documentation so anyone can apply the brand without guesswork.",
+        },
       ],
     ),
     process: buildProcess(
@@ -322,16 +346,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The tools behind your brand",
       "We use industry-standard design tools to build identities and systems your team can apply anywhere.",
-      stackItems([
-        "Figma",
-        "Illustrator",
-        "Photoshop",
-        "After Effects",
-        "InDesign",
-        "Framer",
-        "Blender",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Have a brand to build?", "Let's shape it."],
+      body: "Share your idea with our team and get a free consultation. We'll help you turn it into an identity people recognise and remember.",
+      label: "Start Your Project",
+    },
     href: "/services/branding-design",
   },
   {
@@ -379,36 +400,36 @@ export const services: Service[] = [
       "Services we offer",
       "CRM services that replace scattered spreadsheets with one system your team actually keeps up to date.",
       [
-      {
-        icon: "Layers",
-        title: "Custom CRM Builds",
-        body: "Pipelines, fields, and workflows shaped around your sales process.",
-      },
-      {
-        icon: "Plug",
-        title: "Platform Integration",
-        body: "Email, billing, support, and marketing tools connected end to end.",
-      },
-      {
-        icon: "LineChart",
-        title: "Reporting & Dashboards",
-        body: "Live views of pipeline, activity, and revenue for every team.",
-      },
-      {
-        icon: "Bot",
-        title: "Workflow Automation",
-        body: "Routine follow-ups and hand-offs that run without being chased.",
-      },
-      {
-        icon: "ShieldCheck",
-        title: "Data Migration",
-        body: "Existing records moved across cleanly, deduped, and verified.",
-      },
-      {
-        icon: "Wrench",
-        title: "Support & Training",
-        body: "Onboarding and ongoing help so the system gets used properly.",
-      },
+        {
+          icon: "Layers",
+          title: "Custom CRM Builds",
+          body: "Pipelines, fields, and workflows shaped around your sales process.",
+        },
+        {
+          icon: "Plug",
+          title: "Platform Integration",
+          body: "Email, billing, support, and marketing tools connected end to end.",
+        },
+        {
+          icon: "LineChart",
+          title: "Reporting & Dashboards",
+          body: "Live views of pipeline, activity, and revenue for every team.",
+        },
+        {
+          icon: "Bot",
+          title: "Workflow Automation",
+          body: "Routine follow-ups and hand-offs that run without being chased.",
+        },
+        {
+          icon: "ShieldCheck",
+          title: "Data Migration",
+          body: "Existing records moved across cleanly, deduped, and verified.",
+        },
+        {
+          icon: "Wrench",
+          title: "Support & Training",
+          body: "Onboarding and ongoing help so the system gets used properly.",
+        },
       ],
     ),
     process: buildProcess(
@@ -419,16 +440,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your CRM",
       "We use proven, scalable platforms to build CRM systems that stay reliable as your pipeline grows.",
-      stackItems([
-        "Salesforce",
-        "HubSpot",
-        "Node.js",
-        "PostgreSQL",
-        "Redis",
-        "Zapier",
-        "REST APIs",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Outgrown your spreadsheets?", "Let's fix that."],
+      body: "Share your sales process with our team and get a free consultation. We'll help you turn it into a CRM your team will actually use.",
+      label: "Start Your Project",
+    },
     href: "/services/crm-system",
   },
   {
@@ -479,36 +497,36 @@ export const services: Service[] = [
       "Services we offer",
       "Commerce services covering everything between a product listing and a completed order.",
       [
-      {
-        icon: "ShoppingCart",
-        title: "Storefront Development",
-        body: "Fast, responsive catalogue and product pages that convert.",
-      },
-      {
-        icon: "Plug",
-        title: "Payments & Checkout",
-        body: "Secure, low-friction checkout with the gateways you need.",
-      },
-      {
-        icon: "Layers",
-        title: "Catalogue & Inventory",
-        body: "Product data, variants, and stock kept accurate across channels.",
-      },
-      {
-        icon: "Gauge",
-        title: "Performance & Scale",
-        body: "Storefronts that stay quick through launches and peak traffic.",
-      },
-      {
-        icon: "Search",
-        title: "Commerce SEO",
-        body: "Structured data and content work that wins product searches.",
-      },
-      {
-        icon: "Wrench",
-        title: "Maintenance & Support",
-        body: "Monitoring and updates that keep the store trading.",
-      },
+        {
+          icon: "ShoppingCart",
+          title: "Storefront Development",
+          body: "Fast, responsive catalogue and product pages that convert.",
+        },
+        {
+          icon: "Plug",
+          title: "Payments & Checkout",
+          body: "Secure, low-friction checkout with the gateways you need.",
+        },
+        {
+          icon: "Layers",
+          title: "Catalogue & Inventory",
+          body: "Product data, variants, and stock kept accurate across channels.",
+        },
+        {
+          icon: "Gauge",
+          title: "Performance & Scale",
+          body: "Storefronts that stay quick through launches and peak traffic.",
+        },
+        {
+          icon: "Search",
+          title: "Commerce SEO",
+          body: "Structured data and content work that wins product searches.",
+        },
+        {
+          icon: "Wrench",
+          title: "Maintenance & Support",
+          body: "Monitoring and updates that keep the store trading.",
+        },
       ],
     ),
     process: buildProcess(
@@ -519,16 +537,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your store",
       "We use modern, secure commerce technology built to stay fast through launches and peak traffic.",
-      stackItems([
-        "Shopify",
-        "WooCommerce",
-        "Stripe",
-        "Next.js",
-        "PostgreSQL",
-        "Algolia",
-        "Klaviyo",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Ready to start selling?", "Let's build it."],
+      body: "Share your catalogue with our team and get a free consultation. We'll help you turn it into a storefront built to scale.",
+      label: "Start Your Project",
+    },
     href: "/services/e-commerce",
   },
   {
@@ -579,36 +594,36 @@ export const services: Service[] = [
       "Services we offer",
       "Landing page services that turn campaign traffic into measurable action.",
       [
-      {
-        icon: "PenTool",
-        title: "Landing Page Design",
-        body: "Focused layouts that lead visitors to one clear action.",
-      },
-      {
-        icon: "Code2",
-        title: "Rapid Build & Launch",
-        body: "Production-ready pages shipped in step with your campaign.",
-      },
-      {
-        icon: "Gauge",
-        title: "Speed Optimisation",
-        body: "Pages that load fast enough to keep paid traffic on them.",
-      },
-      {
-        icon: "LineChart",
-        title: "A/B Testing",
-        body: "Structured tests on headline, layout, and offer.",
-      },
-      {
-        icon: "Plug",
-        title: "Tracking & Analytics",
-        body: "Events and conversions wired to your ad and analytics stack.",
-      },
-      {
-        icon: "Sparkles",
-        title: "Copy & Creative",
-        body: "Messaging and visuals written around the offer, not the product.",
-      },
+        {
+          icon: "PenTool",
+          title: "Landing Page Design",
+          body: "Focused layouts that lead visitors to one clear action.",
+        },
+        {
+          icon: "Code2",
+          title: "Rapid Build & Launch",
+          body: "Production-ready pages shipped in step with your campaign.",
+        },
+        {
+          icon: "Gauge",
+          title: "Speed Optimisation",
+          body: "Pages that load fast enough to keep paid traffic on them.",
+        },
+        {
+          icon: "LineChart",
+          title: "A/B Testing",
+          body: "Structured tests on headline, layout, and offer.",
+        },
+        {
+          icon: "Plug",
+          title: "Tracking & Analytics",
+          body: "Events and conversions wired to your ad and analytics stack.",
+        },
+        {
+          icon: "Sparkles",
+          title: "Copy & Creative",
+          body: "Messaging and visuals written around the offer, not the product.",
+        },
       ],
     ),
     process: buildProcess(
@@ -619,16 +634,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your pages",
       "We use lightweight, fast-loading technology so campaign traffic never waits on a page to render.",
-      stackItems([
-        "Next.js",
-        "Tailwind",
-        "Webflow",
-        "TypeScript",
-        "GA4",
-        "Hotjar",
-        "Vercel",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Have a campaign to launch?", "Let's build it."],
+      body: "Share your offer with our team and get a free consultation. We'll help you turn it into a page that loads fast and converts.",
+      label: "Start Your Project",
+    },
     href: "/services/landing-page",
   },
   {
@@ -679,36 +691,36 @@ export const services: Service[] = [
       "Services we offer",
       "AI and automation services that remove manual steps without disrupting how your team works.",
       [
-      {
-        icon: "Bot",
-        title: "Workflow Automation",
-        body: "Multi-step processes that run themselves across your tools.",
-      },
-      {
-        icon: "Sparkles",
-        title: "AI Integrations",
-        body: "Language models applied to real tasks, with sensible guardrails.",
-      },
-      {
-        icon: "Plug",
-        title: "Systems Integration",
-        body: "Your existing platforms connected so data moves once, cleanly.",
-      },
-      {
-        icon: "LineChart",
-        title: "Data Pipelines",
-        body: "Reliable ingestion and reporting you can build decisions on.",
-      },
-      {
-        icon: "ShieldCheck",
-        title: "Governance & Review",
-        body: "Human checkpoints where automated output needs a decision.",
-      },
-      {
-        icon: "Wrench",
-        title: "Monitoring & Support",
-        body: "Alerting and upkeep so automations keep running correctly.",
-      },
+        {
+          icon: "Bot",
+          title: "Workflow Automation",
+          body: "Multi-step processes that run themselves across your tools.",
+        },
+        {
+          icon: "Sparkles",
+          title: "AI Integrations",
+          body: "Language models applied to real tasks, with sensible guardrails.",
+        },
+        {
+          icon: "Plug",
+          title: "Systems Integration",
+          body: "Your existing platforms connected so data moves once, cleanly.",
+        },
+        {
+          icon: "LineChart",
+          title: "Data Pipelines",
+          body: "Reliable ingestion and reporting you can build decisions on.",
+        },
+        {
+          icon: "ShieldCheck",
+          title: "Governance & Review",
+          body: "Human checkpoints where automated output needs a decision.",
+        },
+        {
+          icon: "Wrench",
+          title: "Monitoring & Support",
+          body: "Alerting and upkeep so automations keep running correctly.",
+        },
       ],
     ),
     process: buildProcess(
@@ -719,16 +731,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your automation",
       "We use dependable AI and integration platforms so your automations run accurately, every day.",
-      stackItems([
-        "OpenAI",
-        "LangChain",
-        "Python",
-        "n8n",
-        "Zapier",
-        "PostgreSQL",
-        "Redis",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Tired of manual work?", "Let's automate it."],
+      body: "Share your workflow with our team and get a free consultation. We'll help you turn it into automation that runs accurately, every day.",
+      label: "Start Your Project",
+    },
     href: "/services/ai-automation",
   },
   {
@@ -776,36 +785,36 @@ export const services: Service[] = [
       "Services we offer",
       "End-to-end mobile app development services to turn your ideas into high-performance, scalable, and user-friendly applications.",
       [
-      {
-        icon: "Apple",
-        title: "iOS App Development",
-        body: "Build high-quality, secure, and performance-driven iOS apps for iPhone and iPad.",
-      },
-      {
-        icon: "Bot",
-        title: "Android App Development",
-        body: "Develop scalable and feature-rich Android apps for a wider audience across all devices.",
-      },
-      {
-        icon: "Layers",
-        title: "Cross-Platform Development",
-        body: "Build cost-effective apps using modern frameworks for iOS and Android.",
-      },
-      {
-        icon: "PenTool",
-        title: "UI/UX Design",
-        body: "Create intuitive and engaging user experiences that drive higher user adoption.",
-      },
-      {
-        icon: "Plug",
-        title: "API Integration",
-        body: "Seamlessly integrate third-party services, APIs, and custom backend systems.",
-      },
-      {
-        icon: "Wrench",
-        title: "App Maintenance & Support",
-        body: "Ensure your app stays secure, up-to-date, and performs at its best.",
-      },
+        {
+          icon: "Apple",
+          title: "iOS App Development",
+          body: "Build high-quality, secure, and performance-driven iOS apps for iPhone and iPad.",
+        },
+        {
+          icon: "Bot",
+          title: "Android App Development",
+          body: "Develop scalable and feature-rich Android apps for a wider audience across all devices.",
+        },
+        {
+          icon: "Layers",
+          title: "Cross-Platform Development",
+          body: "Build cost-effective apps using modern frameworks for iOS and Android.",
+        },
+        {
+          icon: "PenTool",
+          title: "UI/UX Design",
+          body: "Create intuitive and engaging user experiences that drive higher user adoption.",
+        },
+        {
+          icon: "Plug",
+          title: "API Integration",
+          body: "Seamlessly integrate third-party services, APIs, and custom backend systems.",
+        },
+        {
+          icon: "Wrench",
+          title: "App Maintenance & Support",
+          body: "Ensure your app stays secure, up-to-date, and performs at its best.",
+        },
       ],
     ),
     process: buildProcess(
@@ -816,16 +825,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your app",
       "We use modern, reliable, and scalable technologies to build high-performing mobile apps tailored to your business needs.",
-      stackItems([
-        "iOS",
-        "MySQL",
-        "Firebase",
-        "Flutter",
-        "Python",
-        "React Native",
-        "Android",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Have an app idea?", "Let's build it."],
+      body: "Share your idea with our team and get a free consultation. We'll help you turn it into a scalable, high-performing mobile app.",
+      label: "Start Your Project",
+    },
     href: "/services/application-development",
   },
   {
@@ -876,36 +882,36 @@ export const services: Service[] = [
       "Services we offer",
       "Search services that move you up the results page and keep you there.",
       [
-      {
-        icon: "Search",
-        title: "Technical SEO",
-        body: "Crawlability, indexing, and structured data put right at the source.",
-      },
-      {
-        icon: "Gauge",
-        title: "Core Web Vitals",
-        body: "Speed and stability work that search engines reward.",
-      },
-      {
-        icon: "Sparkles",
-        title: "Content Strategy",
-        body: "Topic and keyword plans built around real search demand.",
-      },
-      {
-        icon: "LineChart",
-        title: "Rank & Traffic Reporting",
-        body: "Clear reporting on positions, clicks, and what changed.",
-      },
-      {
-        icon: "Layers",
-        title: "On-Page Optimisation",
-        body: "Titles, structure, and internal links tuned page by page.",
-      },
-      {
-        icon: "ShieldCheck",
-        title: "Authority Building",
-        body: "Earned links and mentions from sources worth having.",
-      },
+        {
+          icon: "Search",
+          title: "Technical SEO",
+          body: "Crawlability, indexing, and structured data put right at the source.",
+        },
+        {
+          icon: "Gauge",
+          title: "Core Web Vitals",
+          body: "Speed and stability work that search engines reward.",
+        },
+        {
+          icon: "Sparkles",
+          title: "Content Strategy",
+          body: "Topic and keyword plans built around real search demand.",
+        },
+        {
+          icon: "LineChart",
+          title: "Rank & Traffic Reporting",
+          body: "Clear reporting on positions, clicks, and what changed.",
+        },
+        {
+          icon: "Layers",
+          title: "On-Page Optimisation",
+          body: "Titles, structure, and internal links tuned page by page.",
+        },
+        {
+          icon: "ShieldCheck",
+          title: "Authority Building",
+          body: "Earned links and mentions from sources worth having.",
+        },
       ],
     ),
     process: buildProcess(
@@ -916,16 +922,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your search presence",
       "We use established SEO and analytics tooling to find, prioritise, and measure the work that moves rankings.",
-      stackItems([
-        "Search Console",
-        "GA4",
-        "Ahrefs",
-        "Screaming Frog",
-        "Schema.org",
-        "PageSpeed",
-        "Looker Studio",
-      ]),
+      stackItems(),
     ),
+    cta: {
+      heading: ["Want to be found?", "Let's rank you."],
+      body: "Share your site with our team and get a free consultation. We'll help you turn it into one search engines and AI answers cite.",
+      label: "Start Your Project",
+    },
     href: "/services/search-engine-optimisation",
   },
 ];

@@ -200,3 +200,23 @@
     inset -3px -3px 4px -2px rgb(255 255 255 / 0.3),
     0 8px 32px rgb(0 0 0 / 0.25);
 }
+/* ------------------------------------------------------------------
+ * Marquee whose loop distance is a fixed length rather than -50%.
+ * The service tech stack grows a tile's real width on hover, which
+ * widens the track; with a percentage translate the row would jump by
+ * half that growth the instant the cursor landed. Reading the shift
+ * from a variable keeps the loop distance independent of the track's
+ * current width. Falls back to 50% if the variable is never set.
+ * ------------------------------------------------------------------ */
+@keyframes marquee-fixed {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-1 * var(--marquee-shift, 50%)));
+  }
+}
+
+@utility animate-marquee-fixed {
+  animation: marquee-fixed var(--marquee-duration, 40s) linear infinite;
+}
