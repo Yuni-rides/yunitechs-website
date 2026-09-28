@@ -140,11 +140,13 @@ export function ContactForm() {
               <div>
                 <dt className="text-lg tracking-wide uppercase">Address</dt>
                 <dd className="mt-2 space-y-0.5 text-[11px] text-white/85">
-                  {[...siteConfig.offices].reverse().map((office) => (
-                    <span key={office.city} className="block">
-                      {office.address}
-                    </span>
-                  ))}
+                  {siteConfig.offices.flatMap((office) =>
+                    office.address.map((line) => (
+                      <span key={`${office.city}-${line}`} className="block">
+                        {line}
+                      </span>
+                    )),
+                  )}
                 </dd>
               </div>
             </dl>

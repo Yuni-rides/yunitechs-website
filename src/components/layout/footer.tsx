@@ -31,7 +31,7 @@ export function Footer() {
   return (
     <footer className="bg-brand-primary px-4 pt-10 pb-6 sm:px-6 lg:px-10 lg:pt-16 lg:pb-8">
       <div className="bg-brand-secondary text-brand-primary mx-auto max-w-[1400px] overflow-hidden rounded-[2rem] lg:rounded-[2.5rem]">
-        <Container className="grid gap-12 pt-12 pb-4 lg:grid-cols-[1.1fr_0.9fr_1fr] lg:gap-8 lg:pt-16">
+        <Container className="grid gap-12 pt-12 pb-4 lg:grid-cols-[35.1fr_32.3fr_24.6fr] lg:gap-[4%] lg:pt-16">
           {/* Services */}
           <div>
             <h2 className="text-sm font-bold tracking-wide uppercase">
@@ -58,8 +58,11 @@ export function Footer() {
           </div>
 
           {/* Main nav + offices + socials */}
-          <div className="flex flex-col lg:pt-8">
-            <nav aria-label="Footer">
+          <div className="flex flex-col">
+            <h2 className="text-sm font-bold tracking-wide uppercase">
+              Resources
+            </h2>
+            <nav aria-label="Footer" className="mt-6">
               <ul className="space-y-4">
                 {footerNav.map((item) => (
                   <li key={item.href}>
@@ -85,9 +88,11 @@ export function Footer() {
                   </span>
                 ))}
               </p>
-              <p className="mt-1 text-[11px]">
-                {siteConfig.offices[0].address}
-              </p>
+              {siteConfig.offices[0].address.map((line, i) => (
+                <p key={line} className={i === 0 ? "mt-2 text-[11px]" : "text-[11px]"}>
+                  {line}
+                </p>
+              ))}
             </address>
 
             <ul className="mt-6 flex gap-2" aria-label="Social media">
@@ -108,28 +113,18 @@ export function Footer() {
           </div>
 
           {/* Get in touch */}
-          <div className="lg:pt-8">
-            <h2 className="text-2xl font-medium tracking-tight uppercase sm:text-3xl">
+          <div>
+            <h2 className="text-sm font-bold tracking-wide uppercase">
               Get in touch
             </h2>
-            <ul className="mt-4 space-y-1 text-sm">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.links.email}`}
-                  className="hover:underline"
-                >
-                  {siteConfig.links.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.links.supportEmail}`}
-                  className="hover:underline"
-                >
-                  {siteConfig.links.supportEmail}
-                </a>
-              </li>
-            </ul>
+            <p className="mt-6 text-sm">
+              <a
+                href={`mailto:${siteConfig.links.email}`}
+                className="hover:underline"
+              >
+                {siteConfig.links.email}
+              </a>
+            </p>
 
             <ul className="mt-8 grid max-w-[220px] grid-cols-3 gap-1.5">
               {photos.map((photo) => (
