@@ -20,8 +20,10 @@ export const footerServices: NavItem[] = [
   { label: "Branding & Design", href: "/services/branding-design" },
   { label: "CRM Systems", href: "/services/crm-system" },
   { label: "E-Commerce Solutions", href: "/services/e-commerce" },
-  { label: "Landing Pages", href: "/services/landing-page" },
   { label: "Ai Automation", href: "/services/ai-automation" },
-  { label: "Application Development", href: "/services/application-development" },
-  { label: "Search Engine Optimization", href: "/services/search-engine-optimisation" },
+  {
+    label: "Application Development",
+    href: "/services/application-development",
+  },
+  { label: "Marketing", href: "/services/marketing" },
 ];

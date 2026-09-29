@@ -26,7 +26,7 @@ export const filters = [
   { id: "web", label: "Web" },
   { id: "apps", label: "Mobile Apps" },
   { id: "software", label: "Software" },
-  { id: "design", label: "Design" },
+  { id: "ecommerce", label: "Ecommerce" },
   { id: "crm", label: "CRM" },
   { id: "marketing", label: "Marketing" },
 ] as const;
@@ -810,9 +810,10 @@ export const articles: Article[] = [
       label: "Get in Touch",
     },
   },
-    {
+  {
     slug: "transportation-software-vs-generic-business-software",
-    title: "What Makes Transportation Software Different from Generic Business Software",
+    title:
+      "What Makes Transportation Software Different from Generic Business Software",
     category: "CRM",
     filter: "crm",
     author: "Yuni Tech Inc. Team",
@@ -825,7 +826,7 @@ export const articles: Article[] = [
       {
         heading: "Why generic tools break down",
         body: [
-          "A lot of businesses start the same way: \"We just need software to manage our operations.\" For a retail shop or a consulting firm, that might genuinely mean a CRM, an inventory tool, and a scheduling app bolted together. For a transportation or logistics business, that approach usually breaks within the first few months of real use.",
+          'A lot of businesses start the same way: "We just need software to manage our operations." For a retail shop or a consulting firm, that might genuinely mean a CRM, an inventory tool, and a scheduling app bolted together. For a transportation or logistics business, that approach usually breaks within the first few months of real use.',
           "Transportation software isn't generic business software with a map view added on top. It's a different category of problem entirely, and understanding why matters before you start scoping a build.",
         ],
       },
@@ -851,7 +852,8 @@ export const articles: Article[] = [
         ],
       },
       {
-        heading: "Multiple stakeholders, each needing a different view of the same data",
+        heading:
+          "Multiple stakeholders, each needing a different view of the same data",
         body: [
           "A retail inventory system usually has one primary user type: staff managing stock. Transportation software routinely needs to serve several audiences simultaneously off the same underlying data: dispatchers coordinating routes in real time, drivers needing simple, low-distraction mobile interfaces while operating a vehicle, and customers or parents wanting a simplified, reassuring view of where their ride or delivery actually is.",
           "Designing three genuinely different interfaces on top of one real-time data layer is a harder design and architecture problem than most generic business software ever has to solve, because a single-purpose CRM usually only needs one coherent user experience, not three simultaneous ones with very different needs and stakes.",
@@ -867,7 +869,7 @@ export const articles: Article[] = [
         heading: "What this means when you're building or buying",
         body: [
           "If you're a transportation, logistics, or fleet-based business evaluating software, generic business tools stretched to cover routing, real-time tracking, and compliance usually reveal their limits fast, once real volume and real-world messiness hit. The right approach is usually purpose-built software, or a generic platform's infrastructure combined with a transportation-specific layer designed around the problems above: real-time state, genuine routing logic, compliance built into the data model, and interfaces designed for each stakeholder separately.",
-          "Generic software asks, \"how do we track this business generally.\" Transportation software has to ask, \"how do we track something moving through physical space, right now, with real stakes if we get it wrong.\"",
+          'Generic software asks, "how do we track this business generally." Transportation software has to ask, "how do we track something moving through physical space, right now, with real stakes if we get it wrong."',
         ],
       },
       {
@@ -880,6 +882,437 @@ export const articles: Article[] = [
     cta: {
       heading: ["Building transportation software?", "Let's talk it through."],
       body: "Planning a transportation or fleet platform? Share your workflows with Yuni Tech Inc. and we'll help you work out what it needs to do.",
+      label: "Get in Touch",
+    },
+  },
+  {
+    slug: "ai-agents-vs-chatbots-what-is-the-difference",
+    title: "AI Agents vs Chatbots: What Is the Difference?",
+    category: "AI & Automation",
+    filter: "ai",
+    author: "Yuni Tech Inc. Team",
+    readingMinutes: 5,
+    excerpt:
+      "Learn how AI agents and chatbots differ, where each fits in customer support and lead qualification, and how to choose a first use case.",
+    image: "/images/ai-agents-vs-chatbots.png",
+    publishedAt: "2026-09-19",
+    sections: [
+      {
+        heading: "The difference is the work each system does",
+        body: [
+          'A customer writes, "My order hasn\'t arrived. Can you help?" A chatbot might explain how to find the tracking link. An AI agent, if connected to the right systems, could check the order, identify a delivery exception, and prepare a support ticket.',
+          "The difference is the work each system is designed to do. A chatbot primarily handles a conversation. An AI agent works toward a defined goal by choosing and carrying out permitted steps. Their capabilities can overlap, and a customer may encounter both through the same chat window.",
+        ],
+      },
+      {
+        heading: "What is a chatbot?",
+        body: [
+          "A chatbot is software that communicates through a chat interface. A basic chatbot follows a script or menu. An AI chatbot can respond to varied questions using information such as product documentation or a help center.",
+          "Chatbots are useful for answering common questions, explaining policies, collecting contact details, and directing people to the right team. Some can also retrieve records or trigger predefined workflows. What a particular chatbot can do depends on how it was built and connected.",
+        ],
+      },
+      {
+        heading: "What is an AI agent?",
+        body: [
+          "An AI agent is a system designed to pursue a goal using the tools and permissions available to it. It can select a next step, use a connected tool, assess the result, and continue or ask a person for help.",
+          "In a hypothetical support workflow, an agent could check an order, compare its status with a delivery policy, update a ticket, and draft a response. That does not mean it should have permission to change every order or send every response. Its access and approval rules need to match the task.",
+        ],
+      },
+      {
+        heading: "AI agents vs chatbots: key differences",
+        body: ["Here is how the two compare across four practical questions:"],
+        bullets: [
+          "Main role: a chatbot manages a conversation and provides help; an AI agent works toward a defined outcome",
+          "Typical task: a chatbot answers a return-policy question; an AI agent checks a return request and prepares the next permitted step",
+          "Use of systems: a chatbot may retrieve information or start a set workflow; an AI agent may choose among permitted tools and steps",
+          "Oversight: a chatbot needs checks on accuracy, uncertain answers, and handoff; an AI agent needs those, plus permissions, actions, and results",
+        ],
+      },
+      {
+        heading: "Labels are not rigid categories",
+        body: [
+          "These are practical distinctions, not rigid product categories. A chatbot can perform actions, and an agent can converse with a user. Evaluate the workflow a product can complete, rather than relying on its label.",
+        ],
+      },
+      {
+        heading: "Which works better for customer support?",
+        body: [
+          "Look at what your team does after receiving a request. If most requests need an answer that already exists in your documentation, a chatbot may be enough. Keep its information current and give customers a clear path to a person when an answer is uncertain.",
+          "If staff must repeatedly check orders, compare information across systems, and take routine follow-up steps, an agent may be worth testing. Begin with limited access. For example, let it prepare a proposed action for review before allowing it to change a record or issue a refund.",
+          "Judge success by whether the request was resolved correctly. A quick reply has limited value if a person must still repeat the entire task.",
+        ],
+      },
+      {
+        heading: "Which works better for lead qualification?",
+        body: [
+          "A chatbot can answer service questions and ask visitors about their requirements, budget, and timeline. A salesperson can then review the details and follow up.",
+          "A lead qualification agent may help when the next steps involve checking service criteria, finding missing information, updating a CRM, and routing the inquiry. Set clear rules for what it may say about pricing, availability, and delivery dates. Those claims should come from approved information.",
+        ],
+      },
+      {
+        heading: "How should you choose a first use case?",
+        body: [
+          "Review a sample of recent support conversations or sales inquiries. For each, note what the customer wanted, which systems an employee used, what action they took, and whether someone had to approve it. Then choose one frequent, clearly defined task.",
+          "Before testing a solution, decide:",
+        ],
+        bullets: [
+          "Outcome: what counts as a correctly resolved request?",
+          "Information: are the policies and records it needs accurate?",
+          "Access: what can it read, change, or send?",
+          "Handoff: when should a person take over, and what context will they receive?",
+          "Measurement: how will you track errors, escalations, customer experience, and work saved?",
+        ],
+      },
+      {
+        heading: "Test before you expand",
+        body: [
+          "Test the workflow against real examples and review failures before expanding access. Also compare its full operating cost, including integrations and human review, with the work it removes.",
+        ],
+      },
+      {
+        heading: "Frequently asked questions",
+        body: [
+          "Can a business use both a chatbot and an AI agent? Yes. A chatbot can answer routine questions and collect details. An agent can handle a permitted task when the request requires action. A person can take over exceptions.",
+          "Are AI agents always better than chatbots? No. A well-maintained chatbot may be simpler for questions that only need clear answers. An agent adds setup and oversight when it can use tools or change records.",
+          "Do I need a custom AI solution? Not necessarily. Check whether your existing support or CRM software can handle the workflow first. A tailored solution becomes more relevant when available tools cannot accommodate your process, connections, or approval rules.",
+        ],
+      },
+      {
+        heading: "The best starting point",
+        body: [
+          "The best starting point is one real request: map how your team handles it, then identify which steps need an answer, an action, or human judgment.",
+        ],
+      },
+    ],
+    cta: {
+      heading: ["Have an AI idea?", "Let's build it."],
+      body: "Planning an AI-powered workflow? Share the task, systems involved, and approval rules with Yuni Tech to discuss a practical first version.",
+      label: "Discuss Your Project",
+    },
+  },
+  {
+    slug: "custom-ecommerce-vs-shopify",
+    title: "Custom E-commerce vs Shopify: Which One Actually Fits Your Store",
+    category: "E-commerce",
+    filter: "ecommerce",
+    author: "Yuni Tech Inc. Team",
+    readingMinutes: 5,
+    excerpt:
+      "Custom e-commerce development vs Shopify or WooCommerce: what each costs, where each breaks down, and how to know which one you need.",
+    image: "/images/custom-ecommerce-vs-shopify.png",
+    publishedAt: "2026-09-18",
+    sections: [
+      {
+        heading: "Start on a platform, then ask the question",
+        body: [
+          "A founder opens a Shopify store on a Tuesday and is selling by Thursday. That's the whole pitch for platform e-commerce, and for most stores it's the right call. Then the business grows past what the platform was built for, and the question flips: is it time to build something custom? Here's how to tell.",
+        ],
+      },
+      {
+        heading: "What you're actually choosing between",
+        body: [
+          "Shopify, WooCommerce and similar platforms give you a store, hosting, payments and a plugin library on day one. You rent the system and work inside its limits. Custom e-commerce development means building the store, or the parts of it that matter, from the ground up, so nothing is off-limits, but nothing is free either.",
+          "Neither one is better. They solve different problems.",
+        ],
+      },
+      {
+        heading: "When a platform is the right call",
+        body: [
+          "If you're selling standard products through a standard checkout, use a platform. Most stores fit this. The checkout is tested by millions of transactions, security patches ship automatically and a plugin exists for almost anything you'll want to add in year one. Launching in days instead of months matters more than flexibility when you don't yet know if the product will sell.",
+        ],
+      },
+      {
+        heading: "Where platforms start to strain",
+        body: ["A few patterns show up again and again."],
+        bullets: [
+          "You're stacking apps to fake features the platform doesn't have. Five or six paid apps just to handle subscriptions, custom pricing tiers and inventory across three warehouses is a sign you're paying monthly for a system straining against its own limits.",
+          "Your product isn't simple. Configurable products, made-to-order items, B2B pricing that changes by account, or inventory synced across in-store and online sales push past what a template checkout was built for. You can often force it to work, but forcing it usually means slower pages and a fragile checkout.",
+          "Fees are the real cost now. Platform transaction fees and app subscriptions add up as volume grows. Past a certain size, the platform's percentage of every sale outweighs what it would cost to own the system yourself.",
+          "You need integration a plugin can't cover. Custom ERP systems, unusual shipping logic or a proprietary inventory setup sometimes have no clean plugin, only a workaround that breaks on the next update.",
+        ],
+      },
+      {
+        heading: "What custom actually costs",
+        body: [
+          "Custom development costs more upfront than a monthly subscription and needs ongoing maintenance, since you lose automatic platform updates. It buys you a checkout with no transaction fee cut, no plugin conflicts, and a system built around your product instead of a template's idea of one.",
+          "Weigh the build cost and the maintenance cost against what you're already paying in fees, apps and workarounds over a few years, not against the platform's monthly price alone.",
+        ],
+      },
+      {
+        heading: "The middle option",
+        body: [
+          "You don't have to choose all or nothing. Headless commerce keeps a platform's backend, inventory and payments, and replaces just the storefront with something custom. It's a common step for stores that need a faster or more flexible front end but don't want to rebuild checkout, payments and inventory from scratch.",
+        ],
+      },
+      {
+        heading: "Questions to ask before deciding",
+        body: [
+          "What's actually breaking today? Write it down before you talk to anyone. How many apps are you running just to patch gaps, and what do they cost combined? Is the limitation the platform, or a setting you haven't found yet? What would migration actually cost, in time and in lost SEO, not just in developer fees?",
+        ],
+      },
+      {
+        heading: "Frequently asked questions",
+        body: [
+          "Is custom e-commerce always more expensive than Shopify? Upfront, yes. Over time, it depends on transaction volume, app costs and how many workarounds the platform needs to match what a custom build would do natively.",
+          "Can I move from Shopify to a custom store later? Yes. Many stores start on a platform and migrate once they hit its limits. Migration takes planning, since product data, SEO rankings and customer accounts all need to move without disruption.",
+          "What is headless commerce? An e-commerce setup where the storefront is custom-built while the platform still handles the backend: inventory, payments and order management.",
+          "How long does a custom e-commerce build take? It depends on scope. A storefront alone takes less time than a full custom build covering inventory, checkout and integrations.",
+          "Do platform stores handle high traffic well? Generally yes. Major platforms are built to handle large traffic spikes. Custom stores can too, but that capacity has to be engineered in, it isn't automatic.",
+        ],
+      },
+    ],
+    cta: {
+      heading: ["Outgrowing your platform?", "Let's talk it through."],
+      body: "If your store is outgrowing its platform, tell Yuni Tech what's breaking and we'll help you figure out whether custom is worth it.",
+      label: "Get in Touch",
+    },
+  },
+  {
+    slug: "cart-abandonment-fixes",
+    title: "Why Online Shoppers Abandon Their Cart, and What Actually Fixes It",
+    category: "E-commerce",
+    filter: "ecommerce",
+    author: "Yuni Tech Inc. Team",
+    readingMinutes: 5,
+    excerpt:
+      "The real reasons shoppers abandon carts, which fixes matter most, and how to find the specific reason yours are leaving.",
+    image: "/images/cart-abandonment-fixes.png",
+    publishedAt: "2026-09-18",
+    sections: [
+      {
+        heading: "Abandonment is a symptom, not a fix",
+        body: [
+          "Seven out of ten shopping carts get left behind before checkout finishes. That number gets quoted so often it's stopped meaning anything, so let's skip past it.",
+          "The real question is why yours are leaving, because \"reduce cart abandonment\" isn't a fix. It's a symptom with a dozen different causes, and the fix depends on which one you actually have.",
+        ],
+      },
+      {
+        heading: "Start by watching, not guessing",
+        body: [
+          'Before changing anything, look at where people actually drop off. Analytics tools show the exact checkout step where a shopper quits. That step tells you more than any generic "best practices" list. Cart abandonment at the shipping-cost screen is a different problem than abandonment at account creation, and they need different fixes.',
+        ],
+      },
+      {
+        heading: "Unexpected costs",
+        body: [
+          "The single most common reason shoppers leave is a total that's higher than they expected, usually shipping, taxes or fees revealed for the first time at checkout. Show the full cost earlier: on the product page, in the cart, before the final screen. A shopper who sees the real total upfront isn't surprised into leaving later.",
+        ],
+      },
+      {
+        heading: "Forcing an account",
+        body: [
+          "Requiring account creation before checkout stops people who just want to buy one thing today. Offer guest checkout. You can still ask for an account after the order is placed, once they've already bought.",
+        ],
+      },
+      {
+        heading: "Checkout that takes too long",
+        body: [
+          "Every extra field or screen loses a share of shoppers. Count your checkout steps and cut what isn't necessary. Autofill addresses where you can. Save progress so a shopper who leaves and comes back on their phone doesn't start over.",
+        ],
+      },
+      {
+        heading: "Not enough payment options",
+        body: [
+          "Some shoppers only trust one payment method, and if it's not there, they leave rather than switch. Card payments plus a digital wallet option cover most shoppers. Buy-now-pay-later suits certain products and price points, but it isn't necessary everywhere, so check whether it fits your buyers before adding it.",
+        ],
+      },
+      {
+        heading: "Security doubts on a small or unfamiliar store",
+        body: [
+          "Newer or smaller stores face more hesitation at checkout than large, recognized retailers. Visible security badges, clear return policies and real customer reviews close some of that gap. So does a checkout page that looks and works like the rest of your site instead of a jarring third-party redirect.",
+        ],
+      },
+      {
+        heading: "Just browsing, or comparing prices",
+        body: [
+          "Not every abandoned cart is lost. Some shoppers save items to buy on payday, or open several tabs to compare prices. A cart-saving feature and a timed reminder email recover a share of these without discounting anything. Not every abandoned cart needs winning back.",
+        ],
+      },
+      {
+        heading: "Site problems that never show up in the data",
+        body: [
+          "A broken discount code, a payment gateway timing out, a shipping calculator that fails for certain addresses: these show up as abandoned carts, not as errors in a report. Test your own checkout regularly, with real cards in a test environment, across devices. The most damaging leak is often the one nobody's checked.",
+        ],
+      },
+      {
+        heading: "Fix the right one first",
+        body: [
+          "Pick the step where your data shows the most people leaving, and fix that one specifically. A store bleeding shoppers at the shipping-cost screen doesn't need more payment options. It needs the cost shown earlier. Match the fix to the actual drop-off point, not to a generic checklist.",
+        ],
+      },
+      {
+        heading: "Frequently asked questions",
+        body: [
+          "What's a normal cart abandonment rate? It varies by industry, but most published figures sit somewhere between two-thirds and three-quarters of carts. Compare your own rate over time rather than against an industry average, since your traffic and products aren't identical to anyone else's.",
+          "Do abandonment emails actually work? For shoppers who left with real intent to buy, yes, they recover a meaningful share. For shoppers who were only browsing or comparing prices, they do less.",
+          "Should every store offer guest checkout? Nearly always. It removes a common reason for leaving, and you can still invite account creation after the sale.",
+          "Does site speed affect cart abandonment? Yes. A slow checkout, especially on mobile, causes people to leave before finishing, separate from cost or trust concerns.",
+          "How do I find my store's specific abandonment cause? Check your analytics for the exact step where people leave, then test that step yourself. The pattern in the data usually points straight at the cause.",
+        ],
+      },
+    ],
+    cta: {
+      heading: ["Losing shoppers at checkout?", "Let's find out why."],
+      body: "If you want a second look at where your checkout is losing people, get in touch with Yuni Tech and we'll go through it with you.",
+      label: "Get in Touch",
+    },
+  },
+  {
+    slug: "website-redesign-signs-and-planning",
+    title: "Signs It's Time to Redesign Your Website, and How to Plan One",
+    category: "Website",
+    filter: "web",
+    author: "Yuni Tech Inc. Team",
+    readingMinutes: 5,
+    excerpt:
+      "How to tell whether your site needs a redesign, what to fix first, and how to plan a redesign that doesn't reset your SEO.",
+    image: "/images/website-redesign-signs-and-planning.png",
+    publishedAt: "2026-09-17",
+    sections: [
+      {
+        heading: "The color scheme was never the problem",
+        body: [
+          "Somebody hates the color scheme. A competitor launches something newer-looking. That's usually where a redesign starts, and six months later the new site looks better and converts exactly the same as the old one. Because the color scheme was never the problem.",
+          "Here's how to actually tell if you need a redesign, and how to run one without torching what already works.",
+        ],
+      },
+      {
+        heading: "Fine-looking sites still lose people",
+        body: [
+          "A site can look current and still bleed visitors at every step. People land, scroll a little, leave. If that's your pattern, the problem is usually the message or the path to checkout, not the layout.",
+          'Pull your analytics before touching anything. A specific page where people drop off tells you more than a vague feeling that the site "looks old."',
+        ],
+      },
+      {
+        heading: "The signs that actually mean something",
+        body: ["A few patterns are worth acting on. Most aren't."],
+        bullets: [
+          "Conversions have dropped, and not because of a seasonal dip or a paid campaign winding down. A real, lasting decline with no obvious cause.",
+          "Mobile visitors bounce a lot more than desktop ones. Not slightly more. If that gap has sat there for months, something on mobile is genuinely broken, and no amount of copywriting fixes it.",
+          "You can't add a page or change a price without calling a developer. That's not a content problem. That's the platform itself getting in your way.",
+          "The site breaks on phones and browsers your customers actually use. Built five years ago, tested on nothing since.",
+          "The business has moved on and the site hasn't. New services, a different audience, a repositioned brand, and the homepage still describes the company from three years back. Not a design problem exactly. But a redesign is usually how it gets fixed.",
+        ],
+      },
+      {
+        heading: "What doesn't need a full rebuild",
+        body: [
+          "Slow pages are almost always a hosting or image problem. Rebuild nothing for that. A dated look with no actual drop in performance is a taste issue, not a business case. Missing one feature gets fixed by adding one feature, not by starting over.",
+          'Rule these out first. They cost a fraction of what a full redesign costs, and half the time they\'re the real culprit hiding behind "the site just feels old."',
+        ],
+      },
+      {
+        heading: "Don't throw away what's already working",
+        body: [
+          "Before anything gets redesigned, write down which pages rank, which pull the most traffic, which convert best. Change the URLs, gut the ranking content, rework the navigation without a plan, and you can lose search rankings it took years to earn. This is the single most common way redesigns go wrong. It's also completely avoidable.",
+          "Set up redirects from every old URL to its new home before launch. Not after someone notices the traffic graph fell off a cliff. Keep the copy that was ranking, even when the design around it changes.",
+        ],
+      },
+      {
+        heading: "Plan the fix, not the mood board",
+        body: [
+          'Start from what the analytics actually showed you, not from a Pinterest board. Decide what the redesign has to solve, specifically, and make that the brief. "Make it feel more modern" gives a designer nothing to aim at, and you\'ll end up with something that looks different and performs identically.',
+          "Test the new design on real people before launch, even five of them. Watch someone try to complete your main conversion action. That will surface more real problems than another internal design review ever will.",
+        ],
+      },
+      {
+        heading: "What to ask whoever's building it",
+        body: [
+          "Ask how they'll protect your existing search rankings during the move. Ask if they're auditing your current site first, or just dropping you into a template. Ask what happens to your blog posts and case studies mid-transition. If they can't answer clearly, they haven't done this migration carefully before, and you're about to find that out the expensive way.",
+        ],
+      },
+      {
+        heading: "Frequently asked questions",
+        body: [
+          "How do I know if I need a redesign or just a few fixes? Look at your analytics for where people actually drop off. One page, one flow, that's usually a fix. A drop across the whole site, or a platform that can't handle basic changes, that's a redesign.",
+          "Will a redesign hurt my SEO? It can, if URLs move without redirects or ranking content gets cut. Plan the redirects before launch and it shouldn't cost you anything. Done right, it often helps.",
+          "How long does a website redesign take? Depends on the site's size and how much content has to move. Weeks for something small. Longer if there's a big catalog or a pile of integrations.",
+          "Should I redesign and switch platforms at the same time? You can. It's also the riskiest combination, since design, system and URLs are all changing at once. Separate them where you can. Makes it much easier to trace a problem back to its actual cause.",
+          "Do I need a full audit before a redesign? Yes. Worth doing regardless of what you decide afterward. An audit tells you what's actually broken so the redesign fixes real problems instead of guessing at them.",
+        ],
+      },
+    ],
+    cta: {
+      heading: ["Not sure if you need a redesign?", "Let's take a look."],
+      body: "If your site isn't performing the way it should, tell Yuni Tech Inc. what's happening and we'll look at what's actually going on before recommending anything.",
+      label: "Get in Touch",
+    },
+  },
+    {
+    slug: "when-custom-crm-is-worth-building",
+    title: "When a Custom CRM Is Worth Building",
+    category: "CRM",
+    filter: "crm",
+    author: "Yuni Tech Inc. Team",
+    readingMinutes: 5,
+    excerpt:
+      "Custom vs off-the-shelf CRM: when a template is enough, when it isn't, and what to check before you pay someone to build one.",
+    image: "/images/when-custom-crm-is-worth-building.png",
+    publishedAt: "2026-09-16",
+    sections: [
+      {
+        heading: "When the workarounds outnumber the process",
+        body: [
+          "Somebody on the sales team always asks for the same thing: one more field, one more automation, one more report the CRM can't produce. For a while the team works around it. Then the workarounds outnumber the actual process, and someone finally asks whether to build something of their own.",
+          "Here's how we'd think about custom CRM development versus sticking with what you have.",
+        ],
+      },
+      {
+        heading: "What \"custom\" actually buys you",
+        body: [
+          "An off-the-shelf CRM is built for the average business in its category. It comes with standard fields, standard pipeline stages and standard reports, and most of them cover real needs well. A custom CRM is built around your process specifically: your pipeline stages, your approval steps, your definition of a qualified lead. Nothing generic, nothing you don't use.",
+          "That's the whole trade. Generic and ready today, or specific and built to order.",
+        ],
+      },
+      {
+        heading: "When off-the-shelf is the right call",
+        body: [
+          "If your sales process looks like most companies' sales process, buy. Standard CRMs cost less, launch fast and get security patches from a team bigger than yours. Most small and mid-size businesses fit this. A dozen well-known platforms already solve the same problem you have, and rebuilding it from scratch mostly means rebuilding bugs those platforms fixed years ago.",
+        ],
+      },
+      {
+        heading: "When custom starts to make sense",
+        body: ["A few signs are worth watching for."],
+        bullets: [
+          "You're stacking add-ons and workarounds. If the CRM needs three plugins and a spreadsheet on the side to do what your business actually needs, you're already paying for two systems and getting the benefits of neither.",
+          "Your process is the advantage. A logistics company tracking vehicles, drivers and routes alongside customer relationships isn't a sales problem a generic CRM was built for. If your workflow is part of what makes you competitive, bending it to fit someone else's software gives that edge away.",
+          "You're paying per user for features nobody uses. Enterprise CRMs charge for modules built for companies far bigger than yours. A narrower, purpose-built system can cost less over the life of the product, even with a higher build cost up front.",
+          "Your data needs to live somewhere specific. Healthcare, finance and other regulated fields sometimes need data handled in ways a general CRM wasn't designed for. That's a compliance question first, and it needs a straight answer before build starts.",
+        ],
+      },
+      {
+        heading: "What a custom build actually costs",
+        body: [
+          "Custom software development services aren't cheap on day one. Expect to pay more upfront than a monthly subscription, and expect an ongoing cost for maintenance, since you no longer get automatic hosted updates. Budget for the CRM to change as your business does.",
+          "The number that matters isn't the sticker price, it's the cost over three to five years against what you're paying now, including the fees for every add-on plugging the gaps.",
+        ],
+      },
+      {
+        heading: "Questions to ask before you commit",
+        body: [
+          "What's actually broken about the current system? Write it down before you look at a vendor. Which features get used weekly, and which sit untouched? Could a workflow change in your existing CRM fix half the complaints for free? What happens if a client's information changes hands? Who maintains this in two years, you or the vendor?",
+        ],
+      },
+      {
+        heading: "Picking a CRM development company",
+        body: [
+          "Ask for a CRM development company that starts with your process, not their template. A good one asks how deals actually move through your pipeline before proposing a single field. Ask who owns the code, what the handover looks like and whether they'll still be reachable a year after launch, since a CRM outlives most projects.",
+        ],
+      },
+      {
+        heading: "Frequently asked questions",
+        body: [
+          "Is a custom CRM always more expensive than off-the-shelf? Upfront, usually yes. Over several years, it depends on how many add-ons, licenses and workarounds the off-the-shelf option needs to match what you actually use.",
+          "How long does it take to build a custom CRM? It depends on scope. A focused build covering one team's workflow often takes less time than a system meant to replace every department's tools at once.",
+          "Can we start with an off-the-shelf CRM and move to custom later? Yes, and it's a common path. Many businesses run a standard CRM until they can point to specific, recurring gaps, then build custom around those gaps.",
+          "Do we own the CRM once it's built? That should be a term in the contract. Confirm code ownership and data ownership before work starts, not after.",
+          "What happens if our process changes after launch? A custom CRM should be easier to change than a template, since it's built around your logic and not someone else's. Ask upfront how change requests are scoped and priced.",
+        ],
+      },
+    ],
+    cta: {
+      heading: ["Patching around your CRM?", "Let's look at it together."],
+      body: "If your team is patching around a CRM that no longer fits, tell Yuni Tech Inc. what's not working and we'll look at whether custom is worth it.",
       label: "Get in Touch",
     },
   },

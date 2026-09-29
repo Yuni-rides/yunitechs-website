@@ -19,7 +19,7 @@ export const siteConfig = {
     instagram: "https://instagram.com/yunisolution",
     facebook: "https://www.facebook.com/people/Yuni-Tech-Inc/61594965892484/",
     youtube: "https://www.youtube.com/channel/UCuKQPjDa7--OGy8cbMyLDVw/editing",
-    phone: "+1 (416) 000-000",
+    phone: "+14157915224",
   },
   offices: [
     {

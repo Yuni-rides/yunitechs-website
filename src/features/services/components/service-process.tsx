@@ -9,18 +9,6 @@ import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import type { ServiceProcessContent } from "@/types";
 
-/**
- * Bento grid, measured off the design: four columns, with the first and fifth
- * steps spanning two each — which is also why process1 and process5 ship at
- * roughly 2:1 while the rest are closer to square.
- *
- *   row 1   step 1 (2)   step 2   step 3
- *   row 2   step 4       step 5 (2)   CTA
- *
- * A card shows only its number and title at rest; hovering opens the
- * description. The body is in a collapsing grid row rather than a max-height
- * guess, so it animates to whatever height the copy actually needs.
- */
 const SPAN = ["lg:col-span-2", "", "", "", "lg:col-span-2"];
 
 export function ServiceProcess({

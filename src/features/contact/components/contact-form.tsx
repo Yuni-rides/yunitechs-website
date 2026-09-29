@@ -25,9 +25,9 @@ const labelClass = "mb-2 block text-sm text-brand-primary";
 
 export function ContactForm() {
   const [selected, setSelected] = useState<string[]>([SERVICES[0]]);
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
   const toggle = (service: string) =>
     setSelected((prev) =>
@@ -38,8 +38,6 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // Captured before the await: React nulls out currentTarget once the
-    // handler returns, so reading it after the fetch would throw.
     const form = event.currentTarget;
     const data = new FormData(form);
     const payload = {
@@ -90,10 +88,6 @@ export function ContactForm() {
               touch
             </h2>
 
-            {/* The artwork is 582x900 but the figure only occupies 18%-82% of
-                that height, with a drop-shadow ellipse from ~65% down. The box
-                crops to the figure and flexes to fill the column, so the
-                contact details below line up with the bottom of the form. */}
             <div className="relative my-6 min-h-[200px] w-[300px] flex-1 overflow-hidden lg:min-h-[240px] lg:w-[430px]">
               <Image
                 src="/images/contact-avatar.png"
@@ -115,12 +109,6 @@ export function ContactForm() {
                     className="block hover:underline"
                   >
                     {siteConfig.links.email}
-                  </a>
-                  <a
-                    href={`mailto:${siteConfig.links.supportEmail}`}
-                    className="block hover:underline"
-                  >
-                    {siteConfig.links.supportEmail}
                   </a>
                 </dd>
               </div>

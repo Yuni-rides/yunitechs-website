@@ -65,43 +65,31 @@ const offer = (
 });
 
 /**
- * The five stages are the same methodology whatever the service, so they are
- * shared; buildProcess() takes the per-service heading, intro and CTA around
- * them, and a service can pass its own steps when the wording needs to differ.
+ * The five process cards. The artwork is fixed — process1 through process5, in
+ * that order, on every service — so a service supplies only its own wording,
+ * and the images can never drift out of step with the design.
  */
-const defaultProcessSteps = (): ServiceProcessStep[] => [
-  {
-    title: "Discovery & Planning",
-    body: "We understand your goals, requirements, and target users to create a clear roadmap.",
-    image: "/images/process1.png",
-  },
-  {
-    title: "UI/UX Design",
-    body: "We design the screens and flows around how people will actually use the product.",
-    image: "/images/process2.png",
-  },
-  {
-    title: "Development",
-    body: "We build in short, reviewable increments so progress is visible from week one.",
-    image: "/images/process3.png",
-  },
-  {
-    title: "Testing & QA",
-    body: "Every release is tested across devices and edge cases before it reaches your users.",
-    image: "/images/process4.png",
-  },
-  {
-    title: "Launch & Support",
-    body: "We ship it, watch it in production, and keep improving it after go-live.",
-    image: "/images/process5.png",
-  },
-];
+const PROCESS_IMAGES = [
+  "/images/process1.png",
+  "/images/process2.png",
+  "/images/process3.png",
+  "/images/process4.png",
+  "/images/process5.png",
+] as const;
+
+type StepCopy = { title: string; body: string };
+
+/** A fixed-length tuple, so a service cannot supply four steps or six. */
+const steps = (
+  copy: readonly [StepCopy, StepCopy, StepCopy, StepCopy, StepCopy],
+): ServiceProcessStep[] =>
+  copy.map((step, i) => ({ ...step, image: PROCESS_IMAGES[i] }));
 
 const buildProcess = (
   heading: string,
   body: string,
   ctaHeading: string,
-  steps: ServiceProcessStep[] = defaultProcessSteps(),
+  steps: ServiceProcessStep[],
 ): ServiceProcessContent => ({
   eyebrow: "Our process",
   heading,
@@ -124,16 +112,46 @@ const buildStack = (
   items,
 });
 
-/**
- * The seven tiles the designer has delivered, each paired with the technology
- * its artwork actually depicts. Labels are read off the icons rather than
- * chosen per service: a tile that reads "Next.js" under the React logo is
- * wrong, and the hover enlarges the artwork, so the pairing has to hold.
- *
- * TODO: when per-service logos land, this becomes one map per service and the
- * service entries below can name their own technologies again.
- */
-const TECH_ICONS = {
+const CRM_ICONS = {
+  "Insightly CRM": "/images/crmIcon1.png",
+  "Microsoft Dynamics 365": "/images/crmIcon2.png",
+  "Monday CRM": "/images/crmIcon3.png",
+  Freshsales: "/images/crmIcon4.png",
+  "Zoho CRM": "/images/crmIcon5.png",
+  HubSpot: "/images/crmIcon6.png",
+} as const;
+
+const ECOMMERCE_ICONS = {
+  WooCommerce: "/images/ecomIcon1.png",
+  Magento: "/images/ecomIcon2.png",
+  PrestaShop: "/images/ecomIcon3.png",
+  Shopify: "/images/ecomIcon4.png",
+  BigCommerce: "/images/ecomIcon5.png",
+  OpenCart: "/images/ecomIcon6.png",
+  Wix: "/images/ecomIcon7.png",
+} as const;
+
+const MARKETING_ICONS = {
+  Sendible: "/images/marketingIcon1.png",
+  Loomly: "/images/marketingIcon2.png",
+  Buffer: "/images/marketingIcon3.png",
+  Later: "/images/marketingIcon4.png",
+  SocialPilot: "/images/marketingIcon5.png",
+  Canva: "/images/marketingIcon7.png",
+  Hootsuite: "/images/marketingIcon6.png",
+} as const;
+
+const AI_ICONS = {
+  "Google Gemini": "/images/aiIcon1.png",
+  Vicuna: "/images/aiIcon2.png",
+  Perplexity: "/images/aiIcon3.png",
+  "DALL·E 2": "/images/aiIcon4.png",
+  Meta: "/images/aiIcon5.png",
+  Qwen: "/images/aiIcon6.png",
+  "GPT-5": "/images/aiIcon7.png",
+} as const;
+
+const APP_ICONS = {
   iOS: "/images/appIcon1.png",
   MySQL: "/images/appIcon7.png",
   Firebase: "/images/appIcon6.png",
@@ -143,22 +161,9 @@ const TECH_ICONS = {
   Android: "/images/appIcon2.png",
 } as const;
 
-/** The order the design prints them in, left to right. */
-const SHARED_STACK = [
-  "iOS",
-  "MySQL",
-  "Firebase",
-  "Flutter",
-  "Python",
-  "React Native",
-  "Android",
-] as const satisfies readonly (keyof typeof TECH_ICONS)[];
-
-/** Every service draws from the same pool, so every label matches its icon. */
-const stackItems = (
-  names: readonly (keyof typeof TECH_ICONS)[] = SHARED_STACK,
-): ServiceStackItem[] =>
-  names.map((name) => ({ name, image: TECH_ICONS[name] }));
+/** Turns one of the maps above into tiles, keeping its written order. */
+const iconTiles = (set: Record<string, string>): ServiceStackItem[] =>
+  Object.entries(set).map(([name, image]) => ({ name, image }));
 
 export const services: Service[] = [
   {
@@ -245,11 +250,33 @@ export const services: Service[] = [
       "How we build your website",
       "A clear, proven process to turn your idea into a fast, search-ready site.",
       "Let's Turn your Ideas into a Website That Converts!",
+      steps([
+        {
+          title: "Discovery & Planning",
+          body: "We map your goals, audience, and site structure before any design work starts.",
+        },
+        {
+          title: "Design & Prototyping",
+          body: "We design the pages and flows, and you sign them off before we build.",
+        },
+        {
+          title: "Development",
+          body: "We build in short, reviewable increments so progress is visible from week one.",
+        },
+        {
+          title: "Testing & QA",
+          body: "Every page is tested across browsers, devices, and edge cases before launch.",
+        },
+        {
+          title: "Launch & Support",
+          body: "We deploy it, watch it in production, and keep improving it after go-live.",
+        },
+      ]),
     ),
     stack: buildStack(
       "The technology behind your website",
       "We use modern, reliable, and scalable technologies to build fast, accessible sites tailored to your business needs.",
-      stackItems(),
+      iconTiles(APP_ICONS),
     ),
     cta: {
       heading: ["Have a site in mind?", "Let's build it."],
@@ -342,11 +369,33 @@ export const services: Service[] = [
       "How we build your brand",
       "A clear, proven process to turn your positioning into a brand people recognise.",
       "Let's Turn your Ideas into a Brand People Remember!",
+      steps([
+        {
+          title: "Discovery & Positioning",
+          body: "We study your audience, market, and competitors before drawing a single mark.",
+        },
+        {
+          title: "Concept & Direction",
+          body: "We explore routes and you choose the direction we take into refinement.",
+        },
+        {
+          title: "Identity Design",
+          body: "Logo, type, colour, and imagery are refined into one finished identity.",
+        },
+        {
+          title: "System & Assets",
+          body: "We build the components, templates, and collateral your team will actually use.",
+        },
+        {
+          title: "Guidelines & Handover",
+          body: "You get documented rules so anyone can apply the brand without guesswork.",
+        },
+      ]),
     ),
     stack: buildStack(
       "The tools behind your brand",
       "We use industry-standard design tools to build identities and systems your team can apply anywhere.",
-      stackItems(),
+      iconTiles(APP_ICONS),
     ),
     cta: {
       heading: ["Have a brand to build?", "Let's shape it."],
@@ -436,11 +485,33 @@ export const services: Service[] = [
       "How we build your CRM",
       "A clear, proven process to turn your sales workflow into a system that fits it.",
       "Let's Turn your Ideas into a CRM Your Team Will Use!",
+      steps([
+        {
+          title: "Process Mapping",
+          body: "We map how your team sells today, stage by stage, before changing anything.",
+        },
+        {
+          title: "System Design",
+          body: "Pipelines, fields, and permissions are modelled around that real process.",
+        },
+        {
+          title: "Build & Integration",
+          body: "We configure or build the CRM and connect it to email, billing, and support.",
+        },
+        {
+          title: "Data Migration & Testing",
+          body: "Existing records are moved, deduped, and verified, then every workflow is tested.",
+        },
+        {
+          title: "Training & Support",
+          body: "We onboard your team and keep the system tuned as your pipeline grows.",
+        },
+      ]),
     ),
     stack: buildStack(
       "The technology behind your CRM",
       "We use proven, scalable platforms to build CRM systems that stay reliable as your pipeline grows.",
-      stackItems(),
+      iconTiles(CRM_ICONS),
     ),
     cta: {
       heading: ["Outgrown your spreadsheets?", "Let's fix that."],
@@ -533,11 +604,33 @@ export const services: Service[] = [
       "How we build your store",
       "A clear, proven process to turn your catalogue into a storefront that sells.",
       "Let's Turn your Ideas into a Store Built to Scale!",
+      steps([
+        {
+          title: "Discovery & Planning",
+          body: "We map your catalogue, margins, and fulfilment before the build begins.",
+        },
+        {
+          title: "Storefront Design",
+          body: "Product pages and checkout are designed around the real path to purchase.",
+        },
+        {
+          title: "Build & Integration",
+          body: "We build the storefront and wire in payments, shipping, and inventory.",
+        },
+        {
+          title: "Testing & QA",
+          body: "Checkout, payments, and stock are tested across devices before you trade.",
+        },
+        {
+          title: "Launch & Optimisation",
+          body: "We go live, monitor orders, and tune the store on real sales data.",
+        },
+      ]),
     ),
     stack: buildStack(
       "The technology behind your store",
       "We use modern, secure commerce technology built to stay fast through launches and peak traffic.",
-      stackItems(),
+      iconTiles(ECOMMERCE_ICONS),
     ),
     cta: {
       heading: ["Ready to start selling?", "Let's build it."],
@@ -545,103 +638,6 @@ export const services: Service[] = [
       label: "Start Your Project",
     },
     href: "/services/e-commerce",
-  },
-  {
-    slug: "landing-page",
-    title: "Landing Page",
-    items: [
-      "High-Converting Landing Pages",
-      "A/B Testing",
-      "Campaign Pages",
-      "Lead Capture Forms",
-      "Performance Optimisation",
-      "Analytics Integration",
-    ],
-    image: serviceImage(
-      "landingPageService",
-      "Landing pages designed by Yuni Solution",
-    ),
-    banner: banner(
-      "Landing Pages",
-      "Landing pages that earn the click",
-      "Campaign pages engineered around a single goal, tested and tuned until the numbers move.",
-    ),
-    overview: overview(
-      "Pages built around a single decision",
-      "We design campaign pages with one job: getting the click. Message, layout, and proof are tested and tuned together until the numbers move in the right direction.",
-      [
-        {
-          icon: "Rocket",
-          value: "300+",
-          label: "Pages Shipped",
-          body: "Built around one clear action.",
-        },
-        {
-          icon: "TrendingUp",
-          value: "2X",
-          label: "Average Lift",
-          body: "Measured against previous pages.",
-        },
-        {
-          icon: "Clock",
-          value: "48h",
-          label: "Typical Turnaround",
-          body: "From brief to live page.",
-        },
-      ],
-    ),
-    offer: offer(
-      "Services we offer",
-      "Landing page services that turn campaign traffic into measurable action.",
-      [
-        {
-          icon: "PenTool",
-          title: "Landing Page Design",
-          body: "Focused layouts that lead visitors to one clear action.",
-        },
-        {
-          icon: "Code2",
-          title: "Rapid Build & Launch",
-          body: "Production-ready pages shipped in step with your campaign.",
-        },
-        {
-          icon: "Gauge",
-          title: "Speed Optimisation",
-          body: "Pages that load fast enough to keep paid traffic on them.",
-        },
-        {
-          icon: "LineChart",
-          title: "A/B Testing",
-          body: "Structured tests on headline, layout, and offer.",
-        },
-        {
-          icon: "Plug",
-          title: "Tracking & Analytics",
-          body: "Events and conversions wired to your ad and analytics stack.",
-        },
-        {
-          icon: "Sparkles",
-          title: "Copy & Creative",
-          body: "Messaging and visuals written around the offer, not the product.",
-        },
-      ],
-    ),
-    process: buildProcess(
-      "How we build your landing page",
-      "A clear, proven process to turn your campaign into a page that converts.",
-      "Let's Turn your Ideas into Pages That Convert!",
-    ),
-    stack: buildStack(
-      "The technology behind your pages",
-      "We use lightweight, fast-loading technology so campaign traffic never waits on a page to render.",
-      stackItems(),
-    ),
-    cta: {
-      heading: ["Have a campaign to launch?", "Let's build it."],
-      body: "Share your offer with our team and get a free consultation. We'll help you turn it into a page that loads fast and converts.",
-      label: "Start Your Project",
-    },
-    href: "/services/landing-page",
   },
   {
     slug: "ai-automation",
@@ -727,11 +723,33 @@ export const services: Service[] = [
       "How we build your automation",
       "A clear, proven process to turn your manual work into something that runs itself.",
       "Let's Turn your Ideas into Automation That Works!",
+      steps([
+        {
+          title: "Process Audit",
+          body: "We find and measure the repetitive work that is costing your team time.",
+        },
+        {
+          title: "Automation Design",
+          body: "We define each step, its guardrails, and where a human still decides.",
+        },
+        {
+          title: "Build & Integration",
+          body: "We build the automations and wire them into the tools you already run.",
+        },
+        {
+          title: "Testing & Review",
+          body: "Each one runs against real cases and is checked before it is handed over.",
+        },
+        {
+          title: "Monitoring & Support",
+          body: "Alerting and upkeep keep them running correctly long after launch.",
+        },
+      ]),
     ),
     stack: buildStack(
       "The technology behind your automation",
       "We use dependable AI and integration platforms so your automations run accurately, every day.",
-      stackItems(),
+      iconTiles(AI_ICONS),
     ),
     cta: {
       heading: ["Tired of manual work?", "Let's automate it."],
@@ -821,11 +839,33 @@ export const services: Service[] = [
       "How we build your app",
       "A clear, proven process to turn your idea into a successful, high-quality mobile app.",
       "Let's Turn your Ideas into a Robust Mobile App Together!",
+      steps([
+        {
+          title: "Discovery & Planning",
+          body: "We understand your goals, requirements, and target users to create a clear roadmap.",
+        },
+        {
+          title: "UI/UX Design",
+          body: "We design the screens and flows around how people will actually use the product.",
+        },
+        {
+          title: "Development",
+          body: "We build in short, reviewable increments so progress is visible from week one.",
+        },
+        {
+          title: "Testing & QA",
+          body: "Every release is tested across devices and edge cases before it reaches your users.",
+        },
+        {
+          title: "Launch & Support",
+          body: "We ship it, watch it in production, and keep improving it after go-live.",
+        },
+      ]),
     ),
     stack: buildStack(
       "The technology behind your app",
       "We use modern, reliable, and scalable technologies to build high-performing mobile apps tailored to your business needs.",
-      stackItems(),
+      iconTiles(APP_ICONS),
     ),
     cta: {
       heading: ["Have an app idea?", "Let's build it."],
@@ -835,101 +875,124 @@ export const services: Service[] = [
     href: "/services/application-development",
   },
   {
-    slug: "search-engine-optimisation",
-    title: "Search Engine Optimisation",
+    slug: "marketing",
+    title: "Marketing",
     items: [
-      "Technical SEO",
-      "On-Page SEO",
-      "Keyword Research",
-      "Link Building",
-      "Local SEO",
-      "SEO Audits & Reporting",
+      "Search Engine Optimisation",
+      "Paid Search & Social Ads",
+      "Social Media Marketing",
+      "Content Marketing",
+      "Email & Lifecycle Marketing",
+      "Analytics & Reporting",
     ],
+    // TODO: swap seoService for the designer's marketing artwork when it lands.
     image: serviceImage(
       "seoService",
-      "SEO performance reports by Yuni Solution",
+      "Marketing campaign reporting by Yuni Tech",
     ),
     banner: banner(
-      "SEO",
-      "Search visibility that compounds",
-      "Technical SEO, content, and authority work that lifts you into the results your buyers are already searching.",
+      "Marketing",
+      "Marketing that brings the right people to you",
+      "Search, paid, social, and content working together, measured on the enquiries and sales they produce rather than on impressions.",
     ),
     overview: overview(
-      "Search visibility that keeps compounding",
-      "We combine technical fixes, content, and authority work to lift you into the results your buyers already search for, then keep measuring so the gains hold rather than fade.",
+      "Marketing measured on what it actually returns",
+      "We plan and run campaigns across search, paid, social, and email, then report on what each channel returns. Every pound is traced to a result, so the budget keeps moving toward the work that earns it.",
       [
+        {
+          icon: "TrendingUp",
+          value: "3X",
+          label: "Average Growth",
+          body: "Typical lift within a year.",
+        },
         {
           icon: "Search",
           value: "250+",
           label: "Campaigns Run",
-          body: "Search work that compounds.",
-        },
-        {
-          icon: "TrendingUp",
-          value: "3X",
-          label: "Organic Growth",
-          body: "Typical lift within a year.",
+          body: "Across search, social and email.",
         },
         {
           icon: "BarChart3",
           value: "10+",
           label: "Industries Served",
-          body: "Ranking in competitive markets.",
+          body: "Marketing in competitive markets.",
         },
       ],
     ),
     offer: offer(
       "Services we offer",
-      "Search services that move you up the results page and keep you there.",
+      "Marketing services that put your business in front of buyers already looking, and keep them moving toward a decision.",
       [
         {
           icon: "Search",
-          title: "Technical SEO",
-          body: "Crawlability, indexing, and structured data put right at the source.",
-        },
-        {
-          icon: "Gauge",
-          title: "Core Web Vitals",
-          body: "Speed and stability work that search engines reward.",
-        },
-        {
-          icon: "Sparkles",
-          title: "Content Strategy",
-          body: "Topic and keyword plans built around real search demand.",
+          title: "Search Engine Optimisation",
+          body: "Technical, content, and authority work that wins organic positions.",
         },
         {
           icon: "LineChart",
-          title: "Rank & Traffic Reporting",
-          body: "Clear reporting on positions, clicks, and what changed.",
+          title: "Paid Search & Social Ads",
+          body: "Campaigns judged on cost per enquiry, not on impressions served.",
         },
         {
-          icon: "Layers",
-          title: "On-Page Optimisation",
-          body: "Titles, structure, and internal links tuned page by page.",
+          icon: "MonitorSmartphone",
+          title: "Social Media Marketing",
+          body: "Channel plans and creative sized for where your audience already is.",
         },
         {
-          icon: "ShieldCheck",
-          title: "Authority Building",
-          body: "Earned links and mentions from sources worth having.",
+          icon: "Sparkles",
+          title: "Content Marketing",
+          body: "Topic plans built around the questions your buyers actually ask.",
+        },
+        {
+          icon: "Bot",
+          title: "Email & Lifecycle",
+          body: "Sequences that nurture new leads and bring lapsed customers back.",
+        },
+        {
+          icon: "Gauge",
+          title: "Conversion Optimisation",
+          body: "Pages and funnels tuned so the traffic you pay for converts.",
         },
       ],
     ),
     process: buildProcess(
-      "How we build your search presence",
-      "A clear, proven process to turn your site into one search engines rank.",
-      "Let's Turn your Ideas into Search Visibility That Lasts!",
+      "How we run your marketing",
+      "A clear, proven process to turn your goals into campaigns that bring in enquiries.",
+      "Let's Turn your Ideas into Marketing That Pays for Itself!",
+      steps([
+        {
+          title: "Research & Audit",
+          body: "We measure your current performance, your competitors, and real search demand.",
+        },
+        {
+          title: "Strategy & Planning",
+          body: "Channels, budget, and targets are set against the result you need.",
+        },
+        {
+          title: "Creative & Content",
+          body: "We produce the copy, creative, and pages each channel needs to perform.",
+        },
+        {
+          title: "Launch & Testing",
+          body: "Campaigns go live and variants are tested against cost per enquiry.",
+        },
+        {
+          title: "Reporting & Optimisation",
+          body: "We report on what each channel returned and move budget to what works.",
+        },
+      ]),
     ),
     stack: buildStack(
-      "The technology behind your search presence",
-      "We use established SEO and analytics tooling to find, prioritise, and measure the work that moves rankings.",
-      stackItems(),
+      "The technology behind your marketing",
+      "We use established marketing and analytics tooling to find, prioritise, and measure the work that moves the numbers.",
+      iconTiles(MARKETING_ICONS),
     ),
     cta: {
-      heading: ["Want to be found?", "Let's rank you."],
-      body: "Share your site with our team and get a free consultation. We'll help you turn it into one search engines and AI answers cite.",
+      heading: ["Ready to be found?", "Let's market it."],
+      body: "Share your goals with our team and get a free consultation. We'll help you turn them into campaigns measured on the enquiries they bring in.",
       label: "Start Your Project",
     },
-    href: "/services/search-engine-optimisation",
+    href: "/services/marketing",
   },
 ];
 
