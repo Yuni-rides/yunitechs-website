@@ -41,10 +41,7 @@ const tile =
 
 export function OurProduct() {
   return (
-    <section
-      aria-labelledby="our-product-heading"
-      className="pt-16"
-    >
+    <section aria-labelledby="our-product-heading" className="pt-16">
       <Container>
         <motion.div
           variants={staggerContainer(0.1)}
@@ -131,13 +128,13 @@ export function OurProduct() {
           >
             <div className="group flex items-center gap-[2%] lg:gap-[1.8%]">
               <Link
-                href="/projects"
+                href="/product"
                 className="text-brand-primary group-hover:bg-brand-tertiary inline-flex h-[clamp(3rem,6.98vw,6.25rem)] shrink-0 items-center rounded-full bg-white px-6 text-[clamp(0.6875rem,1.38vw,1.25rem)] font-medium tracking-wider whitespace-nowrap uppercase transition-all duration-300 group-hover:shadow-[0_0_30px_-4px_var(--color-brand-tertiary)] sm:px-8 lg:px-12"
               >
                 View case study
               </Link>
               <Link
-                href="/projects"
+                href="/product"
                 aria-label="View the Yuni Rides case study"
                 className="text-brand-primary group-hover:bg-brand-tertiary grid aspect-square h-[clamp(3rem,6.98vw,6.25rem)] place-items-center rounded-full bg-white transition-all duration-300"
               >

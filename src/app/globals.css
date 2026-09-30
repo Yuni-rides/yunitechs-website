@@ -51,6 +51,16 @@
     @apply font-heading tracking-tight;
   }
 
+  /* Tailwind v4's preflight sets buttons to `cursor: default`, so every
+     button on the site showed an arrow. Restored here rather than with a
+     utility on each one, which only ever gets remembered some of the time. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"]:not([aria-disabled="true"]),
+  summary {
+    cursor: pointer;
+  }
+
   :focus-visible {
     @apply ring-brand-secondary ring-offset-background ring-2 ring-offset-2 outline-none;
   }
@@ -187,7 +197,6 @@
     );
   mask-composite: intersect;
 }
-
 
 .glass-nav {
   background:

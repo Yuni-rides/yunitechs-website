@@ -6,12 +6,12 @@ import {
   ServiceOffer,
   ServiceOverview,
   ServiceProcess,
+  ServiceProjects,
   ServiceStack,
 } from "@/features/services";
 import { getServiceBySlug, services } from "@/features/services/data/services";
 import { buildMetadata } from "@/lib/seo";
 import { homeFaqs } from "@/features/home/data/faqs";
-
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -51,6 +51,7 @@ export default async function ServicePage({ params }: PageProps) {
       <ServiceOffer offer={service.offer} />
       <ServiceProcess process={service.process} />
       <ServiceStack stack={service.stack} />
+      <ServiceProjects work={service.work} />
       <Faq
         items={homeFaqs}
         intro={

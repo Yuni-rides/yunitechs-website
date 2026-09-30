@@ -152,7 +152,7 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
           {item.caseStudyHref && (
             <Link
               href={item.caseStudyHref}
-              className="bg-brand-tertiary text-brand-primary absolute top-1/2 left-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 scale-75 cursor-pointer place-items-center rounded-full text-center text-[10px] leading-tight font-medium tracking-wider uppercase opacity-0 transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 focus-visible:scale-100 focus-visible:opacity-100"
+              className="bg-brand-tertiary text-brand-primary pointer-events-none absolute top-1/2 left-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 scale-75 cursor-pointer place-items-center rounded-full text-center text-[10px] leading-tight font-medium tracking-wider uppercase opacity-0 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:scale-100 group-hover:opacity-100 focus-visible:pointer-events-auto focus-visible:scale-100 focus-visible:opacity-100"
             >
               View case
               <br />

@@ -6,3 +6,4 @@ export * from "./service-process";
 export * from "./service-stack";
 export * from "./services-accordion";
 export * from "./services-cta";
+export * from "./service-projects";

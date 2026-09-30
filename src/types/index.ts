@@ -1,3 +1,5 @@
+import type { ProjectFilterId } from "@/features/projects/data/projects";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -83,6 +85,8 @@ export type Service = {
   offer: ServiceOfferContent;
   process: ServiceProcessContent;
   stack: ServiceStackContent;
+  /** Omitted while a service has no projects to show. */
+  work?: ServiceWorkContent;
   cta: CtaBandContent;
   href: string;
 };
@@ -107,4 +111,15 @@ export type CtaBandContent = {
   label: string;
   /** Defaults to the contact form. */
   href?: string;
+};
+
+/**
+ * The "Our work" strip on a service detail page, showing the projects built for
+ * that service. Left off a service that has none, so nothing empty renders.
+ */
+export type ServiceWorkContent = {
+  /** Which project tab's projects to show — SEO work sits under Marketing. */
+  projectFilter: ProjectFilterId;
+  heading: string;
+  body: string;
 };

@@ -151,6 +151,26 @@ const AI_ICONS = {
   "GPT-5": "/images/aiIcon7.png",
 } as const;
 
+const DESIGN_ICONS = {
+  "Adobe InDesign": "/images/designIcon1.png",
+  "Adobe XD": "/images/designIcon2.png",
+  "Adobe Illustrator": "/images/designIcon3.png",
+  Figma: "/images/designIcon4.png",
+  Sketch: "/images/designIcon5.png",
+  Canva: "/images/designIcon6.png",
+  Photoshop: "/images/designIcon7.png",
+} as const;
+
+const WEB_ICONS = {
+  HTML: "/images/webIcon1.png",
+  Bootstrap: "/images/webIcon2.png",
+  JavaScript: "/images/webIcon3.png",
+  "React JS": "/images/webIcon4.png",
+  WordPress: "/images/webIcon5.png",
+  "Node.js": "/images/webIcon6.png",
+  CSS: "/images/webIcon7.png",
+} as const;
+
 const APP_ICONS = {
   iOS: "/images/appIcon1.png",
   MySQL: "/images/appIcon7.png",
@@ -276,8 +296,13 @@ export const services: Service[] = [
     stack: buildStack(
       "The technology behind your website",
       "We use modern, reliable, and scalable technologies to build fast, accessible sites tailored to your business needs.",
-      iconTiles(APP_ICONS),
+      iconTiles(WEB_ICONS),
     ),
+    work: {
+      projectFilter: "website",
+      heading: "Websites we've built",
+      body: "A look at some of the websites we've designed and built for startups and enterprises across different industries.",
+    },
     cta: {
       heading: ["Have a site in mind?", "Let's build it."],
       body: "Share your idea with our team and get a free consultation. We'll help you turn it into a fast, search-ready website that converts.",
@@ -395,7 +420,7 @@ export const services: Service[] = [
     stack: buildStack(
       "The tools behind your brand",
       "We use industry-standard design tools to build identities and systems your team can apply anywhere.",
-      iconTiles(APP_ICONS),
+      iconTiles(DESIGN_ICONS),
     ),
     cta: {
       heading: ["Have a brand to build?", "Let's shape it."],
@@ -632,6 +657,11 @@ export const services: Service[] = [
       "We use modern, secure commerce technology built to stay fast through launches and peak traffic.",
       iconTiles(ECOMMERCE_ICONS),
     ),
+    work: {
+      projectFilter: "e-commerce",
+      heading: "Stores we've built",
+      body: "A look at some of the online stores we've built for brands selling across different categories and markets.",
+    },
     cta: {
       heading: ["Ready to start selling?", "Let's build it."],
       body: "Share your catalogue with our team and get a free consultation. We'll help you turn it into a storefront built to scale.",
@@ -751,6 +781,11 @@ export const services: Service[] = [
       "We use dependable AI and integration platforms so your automations run accurately, every day.",
       iconTiles(AI_ICONS),
     ),
+    work: {
+      projectFilter: "ai",
+      heading: "AI work we've shipped",
+      body: "A look at some of the AI and automation work we've delivered for teams across different industries.",
+    },
     cta: {
       heading: ["Tired of manual work?", "Let's automate it."],
       body: "Share your workflow with our team and get a free consultation. We'll help you turn it into automation that runs accurately, every day.",
@@ -867,6 +902,11 @@ export const services: Service[] = [
       "We use modern, reliable, and scalable technologies to build high-performing mobile apps tailored to your business needs.",
       iconTiles(APP_ICONS),
     ),
+    work: {
+      projectFilter: "mobile-app",
+      heading: "Apps we've built",
+      body: "A look at some of the mobile applications we've developed for startups and enterprises across different industries.",
+    },
     cta: {
       heading: ["Have an app idea?", "Let's build it."],
       body: "Share your idea with our team and get a free consultation. We'll help you turn it into a scalable, high-performing mobile app.",
@@ -987,6 +1027,11 @@ export const services: Service[] = [
       "We use established marketing and analytics tooling to find, prioritise, and measure the work that moves the numbers.",
       iconTiles(MARKETING_ICONS),
     ),
+    work: {
+      projectFilter: "seo",
+      heading: "Growth we've driven",
+      body: "A look at some of the search and growth work we've delivered for brands across different industries.",
+    },
     cta: {
       heading: ["Ready to be found?", "Let's market it."],
       body: "Share your goals with our team and get a free consultation. We'll help you turn them into campaigns measured on the enquiries they bring in.",
