@@ -116,7 +116,8 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
         ease: [0.16, 1, 0.3, 1],
       }}
       className={cn(
-        "text-brand-primary overflow-hidden rounded-xl bg-white p-5 sm:p-6",
+        "group text-brand-primary overflow-hidden rounded-xl bg-white p-5 sm:p-6",
+        item.caseStudyHref && "cursor-pointer",
         item.wide && "lg:col-span-2",
       )}
     >
@@ -151,7 +152,7 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
           {item.caseStudyHref && (
             <Link
               href={item.caseStudyHref}
-              className="bg-brand-tertiary text-brand-primary absolute top-1/2 left-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-center text-[10px] leading-tight font-medium tracking-wider uppercase transition-transform hover:scale-105"
+              className="bg-brand-tertiary text-brand-primary absolute top-1/2 left-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 scale-75 cursor-pointer place-items-center rounded-full text-center text-[10px] leading-tight font-medium tracking-wider uppercase opacity-0 transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 focus-visible:scale-100 focus-visible:opacity-100"
             >
               View case
               <br />

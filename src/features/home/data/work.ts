@@ -1,18 +1,23 @@
-export const workCategories = [
-  { id: "website", label: "Website" },
-  { id: "mobile-app", label: "Mobile App" },
-  { id: "seo", label: "SEO" },
-  { id: "smm", label: "SMM" },
-  { id: "marketing", label: "Marketing" },
-  { id: "branding", label: "Branding" },
-] as const;
+import {
+  projectFilters,
+  projects,
+  type ProjectFilterId,
+} from "@/features/projects/data/projects";
 
-export type WorkCategoryId = (typeof workCategories)[number]["id"];
+/**
+ * The home page's "Our work" grid shows the same projects as /projects, under
+ * the same tabs. Deriving both from one list is deliberate: when these were two
+ * hand-written arrays, a project could be renamed or retagged in one and not
+ * the other, and the home cards drifted away from the case studies they link to.
+ */
+export const workCategories = projectFilters;
+
+export type WorkCategoryId = ProjectFilterId;
 
 export type WorkItem = {
   id: string;
   category: WorkCategoryId;
-  /** Small label above the title, e.g. "Corporate website" */
+  /** Small label above the title, e.g. "Sports Medicine & Healthcare Website" */
   eyebrow: string;
   title: string;
   description: string;
@@ -23,49 +28,29 @@ export type WorkItem = {
   caseStudyHref?: string;
 };
 
-export const workItems: WorkItem[] = [
-  {
-    id: "modern-business-websites",
-    category: "website",
-    eyebrow: "Corporate website",
-    title: "Modern business websites",
-    description:
-      "We build fast, responsive, and conversion-focused websites that strengthen your online presence, establish credibility, and help your business attract and engage more customers.",
+/**
+ * Cards run two-up, so the third in a category spans the row rather than
+ * leaving a gap — the same shape the design uses.
+ */
+const perCategory = new Map<ProjectFilterId, number>();
+
+export const workItems: WorkItem[] = projects.map((project) => {
+  const seen = (perCategory.get(project.filter) ?? 0) + 1;
+  perCategory.set(project.filter, seen);
+
+  return {
+    id: project.slug,
+    category: project.filter,
+    eyebrow: project.service,
+    title: project.name,
+    description: project.excerpt,
     image: {
-      src: "/images/webWork1.png",
+      src: project.image,
       width: 248,
       height: 237,
-      alt: "Crypto wallet marketing website",
+      alt: `${project.name} — ${project.service}`,
     },
-    caseStudyHref: "/projects",
-  },
-  {
-    id: "powerful-digital-platforms",
-    category: "website",
-    eyebrow: "Custom web applications",
-    title: "Powerful digital platforms",
-    description:
-      "We develop custom web applications tailored to your unique business needs, combining intuitive user experiences, advanced functionality, and scalable architecture to support long-term growth.",
-    image: {
-      src: "/images/webWork2.png",
-      width: 248,
-      height: 237,
-      alt: "Beauty brand e-commerce website",
-    },
-  },
-  {
-    id: "online-stores-that-sell",
-    category: "website",
-    eyebrow: "E-Commerce development",
-    title: "Online stores that sell",
-    description:
-      "From product catalogs to secure payment integrations, we create scalable e-commerce platforms designed to deliver seamless shopping experiences and maximize online sales.",
-    image: {
-      src: "/images/webWork3.png",
-      width: 758,
-      height: 241,
-      alt: "Fresh juice online store on desktop and mobile",
-    },
-    wide: true,
-  },
-];
+    wide: seen % 3 === 0,
+    caseStudyHref: `/projects/${project.slug}`,
+  };
+});
