@@ -32,7 +32,7 @@ export function ProductOverviewSection({
           viewport={viewportOnce}
           className="grid gap-12 lg:grid-cols-[minmax(0,47.5%)_minmax(0,45.5%)] lg:gap-x-[7%]"
         >
-          <div className="lg:pl-[4.1vw]">
+          <div className="lg:pl-[9.2%]">
             <motion.p
               variants={fadeInUp}
               className="text-brand-secondary flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase lg:text-[clamp(0.625rem,0.83vw,0.75rem)]"

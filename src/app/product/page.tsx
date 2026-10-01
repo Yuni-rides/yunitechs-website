@@ -1,6 +1,10 @@
 import {
   ProductBanner,
   ProductChallengeSection,
+  ProductDigitalSection,
+  ProductEcosystemSection,
+  ProductScalabilitySection,
+  ProductFlowSection,
   ProductOverviewSection,
 } from "@/features/product";
 import { product } from "@/features/product/data/product";
@@ -21,6 +25,10 @@ export default function ProductPage() {
       <ProductBanner product={product} />
       <ProductOverviewSection overview={product.overview} />
       <ProductChallengeSection challenge={product.challenge} />
+      <ProductFlowSection flow={product.flow} />
+      <ProductEcosystemSection ecosystem={product.ecosystem} />
+      <ProductDigitalSection digital={product.digital} />
+      <ProductScalabilitySection scalability={product.scalability} />
       <CtaBand
         cta={{
           heading: ["Building something like this?", "Let's talk."],

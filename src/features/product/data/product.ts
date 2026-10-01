@@ -1,11 +1,9 @@
 export type ProductCapability = string;
 
-/** One line of the large statement beside the overview copy. */
 export type ProductStatementLine = { text: string; accent?: boolean };
 
 export type ProductOverview = {
   eyebrow: string;
-  /** One entry per line, as the design breaks it. */
   heading: string[];
   body: string[];
   statement: ProductStatementLine[];
@@ -13,34 +11,67 @@ export type ProductOverview = {
 
 export type ProductChallenge = {
   eyebrow: string;
-  /** One entry per line, as the design breaks it. */
   heading: string[];
   body: string[];
-  /** The bordered card at the foot of the panel. */
   note: string;
   map: { src: string; alt: string };
   inset: { src: string; alt: string };
 };
 
+export type ProductFlowStep = { icon: string; label: string };
+
+export type ProductFlow = {
+  heading: string[];
+  body: string;
+  steps: ProductFlowStep[];
+  cta: { label: string; href: string };
+};
+
+export type ProductEcosystem = {
+  eyebrow: string;
+  heading: string[];
+  body: string[];
+  tagline: string;
+  image: { src: string; alt: string };
+};
+
+export type ProductDigital = {
+  eyebrow: string;
+  heading: string[];
+  body: string;
+  statement: { text: string; accent?: boolean }[];
+  image: { src: string; alt: string };
+};
+
+export type ProductScalability = {
+  eyebrow: string;
+  heading: string[];
+  body: string;
+  /**
+   * `iconWidth` is the mask box as a share of the card's content box. It is
+   * per-card because each PNG carries a different amount of its own padding,
+   * so one shared size would render the three glyphs at different sizes.
+   */
+  cards: { icon: string; label: string; iconWidth: string }[];
+  map: { src: string; alt: string };
+};
+
 export type Product = {
   name: string;
   eyebrow: string;
-  /** One entry per line, as the design breaks it. */
   headingLines: string[];
-  /** The stacked words beside the capability tags. */
   summaryLines: string[];
   capabilities: ProductCapability[];
   image: { src: string; alt: string };
   visit: { label: string; href: string };
   overview: ProductOverview;
   challenge: ProductChallenge;
+  flow: ProductFlow;
+  ecosystem: ProductEcosystem;
+  digital: ProductDigital;
+  scalability: ProductScalability;
 };
 
-/**
- * Yuni Tech's flagship product. A single object rather than a list with slug
- * routing: there is one product today, and `/product` can become
- * `/products/[slug]` the day a second one exists.
- */
 export const product: Product = {
   name: "Yuni Rides",
   eyebrow: "Yuni Rides: Case Study",
@@ -104,6 +135,90 @@ export const product: Product = {
     inset: {
       src: "/images/tripTracking.png",
       alt: "Trip tracking shown on a device",
+    },
+  },
+  flow: {
+    heading: ["One Ride. Seven Moving", "Parts. Zero Confusion."],
+    // TODO: confirm this copy — transcribed from a screenshot.
+    body: "The platform was designed around the actual movement of a ride. Information needed to flow between dispatchers, drivers, operations teams, and families without requiring each group to understand the complexity happening behind the scenes. This became the foundation of the entire product experience.",
+    // TODO: the design labels all seven tiles "Trip Created"; these are the
+    // seven stages the section's heading promises — confirm the wording.
+    steps: [
+      { icon: "FileText", label: "Trip Created" },
+      { icon: "Radio", label: "Dispatched" },
+      { icon: "LifeBuoy", label: "Driver Assigned" },
+      { icon: "MapPin", label: "Live Tracking" },
+      { icon: "Users", label: "Family Notified" },
+      { icon: "CircleCheckBig", label: "Trip Completed" },
+      { icon: "Columns3", label: "Reported" },
+    ],
+    cta: { label: "Let's build yours", href: "/contact#get-in-touch-heading" },
+  },
+  ecosystem: {
+    eyebrow: "Beyond the Interface",
+    heading: ["What Users See Is Only", "One Part of the Product."],
+    // TODO: confirm this copy — transcribed from a screenshot.
+    body: [
+      "The strongest transportation platforms aren't simply mobile apps. Behind every successful ride is an operational system coordinating people, vehicles, information, communication, and decisions.",
+      "Yuni Rides gave us the opportunity to solve technology problems from the perspective of people who actually operate transportation every day.",
+    ],
+    tagline: "Different workflows. One ecosystem.",
+    image: {
+      src: "/images/operationsBanner.png",
+      alt: "Operations at the centre of drivers, dispatch, routes, communication, compliance and trips",
+    },
+  },
+  digital: {
+    eyebrow: "The Digital Experience",
+    heading: [
+      "Turning Transportation Technology",
+      "Into a Brand People Can Trust.",
+    ],
+    // TODO: confirm this copy — transcribed from a screenshot.
+    body: "We designed a digital experience that clearly communicates the mission, builds trust with families and school districts, and makes it easy for drivers to get started bringing the full Yuni Rides ecosystem to life online.",
+    statement: [
+      { text: "Safe.", accent: true },
+      { text: "Connected." },
+      { text: "Human.", accent: true },
+    ],
+    image: {
+      src: "/images/productDigital.png",
+      alt: "The Yuni Rides website shown on a tablet",
+    },
+  },
+  scalability: {
+    eyebrow: "Scalability",
+    heading: [
+      "One Product.",
+      "Different Markets.",
+      "Changing",
+      "Transportation",
+      "Needs.",
+    ],
+    // TODO: confirm this copy — transcribed from a screenshot.
+    body: "Built to support multi-state operations, our platform adapts to different regulations, school district requirements, and regional needs — so we can grow with the communities we serve and continue delivering safe, reliable transportation at scale.",
+    // TODO: the design labels all three cards "Flexible Configuration"; these
+    // read off the icons it pairs them with — confirm the wording.
+    cards: [
+      {
+        icon: "/images/scalabilityIcon1.png",
+        label: "Flexible Configuration",
+        iconWidth: "65.6%",
+      },
+      {
+        icon: "/images/scalabilityIcon2.png",
+        label: "Multi-State Coverage",
+        iconWidth: "70.8%",
+      },
+      {
+        icon: "/images/scalabilityIcon3.png",
+        label: "Scales With Demand",
+        iconWidth: "81.6%",
+      },
+    ],
+    map: {
+      src: "/images/productMaps.png",
+      alt: "Yuni Rides coverage across US states",
     },
   },
 };
