@@ -51,7 +51,7 @@ export function ProjectChallenge({ challenge }: { challenge: ProjectChallengeCon
             className="relative aspect-[4/3] w-full"
           >
             <Image
-              src={challenge.image}
+              src={challenge.image.src}
               alt={challenge.imageAlt}
               fill
               sizes="(min-width: 1024px) 48vw, 100vw"

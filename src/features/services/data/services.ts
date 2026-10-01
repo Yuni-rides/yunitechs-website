@@ -18,6 +18,17 @@ const serviceImage = (fileName: string, alt: string) => ({
   alt,
 });
 
+/** Each banner artwork's own pixel size, so its box is drawn to that shape. */
+const BANNER_SIZES: Record<string, { width: number; height: number }> = {
+  webBanner: { width: 1282, height: 558 },
+  designBanner: { width: 1226, height: 635 },
+  crmBanner: { width: 1343, height: 552 },
+  ecommerceBanner: { width: 1265, height: 664 },
+  aiBanner: { width: 1282, height: 757 },
+  appBanner: { width: 720, height: 704 },
+  marketingBanner: { width: 1261, height: 550 },
+};
+
 /** `fileName` is required: each service ships its own banner artwork. */
 const banner = (
   eyebrow: string,
@@ -31,6 +42,7 @@ const banner = (
   image: {
     src: `/images/${fileName}.png`,
     alt: `${eyebrow} work by Yuni Tech`,
+    ...BANNER_SIZES[fileName],
   },
 });
 
@@ -808,7 +820,10 @@ export const services: Service[] = [
       "Progressive Web Apps",
       "API Development",
     ],
-    image: serviceImage("appService", "Mobile apps developed by Yuni Tech Inc."),
+    image: serviceImage(
+      "appService",
+      "Mobile apps developed by Yuni Tech Inc.",
+    ),
     banner: banner(
       "App Development",
       "Custom mobile apps built to grow your business",

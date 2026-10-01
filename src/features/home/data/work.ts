@@ -45,7 +45,7 @@ export const workItems: WorkItem[] = projects.map((project) => {
     title: project.name,
     description: project.excerpt,
     image: {
-      src: project.image,
+      src: project.image.src,
       width: 248,
       height: 237,
       alt: `${project.name} — ${project.service}`,

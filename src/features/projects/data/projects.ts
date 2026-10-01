@@ -1,3 +1,10 @@
+/**
+ * A cover image with its own pixel size. Carrying the size means every box can
+ * be drawn to the artwork's shape: the covers run from 1.14 to 2.50 wide, and
+ * a single fixed aspect cropped most of them.
+ */
+export type ProjectImage = { src: string; width: number; height: number };
+
 /** A single headline metric in the results row on the detail page. */
 export type ProjectStat = {
   value: string;
@@ -9,7 +16,8 @@ export type ProjectStat = {
 export type ProjectChallengeContent = {
   heading: string;
   body: string;
-  image: string;
+  /** Drawn at its own shape, so a cover box cannot crop it. */
+  image: ProjectImage;
   imageAlt: string;
 };
 
@@ -34,18 +42,50 @@ export type Project = {
   title: string;
   excerpt: string;
   // TODO: swap these placeholders for the real project screenshots.
-  image: string;
+  image: ProjectImage;
   // TODO: replace with the real per-project figures.
   stats: ProjectStat[];
   challenge: ProjectChallengeContent;
   /** Four "How we did it" lines. The icons beside them are the same site-wide. */
   approach: string[];
   /** Device mockup for "A sample of what shipped" — differs per project. */
-  sample: { image: string; imageAlt: string };
+  sample: { image: ProjectImage; imageAlt: string };
   outcome: ProjectOutcomeContent;
   /** Four SWOT notes. Titles and artwork are the same across projects. */
   swot: string[];
 };
+
+/** Every cover, with the size read off the file. */
+const COVERS = {
+  Articales_1: { src: "/images/Articales-1.png", width: 368, height: 322 },
+  Articales_2: { src: "/images/Articales-2.png", width: 369, height: 323 },
+  Articales_3: { src: "/images/Articales-3.png", width: 368, height: 322 },
+  Articales_4: { src: "/images/Articales-4.png", width: 368, height: 322 },
+  Articales_5: { src: "/images/Articales-5.png", width: 368, height: 322 },
+  Articales_6: { src: "/images/Articales-6.png", width: 1983, height: 793 },
+  edsideraProject: {
+    src: "/images/edsideraProject.png",
+    width: 1184,
+    height: 747,
+  },
+  hmsProject: { src: "/images/hmsProject.png", width: 1192, height: 752 },
+  myPlacesProject: {
+    src: "/images/myPlacesProject.png",
+    width: 1192,
+    height: 752,
+  },
+  purposeProject: {
+    src: "/images/purposeProject.png",
+    width: 1616,
+    height: 973,
+  },
+  sizgroupProject: {
+    src: "/images/sizgroupProject.png",
+    width: 1193,
+    height: 752,
+  },
+  projectSample: { src: "/images/projectSample.png", width: 1143, height: 762 },
+} as const;
 
 export const projectFilters = [
   { id: "website", label: "Website" },
@@ -88,7 +128,7 @@ const defaultStats = (): ProjectStat[] => [
 // TODO: supply the real mockup per project; falls back to the cover image.
 const defaultChallenge = (
   client: string,
-  image: string,
+  image: ProjectImage,
 ): ProjectChallengeContent => ({
   heading: "Where things stood.",
   body: `${client}'s booking process was manual, relying on phone calls, spreadsheets, and back-and-forth coordination. This made it time-consuming for users, increased the risk of errors, and created operational inefficiencies for their team. As demand grew, it became clear they needed a modern, mobile-first solution to streamline the entire experience.`,
@@ -105,8 +145,10 @@ const defaultApproach = (): string[] => [
 ];
 
 // TODO: the designer will supply a mockup per project; shared for now.
-const defaultSample = (client: string) => ({
-  image: "/images/projectSample.png",
+const defaultSample = (
+  client: string,
+): { image: ProjectImage; imageAlt: string } => ({
+  image: COVERS.projectSample,
   imageAlt: `Screens from the ${client} project shown on desktop and tablet`,
 });
 
@@ -140,9 +182,9 @@ export const projects: Project[] = [
     title: "FMC Dubai — Sports Medicine & Healthcare Website",
     excerpt:
       "A modern healthcare platform connecting patients with expert sports medicine, physiotherapy, rehabilitation, and orthopaedic care for pain, injuries, and performance recovery.",
-    image: "/images/hmsProject.png",
+    image: COVERS.hmsProject,
     stats: defaultStats(),
-    challenge: defaultChallenge("FMC Dubai", "/images/Articales-1.png"),
+    challenge: defaultChallenge("FMC Dubai", COVERS.Articales_1),
     approach: defaultApproach(),
     sample: defaultSample("FMC Dubai"),
     outcome: defaultOutcome(),
@@ -157,9 +199,9 @@ export const projects: Project[] = [
     title: "Edsidera — Educational Platform",
     excerpt:
       "A credible, internationally facing platform that helps Edsidera onboard schools and organisations across multiple countries and present its programmes with clarity and trust.",
-    image: "/images/edsideraProject.png",
+    image: COVERS.edsideraProject,
     stats: defaultStats(),
-    challenge: defaultChallenge("Edsidera", "/images/Articales-2.png"),
+    challenge: defaultChallenge("Edsidera", COVERS.Articales_2),
     approach: defaultApproach(),
     sample: defaultSample("Edsidera"),
     outcome: defaultOutcome(),
@@ -174,9 +216,9 @@ export const projects: Project[] = [
     title: "SysGroup — Managed IT Website",
     excerpt:
       "A modern digital experience showcasing managed IT, cybersecurity, compliance, and technology solutions for businesses.",
-    image: "/images/sysProject.png",
+    image: COVERS.sizgroupProject,
     stats: defaultStats(),
-    challenge: defaultChallenge("SysGroup", "/images/Articales-3.png"),
+    challenge: defaultChallenge("SysGroup", COVERS.Articales_3),
     approach: defaultApproach(),
     sample: defaultSample("SysGroup"),
     outcome: defaultOutcome(),
@@ -191,9 +233,9 @@ export const projects: Project[] = [
     title: "Purpose Payment — Payment & Rewards App",
     excerpt:
       "A mobile payment app blending everyday transactions with rewards and charitable giving — turning routine purchases into visible social impact.",
-    image: "/images/Articales-4.png",
+    image: COVERS.purposeProject,
     stats: defaultStats(),
-    challenge: defaultChallenge("Purpose Payment", "/images/Articales-4.png"),
+    challenge: defaultChallenge("Purpose Payment", COVERS.Articales_4),
     approach: defaultApproach(),
     sample: defaultSample("Purpose Payment"),
     outcome: defaultOutcome(),
@@ -208,9 +250,9 @@ export const projects: Project[] = [
     title: "myPlaces — Social Location App",
     excerpt:
       "A social discovery app connecting people to places, people and moments nearby.",
-    image: "/images/Articales-5.png",
+    image: COVERS.myPlacesProject,
     stats: defaultStats(),
-    challenge: defaultChallenge("myPlaces", "/images/Articales-5.png"),
+    challenge: defaultChallenge("myPlaces", COVERS.Articales_5),
     approach: defaultApproach(),
     sample: defaultSample("myPlaces"),
     outcome: defaultOutcome(),
@@ -225,9 +267,9 @@ export const projects: Project[] = [
     title: "SkillSync — Service Marketplace App",
     excerpt:
       "A marketplace connecting clients with trainers, tutors and skilled professionals nearby.",
-    image: "/images/Articales-6.png",
+    image: COVERS.Articales_6,
     stats: defaultStats(),
-    challenge: defaultChallenge("SkillSync", "/images/Articales-6.png"),
+    challenge: defaultChallenge("SkillSync", COVERS.Articales_6),
     approach: defaultApproach(),
     sample: defaultSample("SkillSync"),
     outcome: defaultOutcome(),
@@ -242,9 +284,9 @@ export const projects: Project[] = [
     title: "Khazanay — Online Thrift & Footwear Store",
     excerpt:
       "An e-commerce store for pre-loved, brand-new and factory-leftover footwear.",
-    image: "/images/Articales-1.png",
+    image: COVERS.Articales_1,
     stats: defaultStats(),
-    challenge: defaultChallenge("Khazanay", "/images/Articales-1.png"),
+    challenge: defaultChallenge("Khazanay", COVERS.Articales_1),
     approach: defaultApproach(),
     sample: defaultSample("Khazanay"),
     outcome: defaultOutcome(),
@@ -259,9 +301,9 @@ export const projects: Project[] = [
     title: "WebBeeCart — E-Commerce Platform",
     excerpt:
       "A scalable multi-vendor e-commerce builder for stores and marketplaces.",
-    image: "/images/Articales-2.png",
+    image: COVERS.Articales_2,
     stats: defaultStats(),
-    challenge: defaultChallenge("WebBeeCart", "/images/Articales-2.png"),
+    challenge: defaultChallenge("WebBeeCart", COVERS.Articales_2),
     approach: defaultApproach(),
     sample: defaultSample("WebBeeCart"),
     outcome: defaultOutcome(),
@@ -276,9 +318,9 @@ export const projects: Project[] = [
     title: "WHY BLACK — Mobile Accessories Store",
     excerpt:
       "A sleek e-commerce experience for chargers, cables, power banks and audio gear.",
-    image: "/images/Articales-3.png",
+    image: COVERS.Articales_3,
     stats: defaultStats(),
-    challenge: defaultChallenge("WHY BLACK", "/images/Articales-3.png"),
+    challenge: defaultChallenge("WHY BLACK", COVERS.Articales_3),
     approach: defaultApproach(),
     sample: defaultSample("WHY BLACK"),
     outcome: defaultOutcome(),
@@ -292,9 +334,9 @@ export const projects: Project[] = [
     filter: "seo",
     title: "ReGive Hub — SEO & Digital Growth",
     excerpt: "Improving discoverability for a community reuse and giving app.",
-    image: "/images/Articales-4.png",
+    image: COVERS.Articales_4,
     stats: defaultStats(),
-    challenge: defaultChallenge("ReGive Hub", "/images/Articales-4.png"),
+    challenge: defaultChallenge("ReGive Hub", COVERS.Articales_4),
     approach: defaultApproach(),
     sample: defaultSample("ReGive Hub"),
     outcome: defaultOutcome(),
@@ -309,12 +351,9 @@ export const projects: Project[] = [
     title: "Brilliant Teaching — AI-Ready Lesson Planning App",
     excerpt:
       "A teacher-first app for building teaching units, organising courses and structuring lessons that connect with students.",
-    image: "/images/Articales-5.png",
+    image: COVERS.Articales_5,
     stats: defaultStats(),
-    challenge: defaultChallenge(
-      "Brilliant Teaching",
-      "/images/Articales-5.png",
-    ),
+    challenge: defaultChallenge("Brilliant Teaching", COVERS.Articales_5),
     approach: defaultApproach(),
     sample: defaultSample("Brilliant Teaching"),
     outcome: defaultOutcome(),

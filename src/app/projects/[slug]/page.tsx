@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: project.title,
     description: project.excerpt,
     path: `/projects/${project.slug}`,
-    image: project.image,
+    image: project.image.src,
   });
 }
 

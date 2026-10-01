@@ -23,7 +23,7 @@ export function ServiceDetailBanner({ banner }: { banner: ServiceBanner }) {
           viewport={viewportOnce}
           className="grid items-center gap-10 py-14 lg:grid-cols-[44.2fr_52.2fr] lg:gap-x-[3.8%] lg:gap-y-0 lg:py-0"
         >
-          <div className="lg:py-[6%]">
+          <div className="lg:py-[4%]">
             <motion.p
               variants={fadeInUp}
               className="text-brand-primary/75 text-[11px] tracking-[0.18em] uppercase lg:text-[clamp(0.6875rem,1.47vw,1.25rem)]"
@@ -79,20 +79,20 @@ export function ServiceDetailBanner({ banner }: { banner: ServiceBanner }) {
             </motion.div>
           </div>
 
-          <motion.div
-            variants={fadeInUp}
-            className="border-brand-primary/35 relative aspect-square"
-          >
-            <div className="relative h-full w-full">
-              <Image
-                src={banner.image.src}
-                alt={banner.image.alt}
-                fill
-                sizes="(min-width: 1024px) 52vw, 100vw"
-                priority
-                className="object-contain"
-              />
-            </div>
+          {/* Sized to the artwork rather than to a square: six of the seven
+              banners are much wider than tall, and a square box left over
+              300px of empty space under them. It also runs out to the
+              viewport edge, which buys the artwork its gutter back. */}
+          <motion.div variants={fadeInUp} className="lg:-mr-8">
+            <Image
+              src={banner.image.src}
+              alt={banner.image.alt}
+              width={banner.image.width}
+              height={banner.image.height}
+              sizes="(min-width: 1024px) 59vw, 100vw"
+              priority
+              className="h-auto w-full"
+            />
           </motion.div>
         </motion.div>
       </Container>

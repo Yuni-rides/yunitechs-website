@@ -18,7 +18,7 @@ export function ProjectCard({ project, eager, className }: ProjectCardProps) {
         <div className="ring-brand-secondary relative overflow-hidden rounded-lg ring-0 transition-all duration-300 group-hover:shadow-[0_0_35px_-6px_var(--color-brand-secondary)] group-hover:ring-2">
           <div className="relative aspect-[368/322]">
             <Image
-              src={project.image}
+              src={project.image.src}
               alt=""
               aria-hidden
               fill

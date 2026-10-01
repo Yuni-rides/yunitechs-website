@@ -12,7 +12,12 @@ export type ServiceBanner = {
   eyebrow: string;
   heading: string;
   body: string;
-  image: { src: string; alt: string };
+  /**
+   * `width`/`height` are the artwork's own pixel size. The box is drawn to
+   * that shape, so none of the seven banners sits in a box taller than itself
+   * — their aspects run from 1.02 (app) to 2.43 (crm).
+   */
+  image: { src: string; alt: string; width: number; height: number };
 };
 
 /** "Overview" block on a service detail page. */

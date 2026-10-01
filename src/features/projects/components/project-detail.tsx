@@ -62,17 +62,19 @@ export function ProjectDetail({
           </div>
 
           <div className="bg-brand-secondary relative z-10 mx-auto mt-8 mb-[-14%] w-[93%] rounded-xl p-2 shadow-xl lg:p-6">
-            <div className="relative aspect-[430/267] overflow-hidden rounded-lg">
-              <Image
-                src={project.image}
-                alt=""
-                aria-hidden
-                fill
-                sizes="(min-width: 1024px) 1200px, 93vw"
-                loading="eager"
-                className="object-cover"
-              />
-            </div>
+            {/* Drawn at the artwork's own size. A fixed 430/267 box with
+                object-cover cropped every cover that was not that shape, and
+                the covers run from 1.14 to 2.50 wide. */}
+            <Image
+              src={project.image.src}
+              alt=""
+              aria-hidden
+              width={project.image.width}
+              height={project.image.height}
+              sizes="(min-width: 1024px) 1200px, 93vw"
+              priority
+              className="h-auto w-full rounded-lg"
+            />
           </div>
         </Container>
       </header>
@@ -84,7 +86,7 @@ export function ProjectDetail({
       <ProjectChallenge challenge={project.challenge} />
       <ProjectApproach steps={project.approach} />
       <ProjectGallery
-        image={project.sample.image}
+        image={project.sample.image.src}
         imageAlt={project.sample.imageAlt}
       />
       <ProjectSwot points={project.swot} />
@@ -92,10 +94,7 @@ export function ProjectDetail({
       <ProjectCta />
 
       {related.length > 0 && (
-        <section
-          aria-labelledby="related-projects-heading"
-          className="py-16"
-        >
+        <section aria-labelledby="related-projects-heading" className="py-16">
           <Container>
             <h2
               id="related-projects-heading"
