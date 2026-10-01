@@ -140,7 +140,7 @@ export const projects: Project[] = [
     title: "FMC Dubai — Sports Medicine & Healthcare Website",
     excerpt:
       "A modern healthcare platform connecting patients with expert sports medicine, physiotherapy, rehabilitation, and orthopaedic care for pain, injuries, and performance recovery.",
-    image: "/images/Articales-1.png",
+    image: "/images/hmsProject.png",
     stats: defaultStats(),
     challenge: defaultChallenge("FMC Dubai", "/images/Articales-1.png"),
     approach: defaultApproach(),
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     title: "Edsidera — Educational Platform",
     excerpt:
       "A credible, internationally facing platform that helps Edsidera onboard schools and organisations across multiple countries and present its programmes with clarity and trust.",
-    image: "/images/Articales-2.png",
+    image: "/images/edsideraProject.png",
     stats: defaultStats(),
     challenge: defaultChallenge("Edsidera", "/images/Articales-2.png"),
     approach: defaultApproach(),
@@ -174,7 +174,7 @@ export const projects: Project[] = [
     title: "SysGroup — Managed IT Website",
     excerpt:
       "A modern digital experience showcasing managed IT, cybersecurity, compliance, and technology solutions for businesses.",
-    image: "/images/flutter-vs-react-native.png",
+    image: "/images/sysProject.png",
     stats: defaultStats(),
     challenge: defaultChallenge("SysGroup", "/images/Articales-3.png"),
     approach: defaultApproach(),

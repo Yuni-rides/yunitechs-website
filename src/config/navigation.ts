@@ -1,16 +1,16 @@
 import type { NavItem } from "@/types";
 
 export const mainNav: NavItem[] = [
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
   { label: "Articles", href: "/articles" },
 ];
 
 export const footerNav: NavItem[] = [
+  { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "About Us", href: "/about" },
   { label: "Articles", href: "/articles" },
   { label: "Contact Us", href: "/contact" },
 ];

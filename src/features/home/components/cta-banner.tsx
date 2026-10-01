@@ -222,7 +222,7 @@ export function CtaBanner() {
                   <Image
                     key={src}
                     src={src}
-                    alt={i === FRONT ? "Yuni Solution AI avatar" : ""}
+                    alt={i === FRONT ? "Yuni Tech Inc. AI avatar" : ""}
                     aria-hidden={i !== FRONT}
                     width={960}
                     height={720}

@@ -18,13 +18,12 @@ const serviceImage = (fileName: string, alt: string) => ({
   alt,
 });
 
-// TODO: swap appBanner for each service's own artwork as the designer
-// delivers it — only the `image` line below changes.
+/** `fileName` is required: each service ships its own banner artwork. */
 const banner = (
   eyebrow: string,
   heading: string,
   body: string,
-  fileName = "appBanner",
+  fileName: string,
 ): ServiceBanner => ({
   eyebrow,
   heading,
@@ -199,12 +198,13 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "webService",
-      "Collage of website designs built by Yuni Solution",
+      "Collage of website designs built by Yuni Tech Inc.",
     ),
     banner: banner(
       "Web Development",
       "Websites built to win trust and convert",
       "We design and build fast, accessible websites that hold up under real traffic and turn visitors into customers.",
+      "webBanner",
     ),
     overview: overview(
       "From first sketch to a site that sells",
@@ -323,12 +323,13 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "brandService",
-      "Branding and design work by Yuni Solution",
+      "Branding and design work by Yuni Tech Inc.",
     ),
     banner: banner(
       "Branding & Design",
       "Brand identities people remember",
       "From logo to design system, we craft a visual language that stays consistent everywhere your brand shows up.",
+      "designBanner",
     ),
     overview: overview(
       "A brand people recognise at a glance",
@@ -440,11 +441,12 @@ export const services: Service[] = [
       "Customer Data Management",
       "Reporting Dashboards",
     ],
-    image: serviceImage("crmService", "CRM dashboards built by Yuni Solution"),
+    image: serviceImage("crmService", "CRM dashboards built by Yuni Tech Inc."),
     banner: banner(
       "CRM Systems",
       "CRM systems that fit how you actually work",
       "We build and integrate CRM platforms that bring your pipeline, customers, and reporting into one reliable place.",
+      "crmBanner",
     ),
     overview: overview(
       "A CRM that matches how your team sells",
@@ -558,12 +560,13 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "ecommerceService",
-      "E-commerce storefronts built by Yuni Solution",
+      "E-commerce storefronts built by Yuni Tech Inc.",
     ),
     banner: banner(
       "E-Commerce",
       "Storefronts built to sell at scale",
       "Fast, secure, conversion-focused commerce, from product pages and checkout through payments and fulfilment.",
+      "ecommerceBanner",
     ),
     overview: overview(
       "Storefronts built to sell at scale",
@@ -682,12 +685,13 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "aiService",
-      "AI automation solutions built by Yuni Solution",
+      "AI automation solutions built by Yuni Tech Inc.",
     ),
     banner: banner(
       "AI & Automation",
       "Automation that gives your team its time back",
       "We wire AI and automation into your existing tools so the repetitive work runs itself, accurately and on schedule.",
+      "aiBanner",
     ),
     overview: overview(
       "Automation that gives your team its time back",
@@ -804,11 +808,12 @@ export const services: Service[] = [
       "Progressive Web Apps",
       "API Development",
     ],
-    image: serviceImage("appService", "Mobile apps developed by Yuni Solution"),
+    image: serviceImage("appService", "Mobile apps developed by Yuni Tech Inc."),
     banner: banner(
       "App Development",
       "Custom mobile apps built to grow your business",
       "We design and develop high-performing iOS, Android, and cross-platform apps that turn your idea into a scalable, revenue-ready product.",
+      "appBanner",
     ),
     overview: overview(
       "From idea to app store we handle every step",
@@ -934,6 +939,7 @@ export const services: Service[] = [
       "Marketing",
       "Marketing that brings the right people to you",
       "Search, paid, social, and content working together, measured on the enquiries and sales they produce rather than on impressions.",
+      "marketingBanner",
     ),
     overview: overview(
       "Marketing measured on what it actually returns",

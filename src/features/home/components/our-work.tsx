@@ -141,13 +141,25 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
           </p>
         </div>
 
-        <div className="relative">
+        {/* The image fills its cell rather than sizing it. Left to its own
+            aspect, the wide card's artwork made that card three times the
+            height of the others. */}
+        <div
+          className={cn(
+            "relative",
+            item.wide ? "min-h-[220px] lg:min-h-[286px]" : "aspect-[300/286]",
+          )}
+        >
           <Image
             src={item.image.src}
             alt={item.image.alt}
-            width={item.image.width}
-            height={item.image.height}
-            className="h-auto w-full rounded-md object-cover"
+            fill
+            sizes={
+              item.wide
+                ? "(min-width: 1024px) 68vw, 92vw"
+                : "(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 92vw"
+            }
+            className="rounded-md object-cover"
           />
           {item.caseStudyHref && (
             <Link
