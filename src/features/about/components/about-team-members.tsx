@@ -12,7 +12,7 @@ type TeamMember = {
 };
 
 const team: TeamMember[] = [
-  { name: "Yousuf Taj", role: "CEO / Founder", image: "/images/owner.png" },
+  { name: "Joe Taj", role: "CEO / Founder", image: "/images/owner.png" },
   {
     name: "Rami Abuarafeh",
     role: "Marketing Director",
@@ -20,7 +20,7 @@ const team: TeamMember[] = [
   },
   {
     name: "Faizan Abdul Latif",
-    role: "CTO / Project Manager",
+    role: "Chief Technology Officer",
     image: "/images/hod.png",
   },
 ];
