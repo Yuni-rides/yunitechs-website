@@ -88,20 +88,27 @@ export function ProductChallengeSection({
             </div>
           </div>
 
-          {/* The note card spans the whole foot row and the artwork card sits
-              on top of its left end — they are not side by side. Both hang
-              29px past the panel's bottom edge, which flow layout cannot do
-              without changing the panel's height. */}
+          {/* The note card spans the foot row and the artwork card sits on top
+              of its left end — they are not side by side. Both hang past the
+              panel's bottom edge, which flow layout cannot do without changing
+              the panel's height.
+
+              Measured off the design (panel 667x243, note card x358-678):
+                note  left 48.1%, right 3.75%, hanging 6.6% of panel height
+                art   2.3% in from the note's left, 26.2% wide, inset 6.3% of
+                      the note's height top and bottom — it sits inside the
+                      card's border, not flush to it
+                text  starts 33.7% across, which clears the artwork by 5.2% */}
           <motion.div
             variants={fadeInUp}
-            className="mt-6 lg:absolute lg:right-[3.9%] lg:bottom-[-2.08vw] lg:left-[43.5%] lg:mt-0"
+            className="mt-6 lg:absolute lg:right-[3.75%] lg:bottom-[-2.08vw] lg:left-[48.1%] lg:mt-0"
           >
             <div className="to-brand-primary/65 relative rounded-2xl border border-white/20 bg-gradient-to-b from-white/10 via-transparent lg:rounded-[1.25rem]">
-              <p className="text-brand-primary p-5 text-[13px] leading-[1.35] lg:py-[2.7vw] lg:pr-[5.6%] lg:pl-[39.6%] lg:text-[clamp(0.8125rem,1.04vw,0.9375rem)]">
+              <p className="text-brand-primary p-5 text-[13px] leading-[1.35] lg:py-[2.9vw] lg:pr-[5.6%] lg:pl-[33.7%] lg:text-[clamp(0.8125rem,1.04vw,0.9375rem)]">
                 {challenge.note}
               </p>
 
-              <div className="bg-brand-primary mt-4 overflow-hidden rounded-2xl border border-white/15 lg:absolute lg:top-0 lg:bottom-0 lg:left-[9.1%] lg:mt-0 lg:w-[24.5%] lg:rounded-[1.25rem]">
+              <div className="bg-brand-primary mt-4 overflow-hidden rounded-2xl border border-white/15 lg:absolute lg:inset-y-[6.3%] lg:left-[2.3%] lg:mt-0 lg:w-[26.2%] lg:rounded-[1.25rem]">
                 <div className="relative h-full min-h-[8rem]">
                   <Image
                     src={challenge.inset.src}

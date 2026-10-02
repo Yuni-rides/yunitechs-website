@@ -5,15 +5,6 @@ import { Container } from "@/components/ui";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import type { ProductOverview } from "@/features/product/data/product";
 
-/**
- * Measured off the design at a 1440 width: the copy column runs to about 47.5%
- * and the statement starts at 54%, both aligned to the same 6.3% gutter the
- * blue panel above uses.
- *
- *   heading    31px, two lines
- *   body       15px / 1.6, white at 60%
- *   statement  66px / 0.99, alternating white and brand blue
- */
 export function ProductOverviewSection({
   overview,
 }: {
@@ -35,9 +26,9 @@ export function ProductOverviewSection({
           <div className="lg:pl-[9.2%]">
             <motion.p
               variants={fadeInUp}
-              className="text-brand-secondary flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase lg:text-[clamp(0.625rem,0.83vw,0.75rem)]"
+              className="text-white flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase lg:text-[clamp(0.625rem,0.83vw,0.75rem)]"
             >
-              <span aria-hidden className="bg-brand-secondary/60 h-px w-8" />
+              <span aria-hidden className="bg-white h-px w-8" />
               {overview.eyebrow}
             </motion.p>
 

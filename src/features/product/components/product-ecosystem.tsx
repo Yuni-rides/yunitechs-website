@@ -6,19 +6,6 @@ import { Container } from "@/components/ui";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import type { ProductEcosystem } from "@/features/product/data/product";
 
-/**
- * Measured off the design at a 1440 width:
- *
- *   copy       starts on the 90px gutter the other sections use
- *   heading    65px / 1.11, two lines, brand blue
- *   body       17px / 1.24, five lines on one rhythm — the second entry is a
- *              new line, not a new paragraph, so it carries no extra space
- *   tagline    32px bold, brand blue
- *   artwork    756px wide on the right, its top 68px below the copy's
- *
- * Vertical rhythm uses clamp()s capped in rem: the page's container stops at
- * 1440, so a bare `vw` keeps growing after everything around it has stopped.
- */
 export function ProductEcosystemSection({
   ecosystem,
 }: {
@@ -60,7 +47,7 @@ export function ProductEcosystemSection({
 
             <motion.p
               variants={fadeInUp}
-              className="mt-7 max-w-[600px] text-[13px] leading-[1.24] text-white/85 lg:mt-[clamp(1.25rem,2vw,1.8125rem)] lg:text-[clamp(0.8125rem,1.18vw,1.0625rem)]"
+              className="mt-7 max-w-[600px] text-[13px] leading-[1.24] text-white lg:mt-[clamp(1.25rem,2vw,1.8125rem)] lg:text-[clamp(0.8125rem,1.18vw,1.0625rem)]"
             >
               {ecosystem.body.map((line, i) => (
                 <span key={line} className={i === 0 ? "block" : "block"}>

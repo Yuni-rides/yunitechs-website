@@ -30,9 +30,9 @@ export function ProductScalabilitySection({
           <div className="lg:pt-[clamp(3rem,7.5vw,6.75rem)] lg:pl-[11.2%]">
             <motion.p
               variants={fadeInUp}
-              className="flex items-center gap-3 text-[10px] tracking-[0.25em] text-white/80 uppercase lg:text-[clamp(0.625rem,0.83vw,0.75rem)]"
+              className="flex items-center gap-3 text-[10px] tracking-[0.25em] text-white uppercase lg:text-[clamp(0.625rem,0.83vw,0.75rem)]"
             >
-              <span aria-hidden className="h-px w-7 bg-white/50" />
+              <span aria-hidden className="h-px w-7 bg-white" />
               {scalability.eyebrow}
             </motion.p>
 
@@ -50,7 +50,7 @@ export function ProductScalabilitySection({
 
             <motion.p
               variants={fadeInUp}
-              className="mt-6 max-w-[400px] text-[13px] leading-[1.3] text-white/75 lg:mt-[clamp(1.5rem,2.6vw,2.4rem)] lg:text-[clamp(0.8125rem,1.11vw,1rem)]"
+              className="mt-6 max-w-[400px] text-[13px] leading-[1.3] text-white lg:mt-[clamp(1.5rem,2.6vw,2.4rem)] lg:text-[clamp(0.8125rem,1.11vw,1rem)]"
             >
               {scalability.body}
             </motion.p>
