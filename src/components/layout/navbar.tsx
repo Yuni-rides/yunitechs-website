@@ -40,19 +40,19 @@ export function Navbar() {
           <Link
             href="/"
             aria-label={`${siteConfig.name} home`}
-            className="flex items-center gap-2"
+            className="flex items-center"
           >
+            {/* The file is the full wordmark, so the name is not set in type
+                beside it. width/height are the artwork's own pixels — the
+                height classes do the sizing. */}
             <Image
               src="/images/logo.png"
               alt=""
-              width={45}
-              height={51}
+              width={856}
+              height={230}
               priority
               className="h-8 w-auto lg:h-9"
             />
-            {/* <span className="text-xl font-medium text-white lg:text-2xl">
-              Yuni Tech
-            </span> */}
           </Link>
 
           <nav aria-label="Main" className="hidden items-center gap-10 lg:flex">
