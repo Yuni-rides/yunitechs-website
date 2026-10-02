@@ -17,13 +17,13 @@ const milestones: Milestone[] = [
   {
     number: "01",
     title: "The vision",
-    body: "Founded in 2020 by Yousuf Taj, Yuni Tech was built with a clear ambition — to help businesses embrace digital transformation through precision technology, intelligent systems, and future-ready solutions. From the beginning, our mission has been clear: strip away complexity, deliver premium software, and build the invisible infrastructure that drives real growth.",
+    body: "Founded in 2020 by Joe Taj, Yuni Tech was built with a clear ambition to help businesses embrace digital transformation through precision technology, intelligent systems, and future-ready solutions. From the beginning, our mission has been clear: strip away complexity, deliver premium software, and build the invisible infrastructure that drives real growth.",
     image: "/images/journey1.png",
   },
   {
     number: "02",
     title: "Early momentum",
-    body: "What started as a small, focused practice quickly evolved into a high-performance team. We expanded our capabilities, invested in talent, and delivered projects across industries — from startups finding their footing to established businesses modernising decades-old systems. Every engagement sharpened how we build.",
+    body: "What started as a small, focused practice quickly evolved into a high-performance team. We expanded our capabilities, invested in talent, and delivered projects across industries from startups finding their footing to established businesses modernising decades-old systems. Every engagement sharpened how we build.",
     image: "/images/journey2.png",
   },
   {
@@ -35,7 +35,7 @@ const milestones: Milestone[] = [
   {
     number: "04",
     title: "Future forward",
-    body: "Today, Yuni Tech stands as a trusted technology partner for startups, enterprises, and ambitious founders alike. We continue building digital ecosystems that blend growth, automation, and design — shaping the future of intelligent software, one partnership at a time.",
+    body: "Today, Yuni Tech stands as a trusted technology partner for startups, enterprises, and ambitious founders alike. We continue building digital ecosystems that blend growth, automation, and design shaping the future of intelligent software, one partnership at a time.",
     image: "/images/journey4.png",
   },
 ];

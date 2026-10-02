@@ -17,7 +17,20 @@ export function TrustedBy() {
       className="bg-brand-primary overflow-hidden py-16 lg:py-24"
     >
       <Container>
-        <MotionInView className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
+        {/* The copy sits directly beside the heading, not out at the right
+            edge: a `1fr` first column pushed it the full width of the
+            container away. Everything below is measured off the design as a
+            share of the heading's own ink width ("VISIONARIES", 371px at the
+            lg size), so the pair keeps its proportions:
+              gap   15/201 = 7.5%  -> 28px
+              width 90/201 = 44.8% -> 166px, set to 170
+              type  font 0.165x the heading's 60px -> 9.9px, leading 1.2
+            Bottom edges are flush in the design, so no bottom padding.
+
+            The width is 4px over the measured share because at 166px the
+            third line lost "ideas" to the fourth by 1.4px. A wrap that breaks
+            on a different word is visible; 2% of extra column width is not. */}
+        <MotionInView className="grid gap-6 lg:flex lg:items-end lg:gap-7">
           <h2
             id="trusted-by-heading"
             className="font-heading text-brand-secondary text-4xl leading-[1.05] font-semibold tracking-tight uppercase sm:text-5xl lg:text-6xl"
@@ -26,7 +39,7 @@ export function TrustedBy() {
             <br />
             visionaries
           </h2>
-          <p className="max-w-[240px] text-[11px] leading-relaxed text-white/85 lg:pb-2">
+          <p className="max-w-[240px] text-[11px] leading-relaxed text-white/85 lg:w-[170px] lg:max-w-none lg:text-[9.9px] lg:leading-[1.2]">
             Building long-term relationships through innovation and results.
             Helping businesses transform ideas into scalable digital solutions.
           </p>
