@@ -14,7 +14,6 @@ import { Container } from "@/components/ui";
 import { testimonials } from "@/features/home/data/testimonials";
 import type { Testimonial } from "@/types";
 
-
 const AUTO_SPEED = 40;
 const COPIES = 3;
 
@@ -24,7 +23,6 @@ export function ClientReviews() {
   const dragging = useRef(false);
   const x = useMotionValue(0);
 
-  // Measure the width of ONE set of cards (track holds COPIES sets).
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -37,7 +35,6 @@ export function ClientReviews() {
     return () => ro.disconnect();
   }, []);
 
-  // Keep x within one set's range so the loop is seamless.
   const wrap = (value: number) => {
     const w = setWidth.current;
     if (!w) return value;
@@ -89,13 +86,13 @@ export function ClientReviews() {
   return (
     <section
       aria-labelledby="client-reviews-heading"
-      className="overflow-hidden bg-brand-primary py-16 lg:py-24"
+      className="bg-brand-primary overflow-hidden py-16 lg:py-24"
     >
       <Container>
         <MotionInView>
           <h2
             id="client-reviews-heading"
-            className="font-sans text-5xl font-light uppercase tracking-tight text-brand-secondary sm:text-6xl lg:text-7xl"
+            className="text-brand-secondary font-sans text-5xl font-light tracking-tight uppercase sm:text-6xl lg:text-7xl"
           >
             Client reviews
           </h2>
@@ -104,7 +101,9 @@ export function ClientReviews() {
 
       <div
         ref={sliderRef}
-        onPointerEnter={(e) => e.pointerType === "mouse" && setCursorVisible(true)}
+        onPointerEnter={(e) =>
+          e.pointerType === "mouse" && setCursorVisible(true)
+        }
         onPointerLeave={() => setCursorVisible(false)}
         onPointerMove={onPointerMove}
         className="relative mt-10 cursor-none select-none lg:mt-14"
@@ -135,11 +134,14 @@ export function ClientReviews() {
         <motion.div
           aria-hidden
           style={{ x: cursorX, y: cursorY }}
-          animate={{ opacity: cursorVisible ? 1 : 0, scale: cursorVisible ? 1 : 0.6 }}
+          animate={{
+            opacity: cursorVisible ? 1 : 0,
+            scale: cursorVisible ? 1 : 0.6,
+          }}
           transition={{ duration: 0.2 }}
-          className="pointer-events-none absolute left-0 top-0 z-20 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-tertiary text-brand-primary"
+          className="bg-brand-tertiary text-brand-primary pointer-events-none absolute top-0 left-0 z-20 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full"
         >
-          <span className="flex flex-col items-center gap-0.5 text-[10px] font-medium uppercase tracking-wider">
+          <span className="flex flex-col items-center gap-0.5 text-[10px] font-medium tracking-wider uppercase">
             <ArrowRight className="size-4" strokeWidth={1.5} aria-hidden />
             Drag
           </span>
@@ -160,12 +162,12 @@ function ReviewCard({
     <article
       role="listitem"
       aria-hidden={ariaHidden || undefined}
-      className="flex h-[260px] w-[250px] shrink-0 flex-col justify-between rounded-2xl bg-white p-5 text-brand-primary transition-all duration-300 hover:shadow-[-6px_6px_0_0_var(--color-brand-secondary)] hover:ring-1 hover:ring-brand-secondary sm:w-[270px] lg:h-[280px]"
+      className="text-brand-primary hover:ring-brand-secondary flex h-[260px] w-[250px] shrink-0 flex-col justify-between rounded-2xl bg-white p-5 transition-all duration-300 hover:shadow-[-6px_6px_0_0_var(--color-brand-secondary)] hover:ring-1 sm:w-[270px] lg:h-[280px]"
     >
       <p className="text-[11px] leading-relaxed">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
-      <p className="text-[11px] font-medium text-brand-secondary">
+      <p className="text-brand-secondary text-[11px] font-medium">
         {testimonial.company}
       </p>
     </article>

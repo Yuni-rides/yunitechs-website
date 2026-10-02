@@ -187,12 +187,61 @@ export const projects: Project[] = [
     excerpt:
       "A modern healthcare platform connecting patients with expert sports medicine, physiotherapy, rehabilitation, and orthopaedic care for pain, injuries, and performance recovery.",
     image: COVERS.hmsProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("FMC Dubai", COVERS.hmsProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "5",
+        label: "Departments online",
+        description:
+          "Each one — from physio to orthopaedics — gets its own browsable section.",
+      },
+      {
+        value: "8",
+        label: "Performance-lab technologies",
+        description:
+          "Every machine in the lab gets its own explainer, so patients know what to expect.",
+      },
+      {
+        value: "Fast",
+        label: "Built for mobile speed",
+        description:
+          "Images, fonts and scripts are tuned so pages open quickly on a phone.",
+      },
+      {
+        value: "CMS",
+        label: "Marketing edits every page",
+        description:
+          "Content and assets are updated in-house, with no developer in the loop.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "The clinic's reputation was never the problem — its website was. Treatments, specialist profiles, lab equipment and news sat on separate pages with no route between them, pages were slow to open on a phone, and every change had to go through a developer. Patients gave up before they reached the right specialist, and the marketing team could not keep anything current.",
+      image: COVERS.hmsProject,
+      imageAlt: "The FMC Dubai website shown on desktop and mobile",
+    },
+    approach: [
+      "Rebuilt around care pathways — symptom, to department, to specialist.",
+      "Gave every specialist a profile with credentials and direct booking.",
+      "Tuned images, fonts and scripts so pages open fast on a phone.",
+      "Integrated a CMS so the team edits pages and assets without a developer.",
+    ],
     sample: defaultSample("FMC Dubai"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "FMC Dubai now runs on one fast, organised platform built by Yuni Tech Inc. Patients reach the right specialist in a few clicks, pages open quickly on a phone, and the marketing team publishes news, events and new imagery itself — so the site stays as current as the clinic it represents.",
+      stats: [
+        { value: "12", label: "Content types in the CMS" },
+        { value: "0", label: "Dev tickets to publish" },
+        { value: "1", label: "Hub for news and events" },
+        { value: "9", label: "Partner clubs featured" },
+      ],
+    },
+    swot: [
+      "FIFA, AFC and FIMS accreditation, a performance lab few clinics in the region can match, and specialists who work with national teams.",
+      "All of it sat on scattered, slow-loading pages that only a developer could change, so the site aged between releases.",
+      "A clear structure and a CMS the team owns means new research, events and treatments go live the week they happen.",
+      "Other Dubai sports-medicine providers are investing in their own booking and content experiences, raising the bar.",
+    ],
   },
   {
     slug: "edsidera",
@@ -202,31 +251,129 @@ export const projects: Project[] = [
     filter: "website",
     title: "Edsidera — Educational Platform",
     excerpt:
-      "A credible, internationally facing platform that helps Edsidera onboard schools and organisations across multiple countries and present its programmes with clarity and trust.",
+      "A website, a children's app and a school portal on one platform — with online enrolment and payments for award programmes running across multiple countries.",
     image: COVERS.edsideraProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("Edsidera", COVERS.edsideraProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "3",
+        label: "Connected products",
+        description:
+          "A marketing site, a children's app and a staff portal on one system.",
+      },
+      {
+        value: "4",
+        label: "Award programmes live",
+        description:
+          "Little Star, Rising Star, Karam and Sunshine Squad, for ages 3 to 13.",
+      },
+      {
+        value: "2",
+        label: "Live on both app stores",
+        description:
+          "The children's app ships on both the Apple App Store and Google Play.",
+      },
+      {
+        value: "Pay",
+        label: "Checkout built in",
+        description:
+          "Parents enrol and pay online, or the school enrols a year group in bulk.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "Edsidera had four award programmes and schools signing up across several countries, with nothing joining it together. Children needed somewhere to complete challenges and upload evidence, teachers needed to review and approve that work, schools needed to enrol whole year groups, and parents needed a way to pay — all of it ran on email, spreadsheets and paper.",
+      image: COVERS.edsideraProject,
+      imageAlt: "The Edsidera platform shown on desktop and mobile",
+    },
+    approach: [
+      "Built the public site so each award explains itself and converts schools.",
+      "Shipped a children's app on iOS and Android for challenges and evidence.",
+      "Built a portal where teachers review, approve and feed back on work.",
+      "Integrated Ziina so parents pay online, or schools enrol in bulk.",
+    ],
     sample: defaultSample("Edsidera"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "Edsidera now runs on one platform built by Yuni Tech Inc. Children complete challenges in the app, teachers review and approve them in the portal, schools enrol year groups in bulk, and parents pay online — so bringing on a new school is setup, not paperwork.",
+      stats: [
+        { value: "4", label: "Award programmes" },
+        { value: "2", label: "Apps: iOS and Android" },
+        { value: "1", label: "Portal for every school" },
+        { value: "0", label: "Spreadsheets in the loop" },
+      ],
+    },
+    swot: [
+      "Four established award programmes, a printed and digital delivery model, and schools already signed up across multiple countries.",
+      "Children, teachers, schools and parents each needed something different, and all of it was being handled by email and spreadsheets.",
+      "One platform means Edsidera can onboard a new school in days and sell into new countries without adding admin staff.",
+      "Other edtech and CPD platforms are chasing the same international schools, nurseries and educators.",
+    ],
   },
   {
-    slug: "sysgroup",
-    name: "SysGroup",
-    service: "Managed IT Website",
+    slug: "sizgroup",
+    name: "Sizgroup",
+    service: "App Studio Website",
     category: "Website Development",
     filter: "website",
-    title: "SysGroup — Managed IT Website",
+    title: "Sizgroup — App Studio Website",
     excerpt:
-      "A modern digital experience showcasing managed IT, cybersecurity, compliance, and technology solutions for businesses.",
+      "A website that sells app development work: twelve service pages, a portfolio that proves the craft, and a booked consultation at the end of every scroll.",
     image: COVERS.sizgroupProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("SysGroup", COVERS.sizgroupProject),
-    approach: defaultApproach(),
-    sample: defaultSample("SysGroup"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    stats: [
+      {
+        value: "12",
+        label: "Service pages, each its own",
+        description:
+          "iOS, Android, Flutter, React Native, game, NFT, wearable and more.",
+      },
+      {
+        value: "9",
+        label: "Portfolio apps on show",
+        description:
+          "Real builds, each with the problem it solved and the screens that shipped.",
+      },
+      {
+        value: "6",
+        label: "Step process, made visible",
+        description:
+          "Kickoff to launch, so a first-time founder knows what happens next.",
+      },
+      {
+        value: "30m",
+        label: "Free consultation call",
+        description:
+          "Bookable in one click from the header, mid-page or the footer.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "Sizgroup had been building apps since 2015 and had the numbers to prove it — but a visitor could not tell that in ten seconds. Twelve services sat behind one generic page, the portfolio work was hard to find, and someone arriving with an app idea had no obvious next step. A studio that sells software was being judged on a site that did not show the craft.",
+      image: COVERS.sizgroupProject,
+      imageAlt: "The Sizgroup website shown on desktop and mobile",
+    },
+    approach: [
+      "Gave each of the twelve services its own page, written for how clients search.",
+      "Built a portfolio section where each app shows the problem it solved.",
+      "Laid out the six-step process so a first-time founder knows what to expect.",
+      "Put booking, call and enquiry routes on every screen of the journey.",
+    ],
+    sample: defaultSample("Sizgroup"),
+    outcome: {
+      heading: "What changed.",
+      body: "Sizgroup now has a site that does the first sales call for it, built by Yuni Tech Inc. Each service has a page worth ranking, the portfolio and client numbers carry the credibility, and anyone convinced along the way can book a free consultation without hunting for a form.",
+      stats: [
+        { value: "12", label: "Service pages live" },
+        { value: "9", label: "Apps in the portfolio" },
+        { value: "3", label: "Ways to get in touch" },
+        { value: "1", label: "Clear path to booking" },
+      ],
+    },
+    swot: [
+      "A decade of delivery, 465+ clients and over 10 million downloads across client apps — the proof was already there to lead with.",
+      "All of it sat behind one generic services page, so visitors could not see the range or find the work that matched their idea.",
+      "A page per service gives Sizgroup something to rank for on every search a founder makes, from Flutter to NFT development.",
+      "App studios compete on exactly these searches, and most of them are investing in the same content and booking experience.",
+    ],
   },
   {
     slug: "purpose-payment",
