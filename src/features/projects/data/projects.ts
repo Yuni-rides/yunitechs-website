@@ -228,7 +228,7 @@ export const projects: Project[] = [
     sample: defaultSample("FMC Dubai"),
     outcome: {
       heading: "What changed.",
-      body: "FMC Dubai now runs on one fast, organised platform built by Yuni Tech Inc. Patients reach the right specialist in a few clicks, pages open quickly on a phone, and the marketing team publishes news, events and new imagery itself — so the site stays as current as the clinic it represents.",
+      body: "FMC Dubai now runs on one fast, organised platform built by Yuni Tech. Patients reach the right specialist in a few clicks, pages open quickly on a phone, and the marketing team publishes news, events and new imagery itself — so the site stays as current as the clinic it represents.",
       stats: [
         { value: "12", label: "Content types in the CMS" },
         { value: "0", label: "Dev tickets to publish" },
@@ -294,7 +294,7 @@ export const projects: Project[] = [
     sample: defaultSample("Edsidera"),
     outcome: {
       heading: "What changed.",
-      body: "Edsidera now runs on one platform built by Yuni Tech Inc. Children complete challenges in the app, teachers review and approve them in the portal, schools enrol year groups in bulk, and parents pay online — so bringing on a new school is setup, not paperwork.",
+      body: "Edsidera now runs on one platform built by Yuni Tech. Children complete challenges in the app, teachers review and approve them in the portal, schools enrol year groups in bulk, and parents pay online — so bringing on a new school is setup, not paperwork.",
       stats: [
         { value: "4", label: "Award programmes" },
         { value: "2", label: "Apps: iOS and Android" },
@@ -360,7 +360,7 @@ export const projects: Project[] = [
     sample: defaultSample("Sizgroup"),
     outcome: {
       heading: "What changed.",
-      body: "Sizgroup now has a site that does the first sales call for it, built by Yuni Tech Inc. Each service has a page worth ranking, the portfolio and client numbers carry the credibility, and anyone convinced along the way can book a free consultation without hunting for a form.",
+      body: "Sizgroup now has a site that does the first sales call for it, built by Yuni Tech. Each service has a page worth ranking, the portfolio and client numbers carry the credibility, and anyone convinced along the way can book a free consultation without hunting for a form.",
       stats: [
         { value: "12", label: "Service pages live" },
         { value: "9", label: "Apps in the portfolio" },

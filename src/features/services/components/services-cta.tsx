@@ -29,7 +29,7 @@ export function ServicesCta() {
             >
               <Image
                 src="/images/avatar-working-right.png"
-                alt="Yuni Tech Inc AI avatar working at a laptop"
+                alt="Yuni Tech AI avatar working at a laptop"
                 width={1356}
                 height={1288}
                 loading="lazy"

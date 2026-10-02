@@ -210,7 +210,7 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "webService",
-      "Collage of website designs built by Yuni Tech Inc.",
+      "Collage of website designs built by Yuni Tech.",
     ),
     banner: banner(
       "Web Development",
@@ -335,7 +335,7 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "brandService",
-      "Branding and design work by Yuni Tech Inc.",
+      "Branding and design work by Yuni Tech.",
     ),
     banner: banner(
       "Branding & Design",
@@ -453,7 +453,7 @@ export const services: Service[] = [
       "Customer Data Management",
       "Reporting Dashboards",
     ],
-    image: serviceImage("crmService", "CRM dashboards built by Yuni Tech Inc."),
+    image: serviceImage("crmService", "CRM dashboards built by Yuni Tech."),
     banner: banner(
       "CRM Systems",
       "CRM systems that fit how you actually work",
@@ -572,7 +572,7 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "ecommerceService",
-      "E-commerce storefronts built by Yuni Tech Inc.",
+      "E-commerce storefronts built by Yuni Tech.",
     ),
     banner: banner(
       "E-Commerce",
@@ -697,7 +697,7 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "aiService",
-      "AI automation solutions built by Yuni Tech Inc.",
+      "AI automation solutions built by Yuni Tech.",
     ),
     banner: banner(
       "AI & Automation",
@@ -822,7 +822,7 @@ export const services: Service[] = [
     ],
     image: serviceImage(
       "appService",
-      "Mobile apps developed by Yuni Tech Inc.",
+      "Mobile apps developed by Yuni Tech.",
     ),
     banner: banner(
       "App Development",

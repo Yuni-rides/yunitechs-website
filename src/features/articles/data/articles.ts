@@ -39,7 +39,7 @@ export const articles: Article[] = [
     title: "What Affects the Cost of Building an Uber-Like App?",
     category: "Mobile Apps",
     filter: "apps",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 4,
     excerpt:
       "Learn what affects an Uber-like app development quote, including features, MVP scope, ongoing costs, and questions to ask developers.",
@@ -140,13 +140,13 @@ export const articles: Article[] = [
         heading: "Final thoughts",
         body: [
           "To get a useful estimate, document how a ride moves through your business, from booking and assignment to pickup, payment, and staff follow-up. Give that same outline to each developer so you can compare proposals on a consistent basis.",
-          "Planning a transportation app? Share your goals and essential workflows with Yuni Tech Inc. to discuss what your first version needs to do.",
+          "Planning a transportation app? Share your goals and essential workflows with Yuni Tech. to discuss what your first version needs to do.",
         ],
       },
     ],
     cta: {
       heading: ["Have an app idea?", "Let's build it."],
-      body: "Planning a transportation app? Share your goals and essential workflows with Yuni Tech Inc. to discuss what your first version needs to do.",
+      body: "Planning a transportation app? Share your goals and essential workflows with Yuni Tech. to discuss what your first version needs to do.",
       label: "Discuss Your Project",
     },
   },
@@ -155,7 +155,7 @@ export const articles: Article[] = [
     title: "Flutter vs React Native in 2026: How to Choose for Your Mobile App",
     category: "Mobile Apps",
     filter: "apps",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 4,
     excerpt:
       "Compare Flutter and React Native for your mobile app. Learn what to assess in design, team skills, device features, maintenance, and MVP planning.",
@@ -240,7 +240,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Have an app idea?", "Let's build it."],
-      body: "Planning a mobile app? Share your goals and essential features with Yuni Tech Inc. to discuss the approach you want to evaluate.",
+      body: "Planning a mobile app? Share your goals and essential features with Yuni Tech. to discuss the approach you want to evaluate.",
       label: "Discuss Your App",
     },
   },
@@ -249,7 +249,7 @@ export const articles: Article[] = [
     title: "AI Agents for Customer Support: What They Can Do and How to Start",
     category: "AI & Automation",
     filter: "ai",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "AI agents can answer common customer support questions and pass harder ones to a person. Here is what they handle well and how to set one up.",
@@ -337,8 +337,8 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Have an AI idea?", "Let's build it."],
-      body: "Exploring AI for customer support? Share the workflow you want to improve with Yuni Tech Inc. to discuss your requirements.",
-      label: "Contact Yuni Tech Inc.",
+      body: "Exploring AI for customer support? Share the workflow you want to improve with Yuni Tech. to discuss your requirements.",
+      label: "Contact Yuni Tech.",
     },
   },
   {
@@ -347,7 +347,7 @@ export const articles: Article[] = [
       "How to Audit Your Website: A Checklist You Can Finish in an Afternoon",
     category: "Website",
     filter: "web",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 4,
     excerpt:
       "A step-by-step website audit checklist covering speed, mobile, technical SEO, content and conversions, plus when to hire help.",
@@ -448,7 +448,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Want a second opinion?", "Let's take a look."],
-      body: "Want a second opinion on your site? You can request an audit from Yuni Tech Inc..",
+      body: "Want a second opinion on your site? You can request an audit from Yuni Tech..",
       label: "Request an Audit",
     },
   },
@@ -457,7 +457,7 @@ export const articles: Article[] = [
     title: "How to Build a SaaS Product",
     category: "SaaS",
     filter: "marketing",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 4,
     excerpt:
       "Forget the hype. Here's how to build a SaaS product that actually ships: talk to users, pick boring tech, and charge money before you're ready.",
@@ -531,7 +531,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Have a SaaS idea?", "Let's build it."],
-      body: "Sitting on a SaaS idea? Share it with Yuni Tech Inc. and we'll help you work out what your first version needs to do.",
+      body: "Sitting on a SaaS idea? Share it with Yuni Tech. and we'll help you work out what your first version needs to do.",
       label: "Discuss Your Idea",
     },
   },
@@ -540,7 +540,7 @@ export const articles: Article[] = [
     title: "What Is MVP Development and When Do You Need One",
     category: "MVP",
     filter: "marketing",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "What an MVP is, three real examples, when you need one, what to put in it and what to ask an MVP development company.",
@@ -641,7 +641,7 @@ export const articles: Article[] = [
     title: "Dedicated Team vs In-House Developers: How to Choose",
     category: "Software",
     filter: "software",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "Dedicated team vs. in-house developers: what each costs, where each fits, and three questions that settle the choice for your project.",
@@ -652,7 +652,7 @@ export const articles: Article[] = [
         heading: "Most founders ask this question too late",
         body: [
           "Most founders ask this question too late. They've already posted a job ad, waited two months and interviewed nine people who weren't right. Then someone mentions a dedicated team and the plan changes. Here's where we land on dedicated team vs in-house developers.",
-          "One disclosure first: Yuni Tech Inc. sells dedicated teams, so weigh what follows with that in mind.",
+          "One disclosure first: Yuni Tech. sells dedicated teams, so weigh what follows with that in mind.",
         ],
       },
       {
@@ -726,7 +726,7 @@ export const articles: Article[] = [
       "Healthcare App Development: Settle These Things Before Anyone Writes Code",
     category: "Software",
     filter: "software",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "What to settle before building a healthcare app: HIPAA scope, data mapping, security basics, FDA rules and EHR integration.",
@@ -806,7 +806,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Planning a healthcare app?", "Let's scope it."],
-      body: "If you're planning a healthcare app, tell Yuni Tech Inc. what you want to build and we'll go through scope and timeline with you.",
+      body: "If you're planning a healthcare app, tell Yuni Tech. what you want to build and we'll go through scope and timeline with you.",
       label: "Get in Touch",
     },
   },
@@ -816,7 +816,7 @@ export const articles: Article[] = [
       "What Makes Transportation Software Different from Generic Business Software",
     category: "CRM",
     filter: "crm",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 4,
     excerpt:
       "Transportation software isn't just CRUD with a map view. Here's what separates transportation-specific software from generic business tools.",
@@ -881,7 +881,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Building transportation software?", "Let's talk it through."],
-      body: "Planning a transportation or fleet platform? Share your workflows with Yuni Tech Inc. and we'll help you work out what it needs to do.",
+      body: "Planning a transportation or fleet platform? Share your workflows with Yuni Tech. and we'll help you work out what it needs to do.",
       label: "Get in Touch",
     },
   },
@@ -890,7 +890,7 @@ export const articles: Article[] = [
     title: "AI Agents vs Chatbots: What Is the Difference?",
     category: "AI & Automation",
     filter: "ai",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "Learn how AI agents and chatbots differ, where each fits in customer support and lead qualification, and how to choose a first use case.",
@@ -995,7 +995,7 @@ export const articles: Article[] = [
     title: "Custom E-commerce vs Shopify: Which One Actually Fits Your Store",
     category: "E-commerce",
     filter: "ecommerce",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "Custom e-commerce development vs Shopify or WooCommerce: what each costs, where each breaks down, and how to know which one you need.",
@@ -1072,7 +1072,7 @@ export const articles: Article[] = [
     title: "Why Online Shoppers Abandon Their Cart, and What Actually Fixes It",
     category: "E-commerce",
     filter: "ecommerce",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "The real reasons shoppers abandon carts, which fixes matter most, and how to find the specific reason yours are leaving.",
@@ -1162,7 +1162,7 @@ export const articles: Article[] = [
     title: "Signs It's Time to Redesign Your Website, and How to Plan One",
     category: "Website",
     filter: "web",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "How to tell whether your site needs a redesign, what to fix first, and how to plan a redesign that doesn't reset your SEO.",
@@ -1234,7 +1234,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Not sure if you need a redesign?", "Let's take a look."],
-      body: "If your site isn't performing the way it should, tell Yuni Tech Inc. what's happening and we'll look at what's actually going on before recommending anything.",
+      body: "If your site isn't performing the way it should, tell Yuni Tech. what's happening and we'll look at what's actually going on before recommending anything.",
       label: "Get in Touch",
     },
   },
@@ -1243,7 +1243,7 @@ export const articles: Article[] = [
     title: "When a Custom CRM Is Worth Building",
     category: "CRM",
     filter: "crm",
-    author: "Yuni Tech Inc. Team",
+    author: "Yuni Tech. Team",
     readingMinutes: 5,
     excerpt:
       "Custom vs off-the-shelf CRM: when a template is enough, when it isn't, and what to check before you pay someone to build one.",
@@ -1312,7 +1312,7 @@ export const articles: Article[] = [
     ],
     cta: {
       heading: ["Patching around your CRM?", "Let's look at it together."],
-      body: "If your team is patching around a CRM that no longer fits, tell Yuni Tech Inc. what's not working and we'll look at whether custom is worth it.",
+      body: "If your team is patching around a CRM that no longer fits, tell Yuni Tech. what's not working and we'll look at whether custom is worth it.",
       label: "Get in Touch",
     },
   },

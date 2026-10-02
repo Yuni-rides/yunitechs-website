@@ -62,7 +62,7 @@ export function HomeBanner() {
               className="order-3 flex flex-col gap-5 lg:pt-4"
             >
               <p className="max-w-[220px] text-[11px] leading-relaxed text-white/85">
-                Yuni Tech Inc. designs, builds, and scales the websites,
+                Yuni Tech. designs, builds, and scales the websites,
                 applications, and systems that growing businesses run on, from
                 first prototype to production traffic.
               </p>

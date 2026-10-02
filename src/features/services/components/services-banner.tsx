@@ -27,7 +27,7 @@ export function ServicesBanner() {
             <motion.div variants={fadeInUp}>
               <Image
                 src="/images/webService.png"
-                alt="A selection of websites and product interfaces built by Yuni Tech Inc."
+                alt="A selection of websites and product interfaces built by Yuni Tech."
                 width={1008}
                 height={410}
                 priority

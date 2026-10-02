@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Projects",
   description:
-    "Selected work from Yuni Tech Inc. across AI, automation, design, and development.",
+    "Selected work from Yuni Tech. across AI, automation, design, and development.",
   path: "/projects",
 });
 
