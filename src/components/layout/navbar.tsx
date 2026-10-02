@@ -50,9 +50,9 @@ export function Navbar() {
               priority
               className="h-8 w-auto lg:h-9"
             />
-            <span className="text-xl font-medium text-white lg:text-2xl">
+            {/* <span className="text-xl font-medium text-white lg:text-2xl">
               Yuni Tech
-            </span>
+            </span> */}
           </Link>
 
           <nav aria-label="Main" className="hidden items-center gap-10 lg:flex">

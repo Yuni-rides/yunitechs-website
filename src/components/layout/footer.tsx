@@ -172,7 +172,7 @@ export function Footer() {
             className="font-heading flex items-center gap-1 text-[clamp(3rem,12.5vw,10rem)] leading-none font-normal tracking-[-0.02em] whitespace-nowrap"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/footerLogo.png"
               alt=""
               width={45}
               height={51}
