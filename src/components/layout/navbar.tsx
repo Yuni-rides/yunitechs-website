@@ -63,9 +63,17 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
+                  // The page you are on is a filled pill. Sizes are read off
+                  // the design as shares of the label's own width (63px for
+                  // "Services" here): side padding 29/70 = 41% -> 26px, pill
+                  // height 48/70 = 69% -> 44px. The row's existing 40px gap
+                  // already matches the design's gap from the pill's edge to
+                  // the next label, so the spacing needs no change.
                   className={cn(
-                    "hover:text-brand-tertiary text-xs font-medium tracking-wider uppercase transition-colors",
-                    active ? "text-brand-tertiary" : "text-white",
+                    "text-xs font-medium tracking-wider uppercase transition-colors",
+                    active
+                      ? "bg-brand-secondary inline-flex h-11 items-center rounded-full px-[26px] text-white"
+                      : "hover:text-brand-tertiary text-white",
                   )}
                 >
                   {item.label}
