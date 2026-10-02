@@ -35,7 +35,7 @@ export function ProductBanner({ product }: { product: Product }) {
             >
               {product.headingLines.map((line) => (
                 <span key={line} className="block">
-                  {line}
+                  {line}{" "}
                 </span>
               ))}
             </motion.h1>

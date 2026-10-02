@@ -14,12 +14,7 @@ import {
 } from "@/features/home";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "About",
-  description:
-    "Yuni Tech is a team of developers, designers, and strategists building software that moves businesses forward.",
-  path: "/about",
-});
+export const metadata = buildMetadata({ path: "/about" });
 
 export default function AboutPage() {
   return (

@@ -2,12 +2,7 @@ import { CtaBanner } from "@/features/home";
 import { ProjectsBanner, ProjectsGrid } from "@/features/projects";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "Projects",
-  description:
-    "Selected work from Yuni Tech. across AI, automation, design, and development.",
-  path: "/projects",
-});
+export const metadata = buildMetadata({ path: "/projects" });
 
 export default function ProjectsPage() {
   return (

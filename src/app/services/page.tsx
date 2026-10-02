@@ -8,11 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 import { homeFaqs } from "@/features/home/data/faqs";
 import { KeyTechnologies, MoveTogether } from "@/features/home";
 
-export const metadata = buildMetadata({
-  title: "Services",
-  description: "Web, mobile, cloud, and design services from Yuni Techs.",
-  path: "/services",
-});
+export const metadata = buildMetadata({ path: "/services" });
 
 export default function ServicesPage() {
   return (
@@ -22,15 +18,16 @@ export default function ServicesPage() {
 
       <Faq
         items={homeFaqs}
+        // Shared with the homepage, which is the one URL that marks it up.
+        schema={false}
         intro={
           <p>
             <strong>Yuni Tech</strong> delivers custom software, AI-powered
             applications, modern websites, and scalable digital solutions
             designed to help businesses innovate, grow, and stay ahead in an
             ever-evolving digital landscape. Operating from{" "}
-            <strong>San Francisco</strong> and <strong>Karachi</strong>, we
-            serve clients across the globe with a commitment to quality and
-            excellence.
+            <strong>San Francisco</strong>, we serve clients across the US and
+            beyond with a commitment to quality and excellence.
           </p>
         }
       />

@@ -8,20 +8,22 @@ import {
   ProductOverviewSection,
 } from "@/features/product";
 import { product } from "@/features/product/data/product";
-import { CtaBand } from "@/components/shared";
+import { CtaBand, JsonLd } from "@/components/shared";
+import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: `${product.name} — Our Product`,
-  description:
-    "A technology-powered student transportation ecosystem built for safer, smarter and more connected journeys.",
   path: "/product",
   image: product.image.src,
+  imageAlt: product.image.alt,
 });
 
 export default function ProductPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([{ name: product.name, path: "/product" }])}
+      />
       <ProductBanner product={product} />
       <ProductOverviewSection overview={product.overview} />
       <ProductChallengeSection challenge={product.challenge} />

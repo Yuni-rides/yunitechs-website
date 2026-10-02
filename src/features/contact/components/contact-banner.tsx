@@ -47,7 +47,7 @@ export function ContactBanner() {
           >
             {headingLines.map((line) => (
               <span key={line} className="block">
-                {line}
+                {line}{" "}
               </span>
             ))}
           </motion.h1>

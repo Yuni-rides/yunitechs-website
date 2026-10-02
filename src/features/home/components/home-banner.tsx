@@ -15,21 +15,21 @@ export function HomeBanner() {
           initial="hidden"
           animate="visible"
         >
-          <motion.p
-            variants={fadeInUp}
-            className="text-brand-secondary mb-3 text-[11px] tracking-[0.2em] uppercase sm:text-xs lg:mb-5 lg:text-sm"
-          >
-            Empowering businesses through smart technology &amp; innovation
-          </motion.p>
-
-          <h1 className="font-heading text-[2.75rem] leading-[1.02] font-bold tracking-tight text-white uppercase sm:text-6xl lg:text-[6.5rem] xl:text-[7.5rem]">
-            <motion.span variants={fadeInUp} className="block">
-              Integrated
-            </motion.span>
-            <motion.span variants={fadeInUp} className="block">
-              Platforms Future
-            </motion.span>
+          {/* The eyebrow line is the page's one H1: it is the only heading here
+              that reads as a sentence, so it is what Google and a screen reader
+              should get. The display words below are the artwork. */}
+          <h1 className="text-brand-secondary mb-3 text-[11px] tracking-[0.2em] uppercase sm:text-xs lg:mb-5 lg:text-sm">
+            Software, app and AI development company
           </h1>
+
+          {/* Not animated from opacity 0: this is the largest thing on the
+              screen, so it is what Largest Contentful Paint is measured
+              against, and fading it in delays the score by the whole
+              animation. */}
+          <p className="font-heading text-[2.75rem] leading-[1.02] font-bold tracking-tight text-white uppercase sm:text-6xl lg:text-[6.5rem] xl:text-[7.5rem]">
+            <span className="block">Integrated</span>
+            <span className="block">Platforms Future</span>
+          </p>
 
           <div className="mt-2 grid items-center gap-8 lg:grid-cols-[minmax(0,280px)_1fr_minmax(0,220px)] lg:gap-6">
             {/* Banner image with "UN MUTED" badge */}
@@ -50,12 +50,11 @@ export function HomeBanner() {
               </span>
             </motion.div>
 
-            <motion.h2
-              variants={fadeInUp}
-              className="font-heading order-1 text-[2.75rem] leading-[1.02] font-bold tracking-tight text-white uppercase sm:text-6xl lg:order-2 lg:text-center lg:text-[6.5rem] xl:text-[7.5rem]"
-            >
+            {/* Part of the same display line as "Integrated Platforms Future",
+                so it is a <p> too — a lone word is not a section heading. */}
+            <p className="font-heading order-1 text-[2.75rem] leading-[1.02] font-bold tracking-tight text-white uppercase sm:text-6xl lg:order-2 lg:text-center lg:text-[6.5rem] xl:text-[7.5rem]">
               Cohesion
-            </motion.h2>
+            </p>
 
             <motion.div
               variants={fadeInUp}

@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Inter, Inter_Tight } from "next/font/google";
 import { Footer, Navbar } from "@/components/layout";
+import { JsonLd } from "@/components/shared";
 import { siteConfig } from "@/config/site";
+import {
+  organizationSchema,
+  professionalServiceSchema,
+  webSiteSchema,
+} from "@/lib/schema";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -33,8 +39,10 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  // No `keywords`: Google has ignored the meta keywords tag for years, and
+  // publishing a target list helps only competitors. The terms each page aims
+  // at live in src/config/seo-pages.ts instead.
+  authors: [{ name: siteConfig.legalName, url: siteConfig.url }],
   creator: siteConfig.name,
   openGraph: {
     type: "website",
@@ -65,11 +73,23 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${archivo.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${interTight.variable} ${archivo.variable}`}
+    >
       <body className="flex min-h-dvh flex-col">
+        {/* Entity data for Google and for the AI assistants that read the same
+            markup. Site-wide, so it is here rather than on each page. */}
+        <JsonLd
+          data={[
+            organizationSchema(),
+            webSiteSchema(),
+            professionalServiceSchema(),
+          ]}
+        />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-secondary focus:px-4 focus:py-2 focus:text-white"
+          className="focus:bg-brand-secondary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>

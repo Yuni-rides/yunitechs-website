@@ -114,7 +114,7 @@ export function AboutBanner() {
                 transition={lineTransition(0.2)}
                 className="block text-white [text-shadow:0_2px_36px_rgb(9_29_64_/_0.85)]"
               >
-                Code
+                Code{" "}
               </motion.span>
             </span>
 
@@ -125,7 +125,7 @@ export function AboutBanner() {
                 transition={lineTransition(0.3)}
                 className="block text-white [text-shadow:0_2px_36px_rgb(9_29_64_/_0.85)]"
               >
-                Dominate
+                Dominate{" "}
               </motion.span>
             </span>
 

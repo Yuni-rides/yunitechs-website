@@ -144,7 +144,7 @@ export function ArticlesBanner() {
                 }}
                 className="block text-white [text-shadow:0_2px_36px_rgb(9_29_64_/_0.85)]"
               >
-                Our
+                Our{" "}
               </motion.span>
             </span>
             <span className="block overflow-hidden text-right">

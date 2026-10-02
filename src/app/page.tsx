@@ -36,9 +36,8 @@ export default function HomePage() {
             applications, modern websites, and scalable digital solutions
             designed to help businesses innovate, grow, and stay ahead in an
             ever-evolving digital landscape. Operating from{" "}
-            <strong>San Francisco</strong> and <strong>Karachi</strong>, we
-            serve clients across the globe with a commitment to quality and
-            excellence.
+            <strong>San Francisco</strong>, we serve clients across the US and
+            beyond with a commitment to quality and excellence.
           </p>
         }
       />

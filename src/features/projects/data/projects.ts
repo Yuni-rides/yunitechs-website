@@ -101,33 +101,10 @@ export const projectFilters = [
 
 export type ProjectFilterId = (typeof projectFilters)[number]["id"];
 
-// TODO: replace with each project's real measured results.
-const defaultStats = (): ProjectStat[] => [
-  {
-    value: "40%",
-    label: "Faster Booking Time",
-    description:
-      "Users can now book in less time with a simplified and intuitive flow.",
-  },
-  {
-    value: "12K+",
-    label: "App Downloads (First 3 Months)",
-    description:
-      "Streamlined access and a better experience led to a significant increase in completed bookings.",
-  },
-  {
-    value: "4.7\u2605",
-    label: "Average App Store Rating",
-    description:
-      "A clearer experience reduced confusion and cut support requests by more than half.",
-  },
-  {
-    value: "65%",
-    label: "Increase in Repeat Users",
-    description:
-      "Users rated the app highly for its ease of use, reliability, and overall experience.",
-  },
-];
+// Empty on purpose. Every figure on a case study is a claim about a client's
+// business, so it needs a number that client has confirmed. Until then the
+// results row renders nothing rather than something invented.
+const defaultStats = (): ProjectStat[] => [];
 
 // TODO: supply the real mockup per project; falls back to the cover image.
 const defaultChallenge = (
@@ -168,12 +145,8 @@ const defaultSwot = (): string[] => [
 const defaultOutcome = (): ProjectOutcomeContent => ({
   heading: "What changed.",
   body: "The new platform streamlined the entire experience, making it faster, easier, and more reliable for both users and the operations team. Bookings are now completed in minutes, real-time visibility has improved coordination, and manual work has been significantly reduced — allowing the team to focus on what matters most: delivering a better, more dependable service.",
-  stats: [
-    { value: "60%", label: "Faster booking time" },
-    { value: "50%", label: "Reduction in manual work" },
-    { value: "2X", label: "More completed trips" },
-    { value: "95%", label: "User satisfaction" },
-  ],
+  // See defaultStats: no invented figures.
+  stats: [],
 });
 
 export const projects: Project[] = [

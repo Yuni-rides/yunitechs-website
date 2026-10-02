@@ -75,7 +75,12 @@ export function ProjectOutcome({ outcome }: { outcome: ProjectOutcomeContent }) 
             </motion.div>
           </div>
 
-          <ul className="grid grid-cols-2 gap-x-[14.6%] gap-y-[7.4%]">
+          {/* A project with no client-confirmed figures shows none, rather
+              than an empty grid beside the copy. */}
+          <ul
+            hidden={outcome.stats.length === 0}
+            className="grid grid-cols-2 gap-x-[14.6%] gap-y-[7.4%]"
+          >
             {outcome.stats.slice(0, 4).map((stat) => (
               <motion.li
                 variants={fadeInUp}
