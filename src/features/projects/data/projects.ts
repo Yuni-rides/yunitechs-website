@@ -57,11 +57,27 @@ export type Project = {
 
 /** Every cover, with the size read off the file. */
 const COVERS = {
-  KhazanyProject: { src: "/images/KhazanyProject.png", width: 368, height: 322 },
-  webbeecartProject: { src: "/images/webbeecartProject.png", width: 369, height: 323 },
-  whyblackProject: { src: "/images/whyblackProject.png", width: 368, height: 322 },
+  KhazanyProject: {
+    src: "/images/KhazanyProject.png",
+    width: 368,
+    height: 322,
+  },
+  webbeecartProject: {
+    src: "/images/webbeecartProject.png",
+    width: 369,
+    height: 323,
+  },
+  whyblackProject: {
+    src: "/images/whyblackProject.png",
+    width: 368,
+    height: 322,
+  },
   regiveProject: { src: "/images/regiveProject.png", width: 368, height: 322 },
-  briliantProject: { src: "/images/briliantProject.png", width: 368, height: 322 },
+  briliantProject: {
+    src: "/images/briliantProject.png",
+    width: 368,
+    height: 322,
+  },
   skillsyncProject: {
     src: "/images/skillsyncProject.png",
     width: 1983,
@@ -224,7 +240,7 @@ export const projects: Project[] = [
     filter: "website",
     title: "Edsidera — Educational Platform",
     excerpt:
-      "A website, a children's app and a school portal on one platform — with online enrolment and payments for award programmes running across multiple countries.",
+      "A website, a children's app and a school portal on one platform with online enrolment and payments for award programmes running across multiple countries.",
     image: COVERS.edsideraProject,
     stats: [
       {
@@ -290,7 +306,7 @@ export const projects: Project[] = [
     filter: "website",
     title: "Sizgroup — App Studio Website",
     excerpt:
-      "A website that sells app development work: twelve service pages, a portfolio that proves the craft, and a booked consultation at the end of every scroll.",
+      "A website that sells app development work twelve service pages, a portfolio that proves the craft, and a booked consultation at the end of every scroll.",
     image: COVERS.sizgroupProject,
     stats: [
       {
