@@ -78,7 +78,7 @@ export function WhoWeAre() {
                 SaaS platforms, AI-powered solutions, and scalable digital
                 products that drive business growth.
               </p>
-              <LetsTalk className="mt-6" />
+              <LetsTalk className="mt-6 md:flex md:items-center md:justify-center" />
             </motion.div>
 
             <motion.div
