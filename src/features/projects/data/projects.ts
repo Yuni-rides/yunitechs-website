@@ -367,53 +367,200 @@ export const projects: Project[] = [
   {
     slug: "purpose-payment",
     name: "Purpose Payment",
-    service: "Payment & Rewards App",
+    service: "Payments App & Merchant Platform",
     category: "Mobile App Development",
     filter: "mobile-app",
-    title: "Purpose Payment — Payment & Rewards App",
+    title: "Purpose Payment — Payments App & Merchant Platform",
     excerpt:
-      "A mobile payment app blending everyday transactions with rewards and charitable giving — turning routine purchases into visible social impact.",
+      "A pay-by-bank app, a merchant portal and a super-admin console on one platform undercutting card fees and routing 1% of every sale to a local cause.",
     image: COVERS.purposeProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("Purpose Payment", COVERS.purposeProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "3",
+        label: "Products on one platform",
+        description:
+          "A consumer app, a merchant portal and a super-admin console.",
+      },
+      {
+        value: "1.5%",
+        label: "All-in fee vs card rails",
+        description:
+          "20¢ + 1.5%, where cards cost about 3.1% once every markup is counted.",
+      },
+      {
+        value: "12K+",
+        label: "US banks and credit unions",
+        description:
+          "Account linking through Plaid, so signing up takes about 30 seconds.",
+      },
+      {
+        value: "1%",
+        label: "Of every sale to a local cause",
+        description:
+          "Routed automatically on each payment, at no extra cost to the shopper.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "Purpose Payment set out to undercut the card networks and hand the saving back to shoppers and local causes — but that takes three products running in step, not one. Shoppers needed an app that pays straight from a bank account, merchants needed a till that runs on a phone they already own, and the business needed a console to approve merchants, set rates and watch every batch settle.",
+      image: COVERS.purposeProject,
+      imageAlt: "The Purpose Payment app and merchant portal",
+    },
+    approach: [
+      "Built the consumer app: link a bank, scan a QR code, pay by face.",
+      "Shipped a merchant portal with live alerts, staff PINs and refunds.",
+      "Built a super-admin console to onboard merchants and set rates.",
+      "Wired Plaid and biometric approval so no card number is ever stored.",
+    ],
     sample: defaultSample("Purpose Payment"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "Purpose Payment now runs end to end on a platform built by Yuni Tech Inc. Shoppers pay from their bank in one scan, merchants take payments on a phone with no hardware and watch each batch settle, and the team onboards new merchants itself from the console.",
+      stats: [
+        { value: "3", label: "Products on one platform" },
+        { value: "20¢", label: "Plus 0.5% per payment" },
+        { value: "0", label: "Hardware for merchants" },
+        { value: "1", label: "Console runs the network" },
+      ],
+    },
+    swot: [
+      "A fee that undercuts card rails, rewards for the shopper and funding for a local cause — one payment serving three parties at once.",
+      "Three products — app, merchant portal, admin console — all had to launch together before a single payment could be taken.",
+      "The model travels: any town with a university, a cause and local merchants is the same build with different partners.",
+      "Card networks and wallets own the habit, and changing a shopper's default way to pay is slow work.",
+    ],
   },
   {
     slug: "myplaces",
     name: "myPlaces",
-    service: "Social Location App",
+    service: "Social Location App & Portal",
     category: "Mobile App Development",
     filter: "mobile-app",
-    title: "myPlaces — Social Location App",
+    title: "myPlaces — Social Location App & Portal",
     excerpt:
-      "A social discovery app connecting people to places, people and moments nearby.",
+      "A social app on iOS and Android with a portal behind it live location, events and messaging that turn a group chat into a meetup.",
     image: COVERS.myPlacesProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("myPlaces", COVERS.myPlacesProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "2",
+        label: "Apps live: iOS, Android",
+        description:
+          "Shipped to the Apple App Store and Google Play, both live today.",
+      },
+      {
+        value: "1",
+        label: "Portal behind the app",
+        description:
+          "Where the team reviews reports, manages accounts and keeps it safe.",
+      },
+      {
+        value: "5",
+        label: "Features in the app",
+        description:
+          "Live location, friend requests, events, posts with a place, privacy.",
+      },
+      {
+        value: "0",
+        label: "Data shared with others",
+        description:
+          "Declared on both stores: nothing sold on, everything encrypted in transit.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "myPlaces had a clear idea — get friends off their phones and into the same room — but an app that shares where someone is standing cannot ship on its own. People needed live location, events and messaging in one place, with real control over who sees what, and the team needed somewhere behind it to review reports, manage accounts and meet the safety rules both app stores enforce.",
+      image: COVERS.myPlacesProject,
+      imageAlt: "The myPlaces app shown on two phones",
+    },
+    approach: [
+      "Built live location sharing people can turn on and off per friend.",
+      "Added events, meetups and posts pinned to the place they happened.",
+      "Built messaging so a plan becomes a meetup without leaving the app.",
+      "Built the portal behind it: reports, accounts and safety review.",
+    ],
     sample: defaultSample("myPlaces"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "myPlaces now runs as an app on both stores with a portal behind it, built by Yuni Tech Inc. Friends share where they are, turn a chat into a meetup, and keep control of who sees what — while the team reviews reports and manages accounts itself.",
+      stats: [
+        { value: "2", label: "Stores the app is on" },
+        { value: "1", label: "Portal runs the network" },
+        { value: "0", label: "Dev tickets to moderate" },
+        { value: "12+", label: "Age rating on Play" },
+      ],
+    },
+    swot: [
+      "A clear stance in a crowded category — the app's job is to end the scrolling and get people to the same place.",
+      "Live location is the feature people are most wary of, so privacy had to be settled before anything else could ship.",
+      "Creators and groups can treat a place as a venue, which turns a social app into a tool for organising a following.",
+      "The big social platforms already own location features, and can give theirs away inside apps people open daily.",
+    ],
   },
   {
     slug: "skillsync",
     name: "SkillSync",
-    service: "Service Marketplace App",
+    service: "Service Marketplace App & Admin Portal",
     category: "Mobile App Development",
     filter: "mobile-app",
-    title: "SkillSync — Service Marketplace App",
+    title: "SkillSync — Service Marketplace App & Admin Portal",
     excerpt:
-      "A marketplace connecting clients with trainers, tutors and skilled professionals nearby.",
+      "One app for clients and service providers, with the admin portal behind it search, availability, booking, messaging and payment in a few taps.",
     image: COVERS.skillsyncProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("SkillSync", COVERS.skillsyncProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "2",
+        label: "Roles sharing one app",
+        description:
+          "A client and a provider sign in to the same build, not two apps.",
+      },
+      {
+        value: "100+",
+        label: "Professions on the app",
+        description:
+          "Trainers, tutors, coaches, musicians and specialists, searchable by area.",
+      },
+      {
+        value: "1",
+        label: "Admin portal behind it",
+        description:
+          "Where the team verifies providers, handles disputes and runs promotions.",
+      },
+      {
+        value: "Pay",
+        label: "Booked and paid in the app",
+        description:
+          "Availability, booking, messaging and payment without leaving the app.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "SkillSync had to serve two opposite jobs from one app. A client wants to search, compare and book in a few taps; a provider wants a listing, a calendar, a reputation and to get paid. Build those as separate apps and you split a young marketplace in half. Behind both, the team needed a way to verify providers, settle disputes and run promotions without going through a developer.",
+      image: COVERS.skillsyncProject,
+      imageAlt: "The SkillSync app shown on two phones",
+    },
+    approach: [
+      "Built one app where sign-up decides whether you book or get booked.",
+      "Added search and filters across 100+ professions and service types.",
+      "Wired real-time availability, booking, messaging and payment together.",
+      "Built the admin portal: provider checks, disputes and promotions.",
+    ],
     sample: defaultSample("SkillSync"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "SkillSync now runs as one app for both sides with an admin portal behind it, built by Yuni Tech Inc. A client searches, compares and books in a few taps; a provider lists, sets availability and gets paid; and the team verifies providers and settles disputes itself.",
+      stats: [
+        { value: "1", label: "App for both sides" },
+        { value: "4", label: "Steps to first booking" },
+        { value: "0", label: "Dev tickets to verify" },
+        { value: "3+", label: "Age rating on Play" },
+      ],
+    },
+    swot: [
+      "One app serving both sides keeps a young marketplace together — every new provider is also a shop window for clients.",
+      "Two opposite jobs in one build: a client wants to book in taps, a provider wants a calendar, a reputation and payouts.",
+      "Featured placements and in-app promotion give the platform a revenue line that grows with the provider base.",
+      "Established marketplaces and local directories are chasing the same trainers and the same clients.",
+    ],
   },
   {
     slug: "khazanay",
@@ -423,14 +570,63 @@ export const projects: Project[] = [
     filter: "e-commerce",
     title: "Khazanay — Online Thrift & Footwear Store",
     excerpt:
-      "An e-commerce store for pre-loved, brand-new and factory-leftover footwear.",
+      "A Shopify storefront for pre-loved, brand-new and factory-leftover footwear — 109 brands, four condition tiers and every size, each with its own way in.",
     image: COVERS.KhazanyProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("Khazanay", COVERS.KhazanyProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "109",
+        label: "Brands, indexed A to Z",
+        description:
+          "Each with its own page, so a shopper can start from the brand they trust.",
+      },
+      {
+        value: "4",
+        label: "Condition tiers per shoe",
+        description:
+          "Premium+, Premium, Excellent and Very Good, defined on their own page.",
+      },
+      {
+        value: "11",
+        label: "Men's sizes, each a page",
+        description:
+          "EUR 39 to 49, so a browse shows only what fits, not the whole catalogue.",
+      },
+      {
+        value: "5",
+        label: "Outlets in three cities",
+        description:
+          "Karachi, Lahore and Islamabad, each with its own hours and directions.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "Second-hand shoes are a trust problem before they are a shopping problem. A buyer in Pakistan, ordering footwear imported from the US, cannot pick a pair up and check it — so condition, size and authenticity all have to be settled on screen. On top of that the catalogue runs to over a hundred brands and every size, which is unbrowsable without a way in.",
+      image: COVERS.KhazanyProject,
+      imageAlt: "The Khazanay store shown on a phone and a desktop",
+    },
+    approach: [
+      "Built the store on Shopify so the team can list stock themselves.",
+      "Gave all 109 brands a page, indexed A to Z for a shopper who knows.",
+      "Defined four condition tiers and put the guide where it is needed.",
+      "Made each size its own collection, so a browse shows only what fits.",
+    ],
     sample: defaultSample("Khazanay"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "Khazanay now runs a storefront that answers the second-hand buyer's questions before they ask, built by Yuni Tech Inc. Brand, condition and size each have their own way in, the condition guide is a page shoppers can check, and the team lists new stock itself.",
+      stats: [
+        { value: "109", label: "Brand pages, A to Z" },
+        { value: "4", label: "Condition tiers live" },
+        { value: "11", label: "Sizes with their own page" },
+        { value: "0", label: "Dev tickets to list stock" },
+      ],
+    },
+    swot: [
+      "Authenticated, USA-imported stock and five physical outlets give a resale brand the credibility the category usually lacks.",
+      "A buyer cannot inspect a used shoe online, so condition, size and authenticity all had to be answered before the add to cart.",
+      "Demand for affordable, sustainable fashion in Pakistan is growing, and the same storefront pattern extends past footwear.",
+      "Counterfeit and low-trust resale sellers can sour buyer confidence in the whole second-hand category, not just one store.",
+    ],
   },
   {
     slug: "webbeecart",
