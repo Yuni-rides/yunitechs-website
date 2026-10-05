@@ -89,7 +89,10 @@ export function Footer() {
                 ))}
               </p>
               {siteConfig.offices[0].address.map((line, i) => (
-                <p key={line} className={i === 0 ? "mt-2 text-[11px]" : "text-[11px]"}>
+                <p
+                  key={line}
+                  className={i === 0 ? "mt-2 text-[11px]" : "text-[11px]"}
+                >
                   {line}
                 </p>
               ))}
@@ -167,9 +170,10 @@ export function Footer() {
 
         {/* Giant wordmark */}
         <Container className="overflow-hidden pb-2 lg:pb-4">
-          <div
-            aria-hidden
-            className="font-heading flex items-center gap-1 text-[clamp(3rem,12.5vw,10rem)] leading-none font-normal tracking-[-0.02em] whitespace-nowrap"
+          <Link
+            href="/"
+            aria-label="Yuni Tech home"
+            className="font-heading flex w-fit items-center gap-1 text-[clamp(3rem,12.5vw,10rem)] leading-none font-normal tracking-[-0.02em] whitespace-nowrap transition-opacity hover:opacity-90"
           >
             <Image
               src="/images/footerLogo.png"
@@ -180,7 +184,7 @@ export function Footer() {
               className="h-[0.9em] w-auto"
             />
             <span>Yuni Tech</span>
-          </div>
+          </Link>
         </Container>
       </div>
     </footer>
