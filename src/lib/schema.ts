@@ -1,4 +1,5 @@
 import { sameAs, siteConfig } from "@/config/site";
+import { services } from "@/features/services/data/services";
 
 /**
  * JSON-LD builders.
@@ -39,6 +40,19 @@ export function organizationSchema() {
       addressCountry: office.postal.country,
     },
     sameAs: [...sameAs],
+    // A named way to reach the company, and the subjects it works in. Neither
+    // produces a Knowledge Panel on its own — that comes from a verified
+    // Google Business Profile — but both help Google tie the name "Yuni Tech"
+    // to this company and to what it actually does.
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: siteConfig.links.phoneE164,
+      email: siteConfig.links.email,
+      areaServed: "US",
+      availableLanguage: "English",
+    },
+    knowsAbout: services.map((service) => service.title),
   };
 }
 
@@ -80,6 +94,20 @@ export function professionalServiceSchema() {
       addressCountry: office.postal.country,
     },
     areaServed: { "@type": "Country", name: "United States" },
+    // The seven services, taken from the service pages themselves so the two
+    // can never drift apart.
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Software development services",
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          url: abs(service.href),
+        },
+      })),
+    },
   };
 }
 
