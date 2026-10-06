@@ -117,52 +117,21 @@ export const projectFilters = [
 
 export type ProjectFilterId = (typeof projectFilters)[number]["id"];
 
-// Empty on purpose. Every figure on a case study is a claim about a client's
-// business, so it needs a number that client has confirmed. Until then the
-// results row renders nothing rather than something invented.
-const defaultStats = (): ProjectStat[] => [];
-
-// TODO: supply the real mockup per project; falls back to the cover image.
-const defaultChallenge = (
-  client: string,
-  image: ProjectImage,
-): ProjectChallengeContent => ({
-  heading: "Where things stood.",
-  body: `${client}'s booking process was manual, relying on phone calls, spreadsheets, and back-and-forth coordination. This made it time-consuming for users, increased the risk of errors, and created operational inefficiencies for their team. As demand grew, it became clear they needed a modern, mobile-first solution to streamline the entire experience.`,
-  image,
-  imageAlt: `The ${client} app shown on two phones`,
-});
-
-// TODO: replace with each project's real delivery notes.
-const defaultApproach = (): string[] => [
-  "Designed a streamlined booking flow that reduced the process to three taps",
-  "Built native iOS and Android apps for consistent performance across devices",
-  "Integrated real-time availability and push notifications to cut missed appointments",
-  "Ran continuous usability testing to refine the flow before and after launch",
-];
-
-// TODO: the designer will supply a mockup per project; shared for now.
+/**
+ * Every project now carries its own stats, challenge, approach, SWOT and
+ * outcome, written from the live product and what the client told us. The
+ * placeholder helpers that used to fill those in — and which put the same
+ * invented figures on all eleven case studies — are gone; a new project adds
+ * its own copy rather than inheriting someone else's.
+ *
+ * The mockup is still shared, because the designer has not supplied one per
+ * project yet.
+ */
 const defaultSample = (
   client: string,
 ): { image: ProjectImage; imageAlt: string } => ({
   image: COVERS.projectSample,
   imageAlt: `Screens from the ${client} project shown on desktop and tablet`,
-});
-
-// TODO: replace with each project's real measured outcome.
-// TODO: replace with each project's real SWOT notes.
-const defaultSwot = (): string[] => [
-  "A clear customer need, an engaged stakeholder team, and a strong foundation of domain knowledge gave us a solid starting point for a successful build.",
-  "The existing process was highly manual, with fragmented systems and limited real-time visibility, which created inefficiencies and a higher risk of errors.",
-  "Growing demand and a shift towards digital adoption created an opportunity to deliver a modern, mobile-first solution that could scale across regions.",
-  "Increasing competition, evolving customer expectations, and changing regulations posed external challenges that required a flexible and future-ready approach.",
-];
-
-const defaultOutcome = (): ProjectOutcomeContent => ({
-  heading: "What changed.",
-  body: "The new platform streamlined the entire experience, making it faster, easier, and more reliable for both users and the operations team. Bookings are now completed in minutes, real-time visibility has improved coordination, and manual work has been significantly reduced — allowing the team to focus on what matters most: delivering a better, more dependable service.",
-  // See defaultStats: no invented figures.
-  stats: [],
 });
 
 export const projects: Project[] = [
@@ -636,14 +605,63 @@ export const projects: Project[] = [
     filter: "e-commerce",
     title: "WebBeeCart — E-Commerce Platform",
     excerpt:
-      "A scalable multi-vendor e-commerce builder for stores and marketplaces.",
+      "A commerce platform that launches either a single store or a multi-vendor marketplace — web storefront, apps on both stores, shopper tools wired in.",
     image: COVERS.webbeecartProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("WebBeeCart", COVERS.webbeecartProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "2",
+        label: "Vendor models, one build",
+        description:
+          "A single store or a multi-vendor marketplace, chosen at onboarding.",
+      },
+      {
+        value: "3",
+        label: "Places a store runs",
+        description:
+          "The web storefront plus native apps on the App Store and Google Play.",
+      },
+      {
+        value: "QR",
+        label: "Scan to install the app",
+        description:
+          "The builder page hands a shopper the right store link in one scan.",
+      },
+      {
+        value: "4",
+        label: "Shopper tools built in",
+        description:
+          "Wishlist, compare, order tracking and a locator for physical stores.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "WebBeeCart had to be two products at once. A single merchant wants a store of their own; a marketplace operator wants many sellers under one roof — and a platform that only does one of those halves its market. Both then need the same thing on day one: a storefront on the web, native apps on both stores, and the shopper tools people now expect, without a vendor wiring any of it up.",
+      image: COVERS.webbeecartProject,
+      imageAlt: "The WebBeeCart storefront shown on a phone and a desktop",
+    },
+    approach: [
+      "Built one platform where onboarding picks store or marketplace.",
+      "Shipped the storefront on web plus native apps on both stores.",
+      "Built the shopper side in: wishlist, compare, tracking, locator.",
+      "Put a QR on the builder page so a shopper installs in one scan.",
+    ],
     sample: defaultSample("WebBeeCart"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "WebBeeCart now runs as one platform that can launch either a single store or a full marketplace, built by Yuni Tech Inc. A vendor picks their model at onboarding and gets a web storefront, apps on both stores, and the shopper tools already wired in.",
+      stats: [
+        { value: "2", label: "Vendor models live" },
+        { value: "3", label: "Web, iOS and Android" },
+        { value: "4", label: "Shopper tools shipped" },
+        { value: "0", label: "Plugins a vendor adds" },
+      ],
+    },
+    swot: [
+      "One codebase serving both a single store and a multi-vendor marketplace doubles the market a new platform can sell into.",
+      "Two vendor models means every feature has to be designed twice over, for one seller and for many under one roof.",
+      "A white-label commerce engine can be deployed for a new vendor quickly, which turns build work into repeatable revenue.",
+      "Shopify and the established builders own vendor mindshare and arrive with app ecosystems a new platform cannot match.",
+    ],
   },
   {
     slug: "why-black",
@@ -653,47 +671,195 @@ export const projects: Project[] = [
     filter: "e-commerce",
     title: "WHY BLACK — Mobile Accessories Store",
     excerpt:
-      "A sleek e-commerce experience for chargers, cables, power banks and audio gear.",
+      "A WooCommerce storefront for chargers, cables, power banks and audio gear — fifty products in seven categories, dark from landing page to checkout.",
     image: COVERS.whyblackProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("WHY BLACK", COVERS.whyblackProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "50",
+        label: "Products live in store",
+        description:
+          "Across cables, power banks, chargers, earphones and accessories.",
+      },
+      {
+        value: "7",
+        label: "Product categories",
+        description:
+          "Cables through to bags and docks, each with its own browsable page.",
+      },
+      {
+        value: "3",
+        label: "Shopper tools built in",
+        description:
+          "A wishlist, an account area and a newsletter for new product drops.",
+      },
+      {
+        value: "10%",
+        label: "Standing offer site-wide",
+        description:
+          "Carried in the header bar, on every page and every product.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "WHY BLACK sells the things nobody gets excited about — chargers, cables, power banks — in a category where the buyer's only question is whether it will work and how fast it arrives. The brand wanted a storefront dark and deliberate enough to look like a name worth paying for, while keeping the trip from landing page to checkout short enough that nobody reconsiders a $20 cable.",
+      image: COVERS.whyblackProject,
+      imageAlt: "The WHY BLACK storefront shown on a phone and a desktop",
+    },
+    approach: [
+      "Built the store on WooCommerce so the team lists stock themselves.",
+      "Set the catalogue into seven categories, led by cables and charging.",
+      "Gave the brand a dark storefront built around the product shots.",
+      "Added a wishlist, accounts and a newsletter for new product drops.",
+    ],
     sample: defaultSample("WHY BLACK"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "WHY BLACK now runs a storefront that looks like a brand and sells like a shop, built by Yuni Tech Inc. Fifty products sit in seven categories a shopper can browse in a tap, the dark treatment carries from the landing page to the cart, and the team adds stock itself.",
+      stats: [
+        { value: "50", label: "Products on the store" },
+        { value: "7", label: "Categories to browse" },
+        { value: "3", label: "Shopper tools live" },
+        { value: "0", label: "Dev tickets to list" },
+      ],
+    },
+    swot: [
+      "A dark, deliberate storefront gives a commodity accessories range the feel of a brand rather than a parts bin.",
+      "Chargers and cables are bought on price and speed, so the brand has little room to slow the buyer down.",
+      "A wishlist and a newsletter build a list the store can sell each new product drop to, instead of buying attention again.",
+      "Marketplace sellers list near-identical accessories at lower prices, which keeps constant pressure on margin.",
+    ],
   },
   {
     slug: "regive-hub",
     name: "ReGive Hub",
-    service: "SEO & Digital Growth",
+    service: "Community App, Portal & SEO",
     category: "SEO & Digital Growth",
     filter: "seo",
-    title: "ReGive Hub — SEO & Digital Growth",
-    excerpt: "Improving discoverability for a community reuse and giving app.",
+    title: "ReGive Hub — Community App, Portal & SEO",
+    excerpt:
+      "A free community app for giving things away, the admin portal behind it, and the search work that brings people to both.",
     image: COVERS.regiveProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("ReGive Hub", COVERS.regiveProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "Free",
+        label: "Every listing on the app",
+        description:
+          "Nothing is sold: people post what they no longer need and others claim it.",
+      },
+      {
+        value: "1",
+        label: "Admin portal behind it",
+        description:
+          "Where the team reviews listings, handles reports and manages accounts.",
+      },
+      {
+        value: "ASO",
+        label: "Store listing rewritten",
+        description:
+          "Title, description and keywords set around how people search.",
+      },
+      {
+        value: "SEO",
+        label: "On and off-site content",
+        description:
+          "Written to reach people searching to give things away, not to buy.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "ReGive Hub's whole idea runs on people finding it: a community app where you post what you no longer need and someone nearby claims it, free. But an app that charges nothing has no budget to buy its way in front of anyone, and nothing was bringing people to it — not the store listing, not the site. A platform where strangers hand things to strangers also needs someone watching it.",
+      image: COVERS.regiveProject,
+      imageAlt: "The ReGive Hub app shown on two phones",
+    },
+    approach: [
+      "Built the app: post what you don't need, claim what you do.",
+      "Built the admin portal for listings, reports and accounts.",
+      "Rewrote the store listing around how people search to give away.",
+      "Wrote on-site and off-site content to pull in organic installs.",
+    ],
     sample: defaultSample("ReGive Hub"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "ReGive Hub now has all three pieces built by Yuni Tech Inc: an app where a listing takes a photo and a tap, an admin portal the team runs the community from, and a store listing and site written to be found by people searching to give something away.",
+      stats: [
+        { value: "50+", label: "Downloads on Play" },
+        { value: "1", label: "Admin portal live" },
+        { value: "2", label: "SEO fronts covered" },
+        { value: "0", label: "Dev tickets to moderate" },
+      ],
+    },
+    swot: [
+      "A mission anyone understands in a sentence — give away what you no longer need — which makes the app easy to write about and share.",
+      "A free app earns nothing per listing, so it cannot buy its way to an audience the way a marketplace can.",
+      "Interest in reuse and waste reduction keeps growing, and search traffic for it is cheap next to retail terms.",
+      "Marketplace and classifieds apps already run free sections, and they arrive with the users ReGive Hub needs.",
+    ],
   },
   {
     slug: "brilliant-teaching",
     name: "Brilliant Teaching",
-    service: "AI-Ready Lesson Planning App",
+    service: "AI Lesson Planning App & Portal",
     category: "AI / EdTech",
     filter: "ai",
-    title: "Brilliant Teaching — AI-Ready Lesson Planning App",
+    title: "Brilliant Teaching — AI Lesson Planning App & Portal",
     excerpt:
-      "A teacher-first app for building teaching units, organising courses and structuring lessons that connect with students.",
+      "An AI planning app for teachers with the portal behind it — units, courses and each week's assignments drafted instead of started from a blank page.",
     image: COVERS.briliantProject,
-    stats: defaultStats(),
-    challenge: defaultChallenge("Brilliant Teaching", COVERS.briliantProject),
-    approach: defaultApproach(),
+    stats: [
+      {
+        value: "AI",
+        label: "Drafts the week's work",
+        description:
+          "Manuals, course material and assignments start written, not blank.",
+      },
+      {
+        value: "2",
+        label: "Products on one platform",
+        description:
+          "The teacher's app and the portal the team runs the courses from.",
+      },
+      {
+        value: "4+",
+        label: "Age rating on the App Store",
+        description:
+          "An education app cleared for every classroom, with no data collected.",
+      },
+      {
+        value: "3.0",
+        label: "Version live on iOS",
+        description:
+          "Three major releases in, and built for iPhone on iOS 15.6 or later.",
+      },
+    ],
+    challenge: {
+      heading: "Where things stood.",
+      body: "The work that eats a teacher's week is not the teaching. It is writing the unit, shaping it into a course, and producing the assignments that go with it — every week, from a blank page, in notes and documents scattered across folders. Brilliant Teaching wanted that first draft to already exist when the teacher sat down, and the team behind it needed somewhere to manage the courses being built.",
+      image: COVERS.briliantProject,
+      imageAlt: "The Brilliant Teaching app shown on two phones",
+    },
+    approach: [
+      "Built the app around teaching units a teacher creates from a phone.",
+      "Grouped units into courses so a whole term stays in one structure.",
+      "Put AI behind it to draft manuals, course work and assignments.",
+      "Built the portal the team manages courses and content from.",
+    ],
     sample: defaultSample("Brilliant Teaching"),
-    outcome: defaultOutcome(),
-    swot: defaultSwot(),
+    outcome: {
+      heading: "What changed.",
+      body: "Brilliant Teaching now runs as an app with a portal behind it, built by Yuni Tech Inc. A teacher opens the week to a draft rather than a blank page — units, course material and assignments already shaped — and edits from there instead of starting over.",
+      stats: [
+        { value: "2", label: "Products on one platform" },
+        { value: "AI", label: "Drafts each week" },
+        { value: "4+", label: "Age rating on iOS" },
+        { value: "0", label: "User data collected" },
+      ],
+    },
+    swot: [
+      "The app targets the part of teaching everyone resents — the paperwork — which is exactly where AI earns its place rather than being a feature.",
+      "Anything AI writes for a classroom has to be checked by the teacher, so the draft has to be good enough to be worth editing.",
+      "A planner that already knows a teacher's units and courses can keep drafting further ahead: a term, not a week.",
+      "Established lesson-planning tools are adding AI to products schools already pay for and already trust.",
+    ],
   },
 ];
 

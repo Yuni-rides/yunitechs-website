@@ -214,7 +214,7 @@ export const services: Service[] = [
     ),
     banner: banner(
       "Web Development",
-      "Websites built to win trust and convert",
+      "Custom website development that wins trust and converts",
       "We design and build fast, accessible websites that hold up under real traffic and turn visitors into customers.",
       "webBanner",
     ),
@@ -339,7 +339,7 @@ export const services: Service[] = [
     ),
     banner: banner(
       "Branding & Design",
-      "Brand identities people remember",
+      "Branding and UI/UX design people remember",
       "From logo to design system, we craft a visual language that stays consistent everywhere your brand shows up.",
       "designBanner",
     ),
@@ -456,7 +456,7 @@ export const services: Service[] = [
     image: serviceImage("crmService", "CRM dashboards built by Yuni Tech."),
     banner: banner(
       "CRM Systems",
-      "CRM systems that fit how you actually work",
+      "Custom CRM systems that fit how you actually work",
       "We build and integrate CRM platforms that bring your pipeline, customers, and reporting into one reliable place.",
       "crmBanner",
     ),
@@ -576,7 +576,7 @@ export const services: Service[] = [
     ),
     banner: banner(
       "E-Commerce",
-      "Storefronts built to sell at scale",
+      "E-commerce development for stores built to sell",
       "Fast, secure, conversion-focused commerce, from product pages and checkout through payments and fulfilment.",
       "ecommerceBanner",
     ),
@@ -701,7 +701,7 @@ export const services: Service[] = [
     ),
     banner: banner(
       "AI & Automation",
-      "Automation that gives your team its time back",
+      "AI automation that gives your team its time back",
       "We wire AI and automation into your existing tools so the repetitive work runs itself, accurately and on schedule.",
       "aiBanner",
     ),
@@ -820,13 +820,10 @@ export const services: Service[] = [
       "Progressive Web Apps",
       "API Development",
     ],
-    image: serviceImage(
-      "appService",
-      "Mobile apps developed by Yuni Tech.",
-    ),
+    image: serviceImage("appService", "Mobile apps developed by Yuni Tech."),
     banner: banner(
       "App Development",
-      "Custom mobile apps built to grow your business",
+      "Mobile app development for iOS and Android",
       "We design and develop high-performing iOS, Android, and cross-platform apps that turn your idea into a scalable, revenue-ready product.",
       "appBanner",
     ),
@@ -952,7 +949,7 @@ export const services: Service[] = [
     ),
     banner: banner(
       "Marketing",
-      "Marketing that brings the right people to you",
+      "Digital marketing that brings the right people to you",
       "Search, paid, social, and content working together, measured on the enquiries and sales they produce rather than on impressions.",
       "marketingBanner",
     ),

@@ -1238,7 +1238,7 @@ export const articles: Article[] = [
       label: "Get in Touch",
     },
   },
-    {
+  {
     slug: "when-custom-crm-is-worth-building",
     title: "When a Custom CRM Is Worth Building",
     category: "CRM",
@@ -1258,7 +1258,7 @@ export const articles: Article[] = [
         ],
       },
       {
-        heading: "What \"custom\" actually buys you",
+        heading: 'What "custom" actually buys you',
         body: [
           "An off-the-shelf CRM is built for the average business in its category. It comes with standard fields, standard pipeline stages and standard reports, and most of them cover real needs well. A custom CRM is built around your process specifically: your pipeline stages, your approval steps, your definition of a qualified lead. Nothing generic, nothing you don't use.",
           "That's the whole trade. Generic and ready today, or specific and built to order.",
@@ -1317,6 +1317,33 @@ export const articles: Article[] = [
     },
   },
 ];
+
+/**
+ * Where each article's closing CTA points.
+ *
+ * A reader who has just finished "When a Custom CRM Is Worth Building" is
+ * better served by the CRM service page than by a generic contact form — and
+ * these are the only contextual links those pages get. Before this, six of the
+ * seven service pages had no inbound link from anywhere but the nav, which
+ * tells Google they are not worth much.
+ *
+ * An article that sets its own `cta.href` keeps it.
+ */
+const SERVICE_FOR_FILTER: Record<FilterId, string> = {
+  all: "/services",
+  ai: "/services/ai-automation",
+  web: "/services/website-development",
+  apps: "/services/application-development",
+  // SaaS and team-structure pieces land closest to app development.
+  software: "/services/application-development",
+  ecommerce: "/services/e-commerce",
+  crm: "/services/crm-system",
+  marketing: "/services/marketing",
+};
+
+for (const article of articles) {
+  article.cta.href ??= SERVICE_FOR_FILTER[article.filter];
+}
 
 export function getArticleBySlug(slug: string) {
   return articles.find((article) => article.slug === slug);
